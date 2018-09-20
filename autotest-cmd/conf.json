@@ -1,0 +1,18 @@
+{
+  "----------------IRIS hub 配置---------------- （stage）"          :"",
+  "HostIP"           :"http://120.79.226.163:30317",
+  "ChainID"          :"iris-stage-4",
+  "faucet_seed"      :"oxygen skin spring media trim sphere obtain reason real chapter shoot tennis scan leopard stool bean just demand cliff unusual trust hat vault hazard",
+  "V1_seed"          :"wine orange mask clay antenna sort spatial attitude entry chaos bachelor trigger cup number bamboo cup artefact swamp olympic royal nurse zero despair knee",
+
+  "----------------系统 配置----------------"          :"",
+  "Reset"            :"false",
+
+  "----------------Skip 配置----------------"          :"",
+  "Keys_Skip"       : "true",
+  "Bank_Skip"       : "true",
+  "Stake_Skip"      : "true",
+  "Gov_Skip"        : "true",
+  "Account_Skip"    : "true",
+  "Fee_Skip"        : "true"
+}

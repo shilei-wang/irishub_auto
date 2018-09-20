@@ -1,0 +1,180 @@
+<head>
+    <meta charset="utf-8">
+    <title>IRISHub Automation</title>
+</head>
+
+<style type="text/css">
+body {
+ font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+ color: #4f6b72;
+ background: #E6EAE9;
+}
+
+#mytable {
+ width: 900px;
+ padding: 0;
+ margin: 0;
+}
+
+th {
+ font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+ color: #4f6b72;
+ border-right: 0.5px solid #C1DAD7;
+ border-left: 0.5px solid #C1DAD7;
+ border-bottom: 0.5px solid #C1DAD7;
+ border-top: 0.5px solid #C1DAD7;
+
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ text-align: left;
+ padding: 6px 6px 6px 12px;
+ background: #CAE8EA;
+}
+
+td {
+ border-left: 0.5px solid #C1DAD7;
+ border-right: 0.5px solid #C1DAD7;
+ border-bottom: 0.5px solid #C1DAD7;
+ background: #fff;
+ font-size:11px;
+ padding: 6px 6px 6px 12px;
+ color: #4f6b72;
+}
+
+td.alt {
+ background: #F5FAFA;
+ color: #4f6b72;
+}
+
+td.alt2 {
+    font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    background: #F5FAFA;
+    color: #797268;
+    text-align: center;
+    border-left: 0px ;
+    border-right: 0px ;
+    border-bottom: 0px ;
+    border-top: 0px ;
+}
+</style>
+
+
+<table id="mytable" cellspacing="0">
+    <tr>
+        <td width=900 class="alt2"> IRISHub  Automation  Testing  Report</td>
+    </tr>
+</table>
+<br>
+
+<table id="mytable" cellspacing="0">
+  {{with .details}}
+  <tr>
+    <th width=150>测试人员（责任人）</th>
+    <th width=150>测试版本</th>
+    <th width=150>Chain-Id</th>
+    <th width=150>水龙头余额</th>
+    <th width=150>测试时间</th>
+    <th width=150>本次测试用时</th>
+  </tr>
+
+  <tr>
+    <td>王石磊</td>
+    <td>{{.A1}}</td>
+    <td>{{.B1}}</td>
+    <td>{{.C1}}</td>
+    <td>{{.D1}}</td>
+    <td>{{.E1}}</td>
+  </tr>
+  {{end}}
+</table>
+<br><br>
+
+
+<table id="mytable" cellspacing="0">
+  {{with .counts}}
+  <tr>
+    <th width=130>模块</th>
+    <th width=110>keys</th>
+    <th width=110>bank</th>
+    <th width=110>stake</th>
+    <th width=110>gov</th>
+    <th width=110>account</th>
+    <th width=110>Fee</th>
+    <th width=110>合计</th>
+  </tr>
+
+  <tr>
+    <td>总数</td>
+    <td>{{.A2}}</td>
+    <td>{{.B2}}</td>
+    <td>{{.C2}}</td>
+    <td>{{.D2}}</td>
+    <td>{{.E2}}</td>
+    <td>{{.F2}}</td>
+    <td>{{.G2}}</td>
+  </tr>
+
+  <tr>
+    <td class="alt">PASS</td>
+    <td class="alt">{{.A3}}</td>
+    <td class="alt">{{.B3}}</td>
+    <td class="alt">{{.C3}}</td>
+    <td class="alt">{{.D3}}</td>
+    <td class="alt">{{.E3}}</td>
+    <td class="alt">{{.F3}}</td>
+    <td class="alt">{{.G3}}</td>
+  </tr>
+
+  <tr>
+    <td>FAIL</td>
+    <td>{{.A4}}</td>
+    <td>{{.B4}}</td>
+    <td>{{.C4}}</td>
+    <td>{{.D4}}</td>
+    <td>{{.E4}}</td>
+    <td>{{.F4}}</td>
+    <td>{{.G4}}</td>
+  </tr>
+  {{end}}
+
+  {{with .rates}}
+  <tr>
+    <td class="alt">通过率</td>
+    <td class="alt">{{.A5}}</td>
+    <td class="alt">{{.B5}}</td>
+    <td class="alt">{{.C5}}</td>
+    <td class="alt">{{.D5}}</td>
+    <td class="alt">{{.E5}}</td>
+    <td class="alt">{{.F5}}</td>
+    <td class="alt">{{.G5}}</td>
+  </tr>
+  {{end}}
+</table>
+<br><br>
+
+
+<table id="mytable" cellspacing="0">
+    <tr>
+        <th width=40>Case ID</th>
+        <th width=300>Summary</th>
+        <th width=40>Result</th>
+        <th>Debug Info</th>
+    </tr>
+
+    {{with .results}}
+        {{range $i, $v := .}}
+
+            {{if mod $i}}
+                    <tr>
+                        {{range rangeStruct .}} <td>{{.}}</td> {{end}}
+                    </tr>
+            {{else}}
+                    <tr>
+                        {{range rangeStruct .}} <td class="alt">{{.}}</td> {{end}}
+                    </tr>
+            {{end}}
+
+        {{end}}
+    {{end}}
+</table>
+<br><br>
