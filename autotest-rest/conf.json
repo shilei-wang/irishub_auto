@@ -1,12 +1,12 @@
 {
-  "----------------IRIS hub 配置---------------- （centOS）"          :"",
-  "HostIP"           :"http://192.168.150.239:30317",
-  "ChainID"          :"upgrade-test",
-  "faucet_seed"      :"captain vacant bone large ridge execute sock hospital oven inch lava armor gallery army match glove goat melt guide mad garbage balance rebel next",
-  "V1_seed"          :"garden captain awesome soldier hat oven culture cook leg hair choose census fever chicken dice word wolf enlist cherry drill note hybrid crowd found",
+  "----------------IRIS hub 配置---------------- (Dev)"          :"",
+  "HostIP"           :"http://192.168.150.7:30317",
+  "ChainID"          :"irishub-dev",
+  "faucet_seed"      :"duty sell trick gift seat mutual common magic reward vessel miracle draft muscle winner hold mirror animal swallow gaze journey garden lizard embark mesh",
+  "V1_seed"          :"duty sell trick gift seat mutual common magic reward vessel miracle draft muscle winner hold mirror animal swallow gaze journey garden lizard embark mesh",
 
   "----------------系统 配置----------------"          :"",
-  "Reset"            :"true",
+  "Reset"            :"false",
 
   "----------------Skip 配置----------------"          :"",
   "Keys_Skip"       : "false",
