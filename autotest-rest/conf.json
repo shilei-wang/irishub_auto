@@ -9,7 +9,7 @@
   "Reset"            :"true",
 
   "----------------Skip 配置----------------"          :"",
-  "Keys_Skip"       : "true",
+  "Keys_Skip"       : "false",
   "Bank_Skip"       : "false",
   "Stake_Skip"      : "false",
   "Gov_Skip"        : "false",
