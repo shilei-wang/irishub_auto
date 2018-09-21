@@ -29,7 +29,7 @@ func Test_Module_ID_0_Start(t *testing.T) {
 func Test_Module_ID_1_Keys(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Keys_Skip"]   == "true" { return }
+	if Config.Map["Keys_Skip"]   == "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.QueryAccountList{}).Run()      // Story 1-1 : 查询账户列表
 	(&stories.CreateAccount{}).Run()         // Story 1-2 : 创建本地账户
@@ -42,7 +42,7 @@ func Test_Module_ID_1_Keys(t *testing.T) {
 func Test_Module_ID_2_Bank(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Bank_Skip"]   == "true" { return }
+	if Config.Map["Bank_Skip"]   == "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.AccountTransfer{}).Run()       // Story 2-1 : 转账交易
 	(&stories.InquiryTxInfo{}).Run()         // Story 2-2 : 查询交易
@@ -51,7 +51,7 @@ func Test_Module_ID_2_Bank(t *testing.T) {
 func Test_Module_ID_3_Stake(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Stake_Skip"]  == "true" { return }
+	if Config.Map["Stake_Skip"]  == "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.QueryValidators{}).Run()       // Story 3-1 : 查询验证人列表
 	(&stories.InquiryDelegation{}).Run()     // Story 3-4 : 查询委托信息
@@ -61,7 +61,7 @@ func Test_Module_ID_3_Stake(t *testing.T) {
 func Test_Module_ID_4_Goverance(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Gov_Skip"]    == "true" { return }
+	if Config.Map["Gov_Skip"]    == "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.SubmitProposal{}).Run()        // Story 4-1 : 提交提议
 	(&stories.InquiryProposal{}).Run()       // Story 4-2 : 查询提议
@@ -73,7 +73,7 @@ func Test_Module_ID_4_Goverance(t *testing.T) {
 func Test_Module_ID_5_Account(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Account_Skip"]== "true" { return }
+	if Config.Map["Account_Skip"]== "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.AccountStatus{}).Run()         // Story 5-1 : 账户状态查询
 }
@@ -81,7 +81,7 @@ func Test_Module_ID_5_Account(t *testing.T) {
 func Test_Module_ID_6_Fee(t *testing.T) {
 	t.Parallel()
 	defer Wg.Done()
-	if Config.Map["Fee_Skip"]== "true" { return }
+	if Config.Map["Fee_Skip"]== "true" || Config.Map["Skip_All"] == "true" { return }
 
 	(&stories.Fee{}).Run()                   // Story 6-1 : Fee功能测试
 }

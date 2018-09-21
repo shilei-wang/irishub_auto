@@ -54,7 +54,7 @@ type UpdateKeyReq struct { //UpdateKeyBody
 
 //转账Res
 type SendIrisReq struct {
-	Amount            []AmountItem  `json:"amount"`
+	Amount            string  `json:"amount"`
 	Sender			  string        `json:"sender"`
 	Basetx			  BaseTx        `json:"base_tx"`
 }
@@ -175,14 +175,9 @@ type DelegationsReq struct { //EditDelegationsBody
 	CompleteRedelegates []CompleteRedelegateInput `json:"complete_redelegates"`
 }
 
-type DelegationAmount struct {
-	Denom             string  	        `json:"denom"`
-	Amount            string            `json:"amount"`
-}
-
 type DelegationsInput struct { //msgDelegationsInput
 	ValidatorAddr string                `json:"validator_addr"` // in bech32
-	Delegation    DelegationAmount      `json:"delegation"`
+	Delegation    string                `json:"delegation"`
 }
 
 type BeginUnbondingInput struct { //msgBeginUnbondingInput
@@ -206,18 +201,13 @@ type CompleteRedelegateInput struct { //msgCompleteRedelegateInput
 }
 
 // 提交提议
-type ProposalAmount struct {
-	Denom             string  	        `json:"denom"`
-	Amount            string            `json:"amount"`
-}
-
 type PostProposalReq struct { //postProposalReq
 	Basetx		   BaseTx           `json:"base_tx"`
 	Title          string           `json:"title"`           //  Title of the proposal
 	Description    string           `json:"description"`     //  Description of the proposal
 	ProposalType   ProposalKind     `json:"proposal_type"`   //  Type of proposal. Initial set {PlainTextProposal, SoftwareUpgradeProposal}
 	Proposer       string           `json:"proposer"`        //  Address of the proposer
-	InitialDeposit []ProposalAmount           `json:"initial_deposit"` // Coins to add to the proposal's deposit
+	InitialDeposit string          `json:"initial_deposit"` // Coins to add to the proposal's deposit
 	//Params        Params    //未实现
 }
 
@@ -273,7 +263,7 @@ type TallyResult struct {
 type DepositReq struct { //depositReq
 	Basetx	   BaseTx                 `json:"base_tx"`
 	Depositer  string 		          `json:"depositer"` // Address of the depositer
-	Amount     []ProposalAmount       `json:"amount"`    // Coins to add to the proposal's deposit
+	Amount     string       `json:"amount"`    // Coins to add to the proposal's deposit
 }
 
 // 投票提议

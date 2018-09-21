@@ -6,9 +6,10 @@
   "V1_seed"          :"duty sell trick gift seat mutual common magic reward vessel miracle draft muscle winner hold mirror animal swallow gaze journey garden lizard embark mesh",
 
   "----------------系统 配置----------------"          :"",
-  "Reset"            :"false",
+  "Reset"            :"true",
 
   "----------------Skip 配置----------------"          :"",
+  "Skip_All"        : "false",
   "Keys_Skip"       : "false",
   "Bank_Skip"       : "false",
   "Stake_Skip"      : "false",

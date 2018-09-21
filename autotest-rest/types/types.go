@@ -18,14 +18,14 @@ const NUMBER_OF_MODULES   = 6
 const MIN_GASPRICE = 20000000000
 
 // 4) 出块等待时间 5s , RequestTimeout 超时时间 20s
-const WaitBlockTime = 8
+const WaitBlockTime = 10  //默认8秒是没有问题的 10秒已经很慢了
 const RequestTimeout = 20
 
 // 5) Proposal最小抵押金额
 const MinDeposit = "10"
 
 // 6) 水龙头首次分配给“子story”代币数量
-const InitIris = "1000000"
+const InitIris = "100000"
 
 // 7) 默认Gas
 const GasForSend = "200000"

@@ -80,7 +80,7 @@ func (s *TxDelegation) case_3_7_1(subCase *SubCase) (ResultType, string){
 
 	//对比(实际和期望)数据
 	expected,err := strconv.ParseFloat(TxAmount,64)
-	expected = expected * 1000000000000000000  // 这里是个bug 下次要跟着改 share数量没有改 还是以atto为基数
+	//fmt.Println(after ,before )
 	err = s.Common.CompareFloat64((after-before) , expected)
 	if err != nil {
 		return FAIL, ERR_CASE_COMPARE + err.Error()

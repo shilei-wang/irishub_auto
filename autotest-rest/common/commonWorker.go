@@ -422,7 +422,7 @@ func (c *CommonWorker)SendIris(srcName string, dstName string, amount string, da
 	}
 
 	sendData := SendIrisReq {
-		Amount          :  []AmountItem{{Amount:amount, Denom: "iris"}},
+		Amount          :  amount+"iris",
 		Sender          :  "",
 		Basetx          :  BaseTx{
 			Name            :  srcName,
@@ -434,6 +434,9 @@ func (c *CommonWorker)SendIris(srcName string, dstName string, amount string, da
 			Fee             :  (*data).Fee,
 		},
 	}
+
+	//resBody , _ := json.Marshal(sendData)
+	//fmt.Println(string(resBody))
 
 	repBody, statusCode, err := c.RequestWorker.MakeRequest(sendData)
 	if err != nil || repBody == nil {
@@ -483,6 +486,7 @@ func (c *CommonWorker)GetAccountFromAddress(address string) (*AccountDataResp, e
 		return nil, errors.New(ERR_GET_ACCOUNTINFO_FROMADDRESS + ERR_REQUEST+string(repBody))
 	}
 	if statusCode != 200 {
+		//fmt.Println(Config.Map["HostIP"]+"/bank/accounts/"+address)
 		return nil, errors.New(ERR_GET_ACCOUNTINFO_FROMADDRESS + ERR_STATUSCODE+strconv.Itoa(statusCode)+string(repBody))
 	}
 
@@ -605,9 +609,7 @@ func (c *CommonWorker)TxDelegation(amount string, delegator_name string, validat
 
 	delegationsInput := DelegationsInput {
 		ValidatorAddr : validator_address,
-		Delegation    : DelegationAmount{
-			Denom :  "iris" , Amount : amount,
-		},
+		Delegation    : amount+"iris",
 	}
 
 	delegationsRes := DelegationsReq{
@@ -675,10 +677,7 @@ func (c *CommonWorker)SubmitProposal(name string, title string, proposalType Pro
 		Description     :        "Description :submit Proposal",
 		ProposalType    :   	 proposalType,
 		Proposer        :		 account.Address,
-		InitialDeposit  :        []ProposalAmount{ProposalAmount{
-										Denom   : "iris",
-										Amount 	: depositAmount,
-									}},
+		InitialDeposit  :        depositAmount+"iris",
 	}
 
 	//Params          :		 []Param{Param{
@@ -773,7 +772,7 @@ func (c *CommonWorker)DepositProposal(name string, proposalID string, depositAmo
 	)
 
 	depositReq := DepositReq  {
-		Basetx          :  BaseTx{
+		Basetx           :  BaseTx{
 			Name            :  name,
 			Password        :  PASSWORD,
 			ChainId         :  Config.Map["ChainID"],
@@ -782,11 +781,8 @@ func (c *CommonWorker)DepositProposal(name string, proposalID string, depositAmo
 			Gas             :  GasForSend,
 			Fee             :  GasForFee,
 		},
-		Depositer :  account.Address,
-		Amount    :  []ProposalAmount{ProposalAmount{
-			Denom   : "iris",
-			Amount 	: depositAmount,
-		}},
+		Depositer		 :  account.Address,
+		Amount   		 :  depositAmount+"iris",
 	}
 
 	repBody, statusCode, err := c.RequestWorker.MakeRequest(depositReq)

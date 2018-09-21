@@ -355,7 +355,6 @@ func (s *Fee) case_6_4_1(subCase *SubCase) (ResultType, string){
 	}
 
 	// 执行操作
-	// 1) 从水龙头转账 1 iris 给 FAUCET 此处单位改了的话 可能要一起改
 	_, err = s.Common.SendIris(FRANK, FAUCET, TxAmount, &SendIrisData{DEFAULT,DEFAULT,GasForSend,GasForFee})
 	if  err == nil {
 		return FAIL, ERR_CASE_COMPARE
