@@ -18,7 +18,7 @@ const NUMBER_OF_MODULES   = 6
 const MIN_GASPRICE = 20000000000
 
 // 4) 出块等待时间 5s , RequestTimeout 超时时间 20s
-const WaitBlockTime = 10  //默认8秒是没有问题的 10秒已经很慢了
+const WaitBlockTime = 12  //默认8秒是没有问题的 12秒已经很慢了
 const RequestTimeout = 20
 
 // 5) Proposal最小抵押金额
@@ -38,7 +38,6 @@ const TxAmount  = "5"
 
 // 10) 默认cointype
 const DefaultCoinType  = "iris"
-
 
 /*********************
 	用例Mock变量
