@@ -11,10 +11,20 @@ type IparamFunction struct {
 }
 
 func (s *IparamFunction) registerSubCases(){
-	//s.SubCases = append(s.SubCases, &SubCase{"8-1-1",s.case_8_1_1,UNKNOW,
-	//	"Iparam - 查询(module) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-1",s.case_8_1_1,UNKNOW,
+		"Iparam - 查询(module) :",""})
 	s.SubCases = append(s.SubCases, &SubCase{"8-1-2",s.case_8_1_2,UNKNOW,
 		"Iparam - 查询(key-DepositProcedure) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-3",s.case_8_1_3,UNKNOW,
+		"Iparam - 查询(key-TallyingProcedure) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-4",s.case_8_1_4,UNKNOW,
+		"Iparam - 查询(key-VotingProcedure) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-5",s.case_8_1_5,UNKNOW,
+		"Iparam - 更新(submit-DepositProcedure) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-6",s.case_8_1_6,UNKNOW,
+		"Iparam - 更新(submit-TallyingProcedure) :",""})
+	s.SubCases = append(s.SubCases, &SubCase{"8-1-7",s.case_8_1_7,UNKNOW,
+		"Iparam - 更新(submit-VotingProcedure) :",""})
 }
 
 func (s *IparamFunction) prepareEnv(subCase *SubCase) error{
@@ -101,9 +111,95 @@ func (s *IparamFunction) case_8_1_2(subCase *SubCase) (ResultType, string){
 
 	//对比(实际和期望)数据
 	for _, key := range *ModuleList{
-		 s.Common.QueryIparamKey(key)
+		s.Common.QueryIparamKey(key)
 		//fmt.Println(keyResp)
 	}
 
 	return PASS, ""
 }
+
+func (s *IparamFunction) case_8_1_3(subCase *SubCase) (ResultType, string){
+	// 构造环境 (获取期望数据)
+	err := s.prepareEnv(subCase)
+	defer s.cleanupEnv(subCase)
+	if err != nil {
+		return FAIL, ERR_CASE_PREPARE + err.Error()
+	}
+
+	// 执行操作
+
+	// 获取实际数据
+
+	//对比(实际和期望)数据
+
+	return PASS, ""
+}
+
+func (s *IparamFunction) case_8_1_4(subCase *SubCase) (ResultType, string){
+	// 构造环境 (获取期望数据)
+	err := s.prepareEnv(subCase)
+	defer s.cleanupEnv(subCase)
+	if err != nil {
+		return FAIL, ERR_CASE_PREPARE + err.Error()
+	}
+
+	// 执行操作
+
+	// 获取实际数据
+
+	//对比(实际和期望)数据
+
+	return PASS, ""
+}
+
+func (s *IparamFunction) case_8_1_5(subCase *SubCase) (ResultType, string){
+	// 构造环境 (获取期望数据)
+	err := s.prepareEnv(subCase)
+	defer s.cleanupEnv(subCase)
+	if err != nil {
+		return FAIL, ERR_CASE_PREPARE + err.Error()
+	}
+
+	// 执行操作
+
+	// 获取实际数据
+
+	//对比(实际和期望)数据
+
+	return PASS, ""
+}
+
+func (s *IparamFunction) case_8_1_6(subCase *SubCase) (ResultType, string){
+	// 构造环境 (获取期望数据)
+	err := s.prepareEnv(subCase)
+	defer s.cleanupEnv(subCase)
+	if err != nil {
+		return FAIL, ERR_CASE_PREPARE + err.Error()
+	}
+
+	// 执行操作
+
+	// 获取实际数据
+
+	//对比(实际和期望)数据
+
+	return PASS, ""
+}
+
+func (s *IparamFunction) case_8_1_7(subCase *SubCase) (ResultType, string){
+	// 构造环境 (获取期望数据)
+	err := s.prepareEnv(subCase)
+	defer s.cleanupEnv(subCase)
+	if err != nil {
+		return FAIL, ERR_CASE_PREPARE + err.Error()
+	}
+
+	// 执行操作
+
+	// 获取实际数据
+
+	//对比(实际和期望)数据
+
+	return PASS, ""
+}
+
