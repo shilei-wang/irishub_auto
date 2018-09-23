@@ -1,18 +1,24 @@
 {
-  "----------------IRIS hub 配置---------------- （stage）"          :"",
-  "HostIP"           :"http://120.79.226.163:30317",
-  "ChainID"          :"iris-stage-4",
-  "faucet_seed"      :"oxygen skin spring media trim sphere obtain reason real chapter shoot tennis scan leopard stool bean just demand cliff unusual trust hat vault hazard",
-  "V1_seed"          :"wine orange mask clay antenna sort spatial attitude entry chaos bachelor trigger cup number bamboo cup artefact swamp olympic royal nurse zero despair knee",
+  "----------------IRIS hub 配置---------------- （home）"          :"",
+  "Node"             :"http://localhost:26657",
+  "ChainID"          :"upgrade-test",
+  "faucet_seed"      :"spread runway reform dream market profit coil session material arrive electric margin urban pulse segment injury ski december virtual suggest wish sister bounce satisfy",
+  "V1_seed"          :"spread runway reform dream market profit coil session material arrive electric margin urban pulse segment injury ski december virtual suggest wish sister bounce satisfy",
 
   "----------------系统 配置----------------"          :"",
-  "Reset"            :"false",
+  "TxAmount"         :"1iris",
+  "TxFee"            :"0.004iris",
+  "TxGas"            :"200000",
+
 
   "----------------Skip 配置----------------"          :"",
+  "Reset"            :"false",
+
   "Keys_Skip"       : "true",
   "Bank_Skip"       : "true",
   "Stake_Skip"      : "true",
   "Gov_Skip"        : "true",
   "Account_Skip"    : "true",
-  "Fee_Skip"        : "true"
+  "Fee_Skip"        : "true",
+  "Iparam_Skip"     : "false"
 }

@@ -19,22 +19,22 @@ body {
 th {
  font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
  color: #4f6b72;
- border-right: 0.5px solid #C1DAD7;
- border-left: 0.5px solid #C1DAD7;
- border-bottom: 0.5px solid #C1DAD7;
- border-top: 0.5px solid #C1DAD7;
+ border-right: 0.5px solid #e8f4ff;
+ border-left: 0.5px solid #e8f4ff;
+ border-bottom: 0.5px solid #e8f4ff;
+ border-top: 0.5px solid #e8f4ff;
 
  letter-spacing: 2px;
  text-transform: uppercase;
  text-align: left;
  padding: 6px 6px 6px 12px;
- background: #CAE8EA;
+ background: #dff0fb;
 }
 
 td {
- border-left: 0.5px solid #C1DAD7;
- border-right: 0.5px solid #C1DAD7;
- border-bottom: 0.5px solid #C1DAD7;
+ border-left: 0.5px solid #e8f4ff;
+ border-right: 0.5px solid #e8f4ff;
+ border-bottom: 0.5px solid #e8f4ff;
  background: #fff;
  font-size:11px;
  padding: 6px 6px 6px 12px;
@@ -42,13 +42,13 @@ td {
 }
 
 td.alt {
- background: #F5FAFA;
+ background: #f9fafb;
  color: #4f6b72;
 }
 
 td.alt2 {
     font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    background: #F5FAFA;
+    background: #f3f9fe;
     color: #797268;
     text-align: center;
     border-left: 0px ;
@@ -61,7 +61,7 @@ td.alt2 {
 
 <table id="mytable" cellspacing="0">
     <tr>
-        <td width=900 class="alt2"> IRISHub  Automation  Testing  Report</td>
+        <td width=900 class="alt2"> IRISHub  Automation  Testing  Report (CMD)</td>
     </tr>
 </table>
 <br>
@@ -93,14 +93,15 @@ td.alt2 {
 <table id="mytable" cellspacing="0">
   {{with .counts}}
   <tr>
-    <th width=130>模块</th>
-    <th width=110>keys</th>
-    <th width=110>bank</th>
-    <th width=110>stake</th>
-    <th width=110>gov</th>
-    <th width=110>account</th>
-    <th width=110>Fee</th>
-    <th width=110>合计</th>
+    <th width=100>模块</th>
+    <th width=100>keys</th>
+    <th width=100>bank</th>
+    <th width=100>stake</th>
+    <th width=100>gov</th>
+    <th width=100>account</th>
+    <th width=100>Fee</th>
+    <th width=100>Iparam</th>
+    <th width=100>合计</th>
   </tr>
 
   <tr>
@@ -112,6 +113,7 @@ td.alt2 {
     <td>{{.E2}}</td>
     <td>{{.F2}}</td>
     <td>{{.G2}}</td>
+    <td>{{.H2}}</td>
   </tr>
 
   <tr>
@@ -123,6 +125,7 @@ td.alt2 {
     <td class="alt">{{.E3}}</td>
     <td class="alt">{{.F3}}</td>
     <td class="alt">{{.G3}}</td>
+    <td class="alt">{{.H3}}</td>
   </tr>
 
   <tr>
@@ -134,6 +137,7 @@ td.alt2 {
     <td>{{.E4}}</td>
     <td>{{.F4}}</td>
     <td>{{.G4}}</td>
+    <td>{{.H4}}</td>
   </tr>
   {{end}}
 
@@ -147,6 +151,7 @@ td.alt2 {
     <td class="alt">{{.E5}}</td>
     <td class="alt">{{.F5}}</td>
     <td class="alt">{{.G5}}</td>
+    <td class="alt">{{.H5}}</td>
   </tr>
   {{end}}
 </table>

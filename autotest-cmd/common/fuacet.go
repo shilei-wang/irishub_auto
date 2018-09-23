@@ -16,73 +16,44 @@ func (f *faucet) Init(){
 
 	if Config.Map["Reset"] == "true" {
 		Debug(MSG_FAUCET_DELETEALL, DEBUG_MSG)
-		err := f.Common.KeysDeleteALL()
-		if err != nil {
+		if err := f.Common.KeysDeleteALL(); err != nil {
 			panic(ERR_FAUCET+err.Error())
 		}
 	}
 
 	// 检查FAUCET用户是否存在， FAUCET用户负责分发测试币给各模块各自的水龙头（例如：FAUCET_BANK，FAUCET_ACCOUNT）
-	showResp, err := f.Common.ShowAccountInfo(FAUCET)
-	if showResp == nil {
-		Debug(ERR_FAUCET+err.Error(), DEBUG_MSG)
+	if _, err := f.Common.ShowAccountInfo(FAUCET); err != nil {
 		Debug(MSG_FAUCET_INIT_START,DEBUG_MSG)
 
-		err := f.Common.KeysDeleteALL()
+		if err := f.Common.KeysDeleteALL(); err != nil {
+			panic(ERR_FAUCET+err.Error())
+		}
+
+		if _, err := f.Common.AddAccount(FAUCET, PASSWORD, FAUCET_SEED); err != nil {
+			panic(ERR_FAUCET+err.Error())
+		}
+
+		if _, err := f.Common.AddAccount(VALIDATOR_1, PASSWORD, VALIDATOR_SEED); err != nil {
+			panic(ERR_FAUCET+err.Error())
+		}
+
+		if _, err := f.Common.AddAccount(USER, PASSWORD, ""); err != nil {
+			panic(ERR_FAUCET+err.Error())
+		}
+
+		//从FAUCET 转账一定数量 iris 给 USER
+		_, err := f.Common.SendIris(FAUCET, USER, InitIris, nil)
 		if err != nil {
 			panic(ERR_FAUCET+err.Error())
 		}
 
-		addResp, err := f.Common.AddAccount(FAUCET)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(VALIDATOR_1)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(FAUCET_BANK)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(FAUCET_STAKE)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(FAUCET_GOV)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(FAUCET_ACCOUNT)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		addResp, err = f.Common.AddAccount(FAUCET_FEE)
-		if err != nil || addResp == nil{
-			panic(ERR_FAUCET+err.Error())
-		}
-
-
-		//从FAUCET 转账一定数量 iris 给 FAUCET_BANK
-		_, err = f.Common.SendIris(FAUCET)
-		if err != nil {//失败
-			panic(ERR_FAUCET+err.Error())
-		}
-
-		//Sleep(SPACE_FAUCET)
+		Sleep(SPACE_FAUCET)
 	}
 
-	showResp, err = f.Common.ShowAccountInfo(VALIDATOR_1)
-	if showResp == nil {
-		panic(ERR_FAUCET+err.Error())
+	if respShow, err := f.Common.ShowAccountInfo(VALIDATOR_1); err == nil {
+		V1_ADDRESS = respShow
 	} else {
-		//V1_ADDRESS = showResp.Address
+		panic(ERR_FAUCET+err.Error())
 	}
 
 	Debug(MSG_FAUCET_INIT_OK, DEBUG_MSG)

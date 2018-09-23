@@ -25,7 +25,7 @@ func (f *faucet) Init(){
 	// 检查FAUCET用户是否存在， FAUCET用户负责分发测试币给各模块各自的水龙头（例如：FAUCET_BANK，FAUCET_ACCOUNT）
 	showResp, err := f.Common.ShowAccountInfo(FAUCET)
 	if showResp == nil {
-		Debug(ERR_FAUCET+err.Error(), DEBUG_MSG)
+		Debug(ERR_FAUCET, DEBUG_MSG)
 		Debug(MSG_FAUCET_INIT_START,DEBUG_MSG)
 
 		err := f.Common.KeysDeleteALL()

@@ -24,9 +24,13 @@ type KeysAccountResp struct {
 }
 
 // 查询account数据
+// unmarsal 只是json对，格式的数据类型不对才会报错 。 json错不报错为空
 type AccountDataResp struct {
-	Type          	  string
-	Value             BaseAccount
+	Address       	  string    	`json:"address"`
+	Coins         	  []string     	`json:"coins"`
+	PubKey        	  PubKey     	`json:"public_key"`
+	AccountNumber 	  string     	`json:"account_number"`
+	Sequence      	  string      	`json:"sequence"`
 }
 
 type PubKey interface {}
@@ -75,8 +79,6 @@ type AmountItem struct {
 }
 
 type SendIrisData struct {
-	Password        string
-	Sequence        string
 	Gas             string
 	Fee             string
 }
@@ -86,8 +88,8 @@ type SendIrisData struct {
 type BroadcastTxResp struct { //ResultBroadcastTxCommit
 	CheckTx   ResponseCheckTx          `json:"check_tx"`
 	DeliverTx ResponseDeliverTx        `json:"deliver_tx"`
-	Hash      string	               `json:"hash"`
-	Height    string                   `json:"height"`
+	Hash      string	               `json:"TxHash"`
+	Height    string                   `json:"Height"`
 }
 
 type KVPair struct {
@@ -170,32 +172,6 @@ type InquiryDelegationResp struct { //Delegation
 	Height        string        `json:"height"` // Last height bond updated
 }
 
-// 委托
-/*  例子
-	dele := msgDelegationsInput {
-		DelegatorAddr : "faa15md8v9sn4exnq5y0hrfz8ldvkxfu74vt4ktrtn",
-		ValidatorAddr : "faa1r4dnf8lnakw743dwhd4nnpxatcx5v40n0vntc6",
-		Delegation    : Coin{
-			Denom  	: "iris",
-			Amount 	: "6000000000000000000",
-		},
-	}
-
-	edit := EditDelegationsBody{
-		LocalAccountName: "faucet_account",
-		Password: PASSWORD,
-		ChainID : Config.Map["ChainID"],
-		AccountNumber : "5",
-		Sequence : "1",
-		Gas      :  "10000",
-		Fee      :  c.encodeFee(10000),
-		Delegations : []msgDelegationsInput{dele},
-		BeginUnbondings :    []msgBeginUnbondingInput{},
-		CompleteUnbondings :  []msgCompleteUnbondingInput{},
-		BeginRedelegates  :  []msgBeginRedelegateInput{},
-		CompleteRedelegates : []msgCompleteRedelegateInput{},
-	}
- */
 
 type DelegationsReq struct { //EditDelegationsBody
 	LocalAccountName    string                       `json:"name"`
@@ -347,3 +323,6 @@ type VersionInfo struct {
 	StartHeight    int64  `json:"start_height"`
 	ProposalId     int64  `json:"proposal_id"`
 }
+
+// Gov-module
+type GovModuleResp []string

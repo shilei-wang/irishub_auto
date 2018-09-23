@@ -111,6 +111,7 @@ func (l *logger) generateData() (map[string]int, map[string]string, map[string]s
 	var sum_Gov  	 = 0
 	var sum_Account  = 0
 	var sum_Fee      = 0
+	var sum_Iparam   = 0
 
 	var pass_All      = 0
 	var pass_Key   	  = 0
@@ -119,6 +120,7 @@ func (l *logger) generateData() (map[string]int, map[string]string, map[string]s
 	var pass_Gov  	  = 0
 	var pass_Account  = 0
 	var pass_Fee      = 0
+	var pass_Iparam   = 0
 
 	var resultMap = map[string]string{}
 	var result_line = 0 	//从第10行 i10格开始写
@@ -153,6 +155,9 @@ func (l *logger) generateData() (map[string]int, map[string]string, map[string]s
 		case space == SPACE_MODULE_FEE :
 			sum_Fee++
 			if pass { pass_Fee++ }
+		case space == SPACE_MODULE_IPARAM :
+			sum_Iparam++
+			if pass { pass_Iparam++ }
 		}
 		sum_All++
 		if pass { pass_All++ }
@@ -172,16 +177,16 @@ func (l *logger) generateData() (map[string]int, map[string]string, map[string]s
 	}
 
 	countMap := map[string]int{
-		"A2": sum_Key, "B2": sum_Bank, "C2": sum_Stake, "D2": sum_Gov, "E2": sum_Account, "F2": sum_Fee, "G2": sum_All,
-		"A3": pass_Key, "B3": pass_Bank, "C3": pass_Stake, "D3":  pass_Gov, "E3": pass_Account, "F3": pass_Fee,"G3": pass_All,
+		"A2": sum_Key, "B2": sum_Bank, "C2": sum_Stake, "D2": sum_Gov, "E2": sum_Account, "F2": sum_Fee, "G2": sum_Iparam,"H2": sum_All,
+		"A3": pass_Key, "B3": pass_Bank, "C3": pass_Stake, "D3":  pass_Gov, "E3": pass_Account, "F3": pass_Fee,"G3": pass_Iparam,"H3": pass_All,
 		"A4": (sum_Key-pass_Key),  "B4": (sum_Bank-pass_Bank), "C4": (sum_Stake-pass_Stake),  "D4": (sum_Gov-pass_Gov),
-		"E4": (sum_Account-pass_Account), "F4": (sum_Fee-pass_Fee), "G4": (sum_All-pass_All),
+		"E4": (sum_Account-pass_Account), "F4": (sum_Fee-pass_Fee), "G4": (sum_Iparam-pass_Iparam), "H4": (sum_All-pass_All),
 	}
 
 	rateMap := map[string]string{
 		"A5": getPassRate(pass_Key, sum_Key), "B5": getPassRate(pass_Bank, sum_Bank), "C5": getPassRate(pass_Stake, sum_Stake),
 		"D5": getPassRate(pass_Gov, sum_Gov), "E5": getPassRate(pass_Account, sum_Account), "F5": getPassRate(pass_Fee, sum_Fee),
-		"G5": getPassRate(pass_All, sum_All),
+		"G5": getPassRate(pass_Iparam, sum_Iparam), "H5": getPassRate(pass_All, sum_All),
 	}
 
 	return  countMap, rateMap, resultMap, nil

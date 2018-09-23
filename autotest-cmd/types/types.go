@@ -2,7 +2,6 @@ package types
 
 import (
 	"sync"
-	"math/big"
 	"time"
 )
 
@@ -13,27 +12,37 @@ import (
 /*********************
 	关键参数
 *********************/
-// 1) 总的模块数量
-const NUMBER_OF_MODULES   = 6
+// 1) 全局变量
+var NODE           = "--node="      //"--node=http://localhost:26657"
+var CHAINID        = "--chain-id="  //"--chain-id=upgrade-test"
+var TXAMOUNT       = "--amount="    //"--amount=1iris"
+var TXFEE          = "--fee="       //"--fee=0.004iris"
+var TXGAS          = "--gas="      //"--gas=200000"
 
-// 2) 精度 10^18
-var   PRECISION = big.NewInt(1000000000000000000)
+var COMMAND        = "iriscli"
+var JSON           = "--json"
+var TRUSTNODE      = "--trust-node"
+var FAUCET_SEED    = ""
+var VALIDATOR_SEED = ""
 
-// 3) gas price 最小单位 2 * 10^10
-const MIN_GASPRICE = 20000000000
+// 2)
+
+
+// 3)
+const CMD_TIMEOUT    = 10
 
 // 4) 出块等待时间 5s , RequestTimeout 超时时间 20s
-const WaitBlockTime = 8
-const RequestTimeout = 20
+const WaitBlockTime  = 8
 
 // 5) Proposal最小抵押金额
-const MinDeposit = 1000
+const MinDeposit    = "10"
 
 // 6) 水龙头首次分配给“子story”代币数量
-const InitIris = 1000000
+const InitIris      = "100000iris"
 
-// 7) 默认Gas
-const GasForSend = "10000"
+// 10) 默认cointype
+const DefaultCoinType  = "iris"
+
 
 
 /*********************
@@ -49,14 +58,10 @@ const (
 
 // 2) 用户名 (每个story用不同的用户名组，避免冲突)
 const (
+	FAUCET            = "faucet"
+	USER              = "user"
 	VALIDATOR_1       = "V1"
 
-	FAUCET            = "faucet"
-	FAUCET_BANK       = "faucet_bank"
-	FAUCET_STAKE      = "faucet_stake"
-	FAUCET_GOV        = "faucet_gov"
-	FAUCET_ACCOUNT    = "faucet_account"
-	FAUCET_FEE        = "faucet_fee"
 
 	KEVIN			  = "Kevin"
 	KENT 			  = "Kent"
@@ -80,13 +85,11 @@ const (
 // 3) validator 1
 var V1_ADDRESS string
 
-// 4) 自增益SID
-var FAUCET_SID			 = 0
-var FAUCET_BANK_SID 	 = 0
-var FAUCET_STAKE_SID 	 = 0
-var FAUCET_GOV_SID 	 	 = 0
-var FAUCET_ACCOUNT_SID 	 = 0
-var FAUCET_FEE_SID 	     = 0
+// 4)
+const (
+	AddressPrefix   = "faa"
+	AddressLen      = 42
+)
 
 // 3) 记录初始时间
 var TIME_START  time.Time
@@ -103,6 +106,8 @@ const (
 	SPACE_MODULE_GOV     = 4
 	SPACE_MODULE_ACCOUNT = 5
 	SPACE_MODULE_FEE     = 6
+
+	SPACE_MODULE_IPARAM  = 8
 
 	SPACE_FAUCET         = 10
 )

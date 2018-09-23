@@ -75,7 +75,7 @@ const (
 
 // FAUCET 模块
 const (
-	ERR_FAUCET                     =  " Faucet : "  //水龙头
+	ERR_FAUCET                     =  " Init Faucet : "  //水龙头
 	ERR_SETSID                     =  " Set SID error : "
 )
 

@@ -4,6 +4,19 @@
 
 package types
 
+// CMD
+const (
+	ERR_CMD_ERROR                   = "Command line response error :"
+	ERR_CMD_TIMEOUT                 = "Command line time out :"
+)
+
+// Request 模块
+const (
+	ERR_UNMARSHAL 				    = " UnMarshal repBody error : "
+	ERR_PARSE_RESP                  = "Parse Resp Error :"
+	ERR_GETJSON     				= "Get json error :"
+)
+
 // Story 模块
 const (
 	ERR_CASE_PREPARE                =   " Prepare data error : "
@@ -34,12 +47,6 @@ const (
 
 
 
-// Request 模块
-const (
-    ERR_REQUEST                     =   " Request error : "
-    ERR_STATUSCODE 	                =   " Status code error : "
-    ERR_UNMARSHAL 				    =   " UnMarshal repBody error : "
-)
 
 
 // Common 基本操作模块
@@ -67,6 +74,8 @@ const (
 	ERR_VOTE_PROPOSAL				=  " Vote proposal (VoteProposal) : "
 	ERR_INQUIRY_VOTE				=  " Inquiry vote proposal (InquiryVote) : "
 
+	ERR_INQUIRY_IPARAMMODULE 		=  " Inquiry iparam module (QueryIparamModule) : "
+
 	ERR_DECODE_AMOUNT               =  " Decode amount error (DecodeAmount) : "
 	ERR_GET_REPORTDATA              =  " Get report data error (GetReportData) : "
 
@@ -75,7 +84,7 @@ const (
 
 // FAUCET 模块
 const (
-	ERR_FAUCET                     =  " Faucet : "  //水龙头
+	ERR_FAUCET                     =  " Init Faucet : "  //水龙头
 	ERR_SETSID                     =  " Set SID error : "
 )
 

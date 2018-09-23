@@ -6,6 +6,8 @@ import (
 	"time"
 	"strconv"
 	"math/rand"
+	"strings"
+	"errors"
 )
 
 //////////////////////
@@ -42,4 +44,56 @@ func InSet(array []string, value string) bool {
 	}
 
 	return false
+}
+
+func ParseAddress(s string) (string, error){
+	var begin,end int
+
+	if begin = strings.Index(s, AddressPrefix); begin == 0 {
+		return "", errors.New(ERR_PARSE_RESP)
+	}
+
+	if end = begin+AddressLen; end>len(s) {
+		return "", errors.New(ERR_PARSE_RESP)
+	}
+
+	return s[begin : end], nil
+}
+
+func ParseAccounts(s string) []string{
+	accounts := []string{}
+
+	var begin int
+	var end int
+
+	for {
+		if begin = strings.Index(s, "\n"); begin < 1 {break}
+		if end = len(s); end <= begin {break}
+		s = s[begin+1:end]
+		if end = strings.Index(s, "\t"); end < 1 {break}
+		accounts = append(accounts, s[0:end])
+	}
+
+	return accounts
+}
+
+func GetJson(s string) string {
+	begin := strings.Index(s, "{")
+	end   := strings.LastIndex(s, "}")
+
+	if begin == -1 || end == -1 || begin >= end {
+		return ""
+	}
+
+	return s[begin:end+1]
+}
+
+func DecodeAmount(s string) (float64, error) {
+	s = strings.Replace(s,"iris","",-1)
+
+	f,err := strconv.ParseFloat(s,64)
+	if err != nil {
+		return 0, errors.New(ERR_DECODE_AMOUNT)
+	}
+	return f, nil
 }

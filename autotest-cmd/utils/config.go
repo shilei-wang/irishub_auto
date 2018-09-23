@@ -22,6 +22,14 @@ func (c *config) Init(){
 	if err != nil {
 		panic(ERR_CONFIG + err.Error())
 	}
+
+	NODE           =  NODE + c.Map["Node"]
+	CHAINID        =  CHAINID + c.Map["ChainID"]
+	TXAMOUNT       =  TXAMOUNT + c.Map["TxAmount"]
+	TXGAS          =  TXGAS + c.Map["TxGas"]
+	TXFEE          =  TXFEE + c.Map["TxFee"]
+	FAUCET_SEED    =  c.Map["faucet_seed"]
+	VALIDATOR_SEED =  c.Map["V1_seed"]
 }
 
 func readFile(filename string) (map[string]string, error) {
@@ -32,9 +40,8 @@ func readFile(filename string) (map[string]string, error) {
 
 	m := map[string]string{}
 	if err := json.Unmarshal(bytes, &m); err != nil {
-		return nil, errors.New(ERR_CONFIG + ERR_REQUEST + err.Error())
+		return nil, errors.New(ERR_CONFIG + err.Error())
 	}
-
 	return m, nil
 }
 
