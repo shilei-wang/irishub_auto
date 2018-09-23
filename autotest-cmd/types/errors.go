@@ -75,6 +75,7 @@ const (
 	ERR_INQUIRY_VOTE				=  " Inquiry vote proposal (InquiryVote) : "
 
 	ERR_INQUIRY_IPARAMMODULE 		=  " Inquiry iparam module (QueryIparamModule) : "
+	ERR_INQUIRY_IPARAMKEY    		=  " Inquiry iparam key (QueryIparamKey) : "
 
 	ERR_DECODE_AMOUNT               =  " Decode amount error (DecodeAmount) : "
 	ERR_GET_REPORTDATA              =  " Get report data error (GetReportData) : "

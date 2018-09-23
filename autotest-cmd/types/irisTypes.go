@@ -326,3 +326,10 @@ type VersionInfo struct {
 
 // Gov-module
 type GovModuleResp []string
+
+// Gov-key
+type GovKeyResp struct {
+	Key    string  `json:"key"`
+	Value  string  `json:"value"`
+	Op     string  `json:"op"`
+}

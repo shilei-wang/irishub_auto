@@ -285,6 +285,32 @@ func (c *CommonWorker)QueryIparamModule(module string) (*GovModuleResp , error){
 	return repData, nil
 }
 
+//获取验证人Gov-iparam-key列表
+//iriscli gov query-params --key=Gov/gov/DepositProcedure --node=http://192.168.199.222:26657 --trust-node
+func (c *CommonWorker)QueryIparamKey(module string) (*GovKeyResp , error){
+	params := []string{"gov","query-params"}
+	params = append(params, "--key="+module)
+	params = append(params, NODE)
+	params = append(params, TRUSTNODE)
+
+	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	if err != nil {
+		return nil, errors.New(ERR_INQUIRY_IPARAMKEY + err.Error() + string(repBody))
+	}
+
+	//验证这里开始 需要gov的windows版本
+	//fmt.Println(repBody)
+
+	repData := &GovKeyResp{}
+	err = json.Unmarshal([]byte(repBody), repData)
+	if err != nil {
+		return nil, errors.New(ERR_INQUIRY_IPARAMKEY + ERR_UNMARSHAL+err.Error())
+	}
+
+	return repData, nil
+}
+
+
 
 
 

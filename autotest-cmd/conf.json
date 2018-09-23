@@ -1,9 +1,9 @@
 {
   "----------------IRIS hub 配置---------------- （home）"          :"",
-  "Node"             :"http://localhost:26657",
+  "Node"             :"http://192.168.199.222:26657",
   "ChainID"          :"upgrade-test",
-  "faucet_seed"      :"spread runway reform dream market profit coil session material arrive electric margin urban pulse segment injury ski december virtual suggest wish sister bounce satisfy",
-  "V1_seed"          :"spread runway reform dream market profit coil session material arrive electric margin urban pulse segment injury ski december virtual suggest wish sister bounce satisfy",
+  "faucet_seed"      :"captain vacant bone large ridge execute sock hospital oven inch lava armor gallery army match glove goat melt guide mad garbage balance rebel next",
+  "V1_seed"          :"garden captain awesome soldier hat oven culture cook leg hair choose census fever chicken dice word wolf enlist cherry drill note hybrid crowd found",
 
   "----------------系统 配置----------------"          :"",
   "TxAmount"         :"1iris",
