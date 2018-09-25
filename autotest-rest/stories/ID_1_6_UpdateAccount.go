@@ -7,7 +7,7 @@
 package stories
 
 import (
-	. "bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
 )
 
 type UpdateAccount struct {

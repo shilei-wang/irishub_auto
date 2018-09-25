@@ -1,7 +1,7 @@
 package utils
 
 import (
-	. "bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
 
 	"io/ioutil"
 	"encoding/json"

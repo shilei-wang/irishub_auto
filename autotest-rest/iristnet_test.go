@@ -2,11 +2,11 @@ package autotest_rest
 
 import (
 	"testing"
-	. "bianjie-qa/irishub/autotest-rest/types"
-	. "bianjie-qa/irishub/autotest-rest/utils"
-	. "bianjie-qa/irishub/autotest-rest/common"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/utils"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/common"
 
-	"bianjie-qa/irishub/autotest-rest/stories"
+	"gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/stories"
 )
 
 func initialize(){

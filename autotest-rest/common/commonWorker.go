@@ -1,9 +1,9 @@
 package common
 
 import (
-	. "bianjie-qa/irishub/autotest-rest/requester"
-	. "bianjie-qa/irishub/autotest-rest/utils"
-	. "bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/requester"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/utils"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
 
 	"strconv"
 	"errors"

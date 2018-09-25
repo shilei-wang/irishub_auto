@@ -1,8 +1,8 @@
 package common
 
 import (
-	. "bianjie-qa/irishub/autotest-rest/types"
-	. "bianjie-qa/irishub/autotest-rest/utils"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/utils"
 )
 
 var Faucet = faucet{}

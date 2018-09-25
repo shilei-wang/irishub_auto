@@ -1,7 +1,7 @@
 package requester
 
 import (
-	. "bianjie-qa/irishub/autotest-rest/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-rest/types"
 	"net/http"
 	"time"
 	"encoding/json"
