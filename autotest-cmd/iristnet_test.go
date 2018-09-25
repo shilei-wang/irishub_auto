@@ -20,9 +20,9 @@ package autotest_cmd
 
 import (
 	"testing"
-	. "bianjie-qa/irishub/autotest-cmd/utils"
-	. "bianjie-qa/irishub/autotest-cmd/common"
-	"bianjie-qa/irishub/autotest-cmd/stories"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/utils"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/common"
+	"gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/stories"
 
 	"fmt"
 )

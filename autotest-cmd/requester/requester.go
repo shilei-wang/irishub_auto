@@ -1,7 +1,7 @@
 package requester
 
 import (
-	. "bianjie-qa/irishub/autotest-cmd/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
 	"os"
 	"os/exec"
 	"time"

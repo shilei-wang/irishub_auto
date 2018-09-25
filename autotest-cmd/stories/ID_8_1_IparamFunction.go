@@ -1,7 +1,7 @@
 package stories
 
 import (
-	. "bianjie-qa/irishub/autotest-cmd/types"
+	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
 	"fmt"
 )
 
@@ -19,12 +19,12 @@ func (s *IparamFunction) registerSubCases(){
 		"Iparam - 查询(key-TallyingProcedure) :",""})
 	s.SubCases = append(s.SubCases, &SubCase{"8-1-4",s.case_8_1_4,UNKNOW,
 		"Iparam - 查询(key-VotingProcedure) :",""})
-	s.SubCases = append(s.SubCases, &SubCase{"8-1-5",s.case_8_1_5,UNKNOW,
-		"Iparam - 更新(submit-DepositProcedure) :",""})
-	s.SubCases = append(s.SubCases, &SubCase{"8-1-6",s.case_8_1_6,UNKNOW,
-		"Iparam - 更新(submit-TallyingProcedure) :",""})
-	s.SubCases = append(s.SubCases, &SubCase{"8-1-7",s.case_8_1_7,UNKNOW,
-		"Iparam - 更新(submit-VotingProcedure) :",""})
+//	s.SubCases = append(s.SubCases, &SubCase{"8-1-5",s.case_8_1_5,UNKNOW,
+//		"Iparam - 更新(submit-DepositProcedure) :",""})
+//	s.SubCases = append(s.SubCases, &SubCase{"8-1-6",s.case_8_1_6,UNKNOW,
+//		"Iparam - 更新(submit-TallyingProcedure) :",""})
+//	s.SubCases = append(s.SubCases, &SubCase{"8-1-7",s.case_8_1_7,UNKNOW,
+//		"Iparam - 更新(submit-VotingProcedure) :",""})
 }
 
 func (s *IparamFunction) prepareEnv(subCase *SubCase) error{
@@ -104,15 +104,14 @@ func (s *IparamFunction) case_8_1_2(subCase *SubCase) (ResultType, string){
 	// 执行操作
 
 	// 获取实际数据
-	ModuleList, err := s.Common.QueryIparamModule("gov")
+	keyResp, err := s.Common.QueryIparamKey("Gov/gov/TallyingProcedure")
 	if err != nil {
 		return FAIL, ERR_CASE_GETACTUAL + err.Error()
 	}
 
 	//对比(实际和期望)数据
-	for _, key := range *ModuleList{
-		s.Common.QueryIparamKey(key)
-		//fmt.Println(keyResp)
+	if err = s.Common.CompareString((*keyResp).Key, "Gov/gov/TallyingProcedure"); err != nil {
+		return FAIL, ERR_CASE_COMPARE + err.Error()
 	}
 
 	return PASS, ""
@@ -129,8 +128,15 @@ func (s *IparamFunction) case_8_1_3(subCase *SubCase) (ResultType, string){
 	// 执行操作
 
 	// 获取实际数据
+	keyResp, err := s.Common.QueryIparamKey("Gov/gov/VotingProcedure")
+	if err != nil {
+		return FAIL, ERR_CASE_GETACTUAL + err.Error()
+	}
 
 	//对比(实际和期望)数据
+	if err = s.Common.CompareString((*keyResp).Key, "Gov/gov/VotingProcedure"); err != nil {
+		return FAIL, ERR_CASE_COMPARE + err.Error()
+	}
 
 	return PASS, ""
 }
