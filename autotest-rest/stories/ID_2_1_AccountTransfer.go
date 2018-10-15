@@ -247,7 +247,7 @@ func (s *AccountTransfer) case_2_1_6(subCase *SubCase) (ResultType, string){
 	s.Common.ResetSID(FAUCET_BANK)
 
 	// 对比(实际和期望)数据 ， 如果返回错误里没有包含 "-1000000000000000000iris" ，则case失败
-	err = s.Common.StringContains(err.Error(),  "can't find any information about coin type")
+	err = s.Common.StringContains(err.Error(),  "coin name is empty")
 	if  err != nil {
 		return FAIL, ERR_CASE_COMPARE + err.Error()
 	}

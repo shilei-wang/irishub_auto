@@ -22,7 +22,7 @@ const WaitBlockTime = 15  //默认8秒是没有问题的 12秒已经很慢了
 const RequestTimeout = 20
 
 // 5) Proposal最小抵押金额
-const MinDeposit = "10"
+const MinDeposit = "1000"
 
 // 6) 水龙头首次分配给“子story”代币数量
 const InitIris = "100000"

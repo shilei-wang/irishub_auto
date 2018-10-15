@@ -219,7 +219,7 @@ func (s *Fee) case_6_2_2(subCase *SubCase) (ResultType, string){
 	}
 
 	//对比数据 (对比实际数据和期望数据)
-	err = s.Common.StringContains(err.Error(), "can't find any information about coin type")
+	err = s.Common.StringContains(err.Error(), "unsupported coin type")
 	if  err != nil {
 		return FAIL, ERR_CASE_COMPARE + err.Error()
 	}
@@ -244,7 +244,7 @@ func (s *Fee) case_6_2_3(subCase *SubCase) (ResultType, string){
 	}
 
 	//对比数据 (对比实际数据和期望数据)
-	err = s.Common.StringContains(err.Error(), "can't find any information about coin type")
+	err = s.Common.StringContains(err.Error(), "coin name is empty")
 	if  err != nil {
 		return FAIL, ERR_CASE_COMPARE + err.Error()
 	}
