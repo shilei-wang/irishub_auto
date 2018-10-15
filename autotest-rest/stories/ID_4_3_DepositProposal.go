@@ -30,11 +30,12 @@ func (s *DepositProposal) registerSubCases(){
 }
 
 func (s *DepositProposal) prepareEnv(subCase *SubCase) error{
+
 	if (*subCase).CaseID == "4-3-1" {
 		s.exceptedData[0] = RandomId() //随机 title
 
 		//执行操作 (首先提交一个抵押额度不够的提议， FAUCET_GOV 提交 ParameterChange 提议， 抵押5iris)
-		_, err := s.Common.SubmitProposal(FAUCET_GOV, s.exceptedData[0], ProposalTypeSoftwareUpgrade, TxAmount)
+		_, err := s.Common.SubmitProposal(FAUCET_GOV, s.exceptedData[0], ProposalTypeText, TxAmount)
 		if err != nil {
 			return err
 		}
