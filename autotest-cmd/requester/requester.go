@@ -1,23 +1,25 @@
 package requester
 
 import (
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
+	. "github.com/irishub_auto/autotest-cmd/types"
 	"os"
 	"os/exec"
 	"time"
 	"bufio"
 	"errors"
+	"fmt"
+	"io"
 )
 
 type Requester struct {
 
 }
 
-func (r *Requester) MakeRequest(Params []string, Inputs []string) (string ,error){
+func (r *Requester)MakeRequest(Command string, Params []string, Inputs []string) (string ,error){
 	ch := make(chan CmdResp)
 	po := make(chan *os.Process)
 
-	go r.ExecCommand(Params, Inputs, po, ch)
+	go r.ExecCommand(Command, Params, Inputs, po, ch)
 	cmdProcess := <-po
 	close(po)
 
@@ -31,10 +33,10 @@ func (r *Requester) MakeRequest(Params []string, Inputs []string) (string ,error
 	}
 }
 
-func (r *Requester)ExecCommand(Params []string, Inputs []string,  po chan *os.Process, ch chan CmdResp) {
+func (r *Requester)ExecCommand(Command string, Params []string, Inputs []string,  po chan *os.Process, ch chan CmdResp) {
 	defer close(ch)
 
-	cmd := exec.Command(COMMAND, Params...)
+	cmd := exec.Command(Command, Params...)
 	//fmt.Println(cmd.Args)
 
 	respBody  := make([]byte, 10000)
@@ -76,6 +78,29 @@ func (r *Requester)ExecCommand(Params []string, Inputs []string,  po chan *os.Pr
 	cmd.Wait()
 	ch <- CmdResp{"", errors.New(ERR_CMD_ERROR)}
 	return
+}
+
+func (r *Requester)ExecStart(commandName string, Params []string, isPrint bool) {
+	cmd := exec.Command(commandName, Params...)
+
+	stdout, _ := cmd.StdoutPipe()
+	cmd.Start()
+
+	reader := bufio.NewReader(stdout)
+	var str = ""
+	for {
+		line, err2 := reader.ReadString('\n')
+		if err2 != nil || io.EOF == err2 {
+			break
+		}
+
+		str = str + line
+
+		if isPrint {
+			fmt.Println(line)
+		}
+	}
+	cmd.Wait()
 }
 
 type CmdResp struct {

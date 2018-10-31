@@ -1,9 +1,9 @@
 package stories
 
 import (
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/utils"
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/common"
+	. "github.com/irishub_auto/autotest-cmd/types"
+	. "github.com/irishub_auto/autotest-cmd/utils"
+	. "github.com/irishub_auto/autotest-cmd/common"
 )
 
 type Method interface {

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
+	. "github.com/irishub_auto/autotest-cmd/types"
 	"fmt"
 	"time"
 	"strconv"

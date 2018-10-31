@@ -1,9 +1,9 @@
 package common
 
 import (
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/requester"
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/utils"
-	. "gitlab.bianjie.ai/bianjieai/bianjie-qa/irishub/autotest-cmd/types"
+	. "github.com/irishub_auto/autotest-cmd/requester"
+	. "github.com/irishub_auto/autotest-cmd/utils"
+	. "github.com/irishub_auto/autotest-cmd/types"
 
 	"strconv"
 	"errors"
@@ -88,7 +88,7 @@ inputs := []string{PASSWORD}
 func (c *CommonWorker)GetVersion() (string, error) {
 	params := []string{"version"}
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return "", errors.New(ERR_GET_VERSION + err.Error() + string(repBody))
 	}
@@ -100,7 +100,7 @@ func (c *CommonWorker)GetVersion() (string, error) {
 func (c *CommonWorker)ShowAccountInfo(name string) (string, error) {
 	params := []string{"keys","show", name}
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return "", errors.New(ERR_SHOW_ACCOUNT_INFO + err.Error() + string(repBody))
 	}
@@ -122,7 +122,7 @@ func (c *CommonWorker)AddAccount(name string, passwd string, seed string) (strin
 		inputs = append(inputs, seed)
 	}
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, inputs)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, inputs)
 	if err != nil {
 		return "", errors.New(ERR_ADD_ACCOUNT + err.Error())
 	}
@@ -159,7 +159,7 @@ func (c *CommonWorker)SendIris(srcName string, dstName string, amount string, da
 	}
 	inputs := []string{PASSWORD}
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, inputs)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, inputs)
 	if err != nil {
 		return "", errors.New(ERR_SEND_IRIS + err.Error())
 	}
@@ -180,7 +180,7 @@ func (c *CommonWorker)DeleteAccount(name string, passwd string) error {
 	params := []string{"keys", "delete", name}
 	inputs := []string{PASSWORD}
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, inputs)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, inputs)
 	if err != nil {
 		return errors.New(ERR_DELETE_ACCOUNT + err.Error())
 	}
@@ -196,7 +196,7 @@ func (c *CommonWorker)DeleteAccount(name string, passwd string) error {
 func (c *CommonWorker)KeysDeleteALL() error {
 	params := []string{"keys", "list"}
 
-	repBody, err := c.RequestWorker.MakeRequest(params, nil)
+	repBody, err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return errors.New(ERR_DELETE_ALL + err.Error())
 	}
@@ -249,7 +249,7 @@ func (c *CommonWorker)GetAccountFromAddress(address string) (*AccountDataResp, e
 	params = append(params, NODE)
 	params = append(params, TRUSTNODE)
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return nil, errors.New(ERR_GET_ACCOUNTINFO_FROMADDRESS + err.Error())
 	}
@@ -271,7 +271,7 @@ func (c *CommonWorker)QueryIparamModule(module string) (*GovModuleResp , error){
 	params = append(params, NODE)
 	params = append(params, TRUSTNODE)
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return nil, errors.New(ERR_INQUIRY_IPARAMMODULE + err.Error() + string(repBody))
 	}
@@ -293,7 +293,7 @@ func (c *CommonWorker)QueryIparamKey(module string) (*GovKeyResp , error){
 	params = append(params, NODE)
 	params = append(params, TRUSTNODE)
 
-	repBody,  err := c.RequestWorker.MakeRequest(params, nil)
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
 	if err != nil {
 		return nil, errors.New(ERR_INQUIRY_IPARAMKEY + err.Error() + string(repBody))
 	}
