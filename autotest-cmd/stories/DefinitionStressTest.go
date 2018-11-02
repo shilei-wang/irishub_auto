@@ -43,6 +43,7 @@ func (s *DefinitionStress) Run(){
 		s.Common.DefineDifinition(serviceName,fileName, "v4")
 		fmt.Println("finish : "+serviceName)
 	}
+
 	//time.Sleep(time.Duration(24)*time.Hour)
 }
 
