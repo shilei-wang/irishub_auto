@@ -310,6 +310,28 @@ func (c *CommonWorker)QueryIparamKey(module string) (*GovKeyResp , error){
 	return repData, nil
 }
 
+/**********************
+**********************/
+
+func (c *CommonWorker)DefineDifinition(serviceName string, fileName string, name string) {
+	params := []string{"iservice","define"}
+	params = append(params, "--from="+name)
+	params = append(params, "--name="+serviceName)
+	params = append(params, "--file="+fileName)
+	params = append(params, CHAINID)
+	params = append(params, "--fee=1iris")
+	params = append(params, "--gas=10000000")
+	params = append(params, "--service-description=service-description")
+	params = append(params, "--author-description=author-description")
+	params = append(params, "--broadcast=Broadcast")
+	params = append(params, "--tags=tag1 tag2")
+
+	//fmt.Print(params)
+
+	inputs := []string{PASSWORD}
+
+	c.RequestWorker.ExecNoStdout(COMMAND_CLI, params, inputs)
+}
 
 
 

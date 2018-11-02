@@ -26,11 +26,14 @@ var TRUSTNODE      = "--trust-node"
 var FAUCET_SEED    = ""
 var VALIDATOR_SEED = ""
 
+var VALIDATOR_NAME = "v1"
+
+
 // 2)
 
 
 // 3)
-const CMD_TIMEOUT    = 10
+const CMD_TIMEOUT    = 20
 
 // 4) 出块等待时间 5s , RequestTimeout 超时时间 20s
 const WaitBlockTime  = 8

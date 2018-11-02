@@ -4,21 +4,24 @@ package autotest_cmd
 import (
 	"testing"
 	. "github.com/irishub_auto/autotest-cmd/utils"
+	"github.com/irishub_auto/autotest-cmd/stories"
 	//. "github.com/irishub_auto/autotest-cmd/common"
-	//"github.com/irishub_auto/autotest-cmd/stories"
 
 	"fmt"
 )
 
 func Test_Module_ID_0_initialize(t *testing.T) {
-	//fmt.Println(" == Test_Module_ID_0_initialize == ")
-	//Config.Init()
+	fmt.Println(" == Test_Module_ID_0_initialize == ")
+	Config.Init()
 	//Faucet.Init()
 }
 
-func Test_Module_ID_1_Keys(t *testing.T) {
-	//fmt.Println(" == Test_Module_ID_1_Keys == ")
-	if Config.Map["Keys_Skip"]   == "true" { return }
+func Test_Module_ID_1_DefinitionStressTest(t *testing.T) {
+	if Config.Map["DefinitionStressTest_Skip"]   == "true" { return }
+
+	fmt.Println(" == Test_Module_ID_1_DefinitionStressTest == ")
+	(&stories.DefinitionStress{}).Run()
+
 }
 
 func Test_Module_ID_2_Bank(t *testing.T) {

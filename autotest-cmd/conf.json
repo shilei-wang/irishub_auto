@@ -14,7 +14,7 @@
   "----------------Skip 配置----------------"          :"",
   "Reset"            :"true",
 
-  "Keys_Skip"       : "true",
+  "DefinitionStressTest_Skip"       : "false",
   "Bank_Skip"       : "true",
   "Stake_Skip"      : "true",
   "Gov_Skip"        : "true",

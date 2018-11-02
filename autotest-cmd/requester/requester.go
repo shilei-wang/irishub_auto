@@ -37,6 +37,7 @@ func (r *Requester)ExecCommand(Command string, Params []string, Inputs []string,
 	defer close(ch)
 
 	cmd := exec.Command(Command, Params...)
+
 	//fmt.Println(cmd.Args)
 
 	respBody  := make([]byte, 10000)
@@ -57,6 +58,7 @@ func (r *Requester)ExecCommand(Command string, Params []string, Inputs []string,
 			Input = Input + s + "\n"
 		}
 		stdin.Write([]byte(Input))
+		//fmt.Println(Input)
 	}
 
 	reader := bufio.NewReader(stderr)
@@ -71,7 +73,8 @@ func (r *Requester)ExecCommand(Command string, Params []string, Inputs []string,
 	n,_ = reader.Read(respBody)
 	if n > 0 {
 		cmd.Wait()
-		ch <- CmdResp{string(respBody[0:n-1]), nil}
+		//ch <- CmdResp{string(respBody[0:n-1]), nil}
+		ch <- CmdResp{string(respBody[0:n]), nil}
 		return
 	}
 
@@ -100,6 +103,27 @@ func (r *Requester)ExecStart(commandName string, Params []string, isPrint bool) 
 			fmt.Println(line)
 		}
 	}
+	cmd.Wait()
+}
+
+func (r *Requester)ExecNoStdout(commandName string, Params []string, Inputs []string) {
+	cmd := exec.Command(commandName, Params...)
+
+	//fmt.Println(cmd.Args)
+	stdin , _ := cmd.StdinPipe()
+
+	cmd.Start()
+
+	if Inputs != nil {
+		time.Sleep(time.Duration(300)*time.Millisecond)
+
+		var Input string
+		for _, s := range Inputs{
+			Input = Input + s + "\n"
+		}
+		stdin.Write([]byte(Input))
+	}
+
 	cmd.Wait()
 }
 
