@@ -20,16 +20,24 @@ func ForTest(){
 	fmt.Println(repBody)
 }
 
-func Init_gentx(){
+func Init_gentx(num int){
 	Command = "iris"
 	users := []string{"iris1","iris2","iris3","iris4"}
 	names := []string{"v1","v2","v3","v4"}
 
 	for i, user := range users {
+		if i == num {break}
+
 		time.Sleep(time.Duration(DURATION)*time.Second)
 
-		Params = []string{"init", "gen-tx","--name="+names[i],"--home="+ROOT+user}
-		Common.RequestWorker.MakeRequest("iris", Params, nil)
+		Params = []string{"init", "--name="+names[i],"--chain-id=shilei-qa","--home="+ROOT+user}
+
+		//modify???
+		if num == 1 {
+			Common.RequestWorker.MakeRequest("iris", Params, []string{PASSWORD})
+		} else {
+			Common.RequestWorker.MakeRequest("iris", Params, nil)
+		}
 	}
 
 	time.Sleep(time.Duration(DURATION)*time.Second)
@@ -50,6 +58,7 @@ func SetNodeInfo() error{
 		fmt.Println(repData.AppGenTx.Address)
 		Nodes[i+1] = repData.NodeID
 		Vaddrs[i+1] = repData.AppGenTx.Address
+		fmt.Println(Vaddrs[i+1])
 	}
 
 	return nil
@@ -77,15 +86,16 @@ func Init_gentxs() {
 
 func ModifyGenesis() error{
 	str  := ""
-	file := ROOT+"iris1\\config\\genesis.json"
+	file := ROOT+"iris1/config/genesis.json"
 
 	if str,Err = read(file); Err != nil {
 		return Err
 	}
 
-	str = strings.Replace(str, "\"amount\": \"100000000000000000000\"", "\"amount\": \"19840215000000000000000000\"", 4)
-	str = strings.Replace(str, "\"voting_period\": \"20000\"", "\"voting_period\": \"20\"", 4)
-	str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"100\"", 4)
+	str = strings.Replace(str, "\"amount\": \"150000000000000000000\"", "\"amount\": \"19840215000000000000000000\"", 4)
+	str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"60000000000\"", 1)
+	str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
+	str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
 
 	if Err := write(file, str); Err != nil {
 		fmt.Println(Err.Error())
