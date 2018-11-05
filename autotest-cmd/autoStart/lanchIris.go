@@ -21,6 +21,10 @@ func Run_4_iris(){
 		return
 	}
 
+	quit := make(chan bool)
+	<-quit
+
+
 	fmt.Println("(2) Iris init gen-tx * 4 ... ")
 	Init_gentx()
 
