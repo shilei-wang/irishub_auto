@@ -4,6 +4,7 @@ import (
 	. "github.com/irishub_auto/autotest-cmd/types"
 	. "github.com/irishub_auto/autotest-cmd/utils"
 	"fmt"
+	"time"
 )
 
 type DefinitionStress struct {
@@ -18,13 +19,19 @@ func (s *DefinitionStress) cleanupEnv(subCase *SubCase){
 }
 
 func (s *DefinitionStress) Run(){
-	s.Init()
+	//s.Init()
 	//s.forTest()
-	fileName := "d:\\testDefinition.proto"
+	//return
+	fileName := "d:\\test.proto"
 
 	nums := 500
 	fmt.Println("time estimation ",fmt.Sprintf("%.1f", float32(nums)*12/3600),"  hours")
 	randomid := RandomId()
+	//
+	//serviceName := fmt.Sprintf("%s_v1_%v", randomid, 123)
+	//s.Common.DefineDifinition(serviceName,fileName, "v1")
+	//fmt.Println("finish : "+serviceName)
+	//return
 
 	for i := 0; i < nums; i++ {
 		serviceName := fmt.Sprintf("%s_v1_%v", randomid, i)
@@ -42,6 +49,8 @@ func (s *DefinitionStress) Run(){
 		serviceName = fmt.Sprintf("%s_v4_%v", randomid, i)
 		s.Common.DefineDifinition(serviceName,fileName, "v4")
 		fmt.Println("finish : "+serviceName)
+
+		time.Sleep(time.Duration(5)*time.Second)
 	}
 
 	//time.Sleep(time.Duration(24)*time.Hour)
@@ -62,7 +71,7 @@ func (s *DefinitionStress) startWork(nums int, random string,name string){
 }
 
 func (s *DefinitionStress) forTest(){
-	repBody,  err := s.Common.GetVersion()
+	repBody,  err := s.Common.TestConnection()
 	if err != nil {
 		fmt.Print("Error check Irishub first!")
 		return

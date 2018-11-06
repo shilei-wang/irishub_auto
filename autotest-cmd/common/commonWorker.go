@@ -84,6 +84,19 @@ params = append(params, TRUSTNODE)
 inputs := []string{PASSWORD}
 */
 
+func (c *CommonWorker)TestConnection() (string, error) {
+	params := []string{"bank","account","faa1xhfnszalgsk8hck08n75qc8ml8j6ht75e28phk"}
+	params = append(params, NODE)
+
+	repBody,  err := c.RequestWorker.MakeRequest(COMMAND_CLI, params, nil)
+	if err != nil {
+		return "", errors.New(ERR_GET_VERSION + err.Error() + string(repBody))
+	}
+
+	return repBody, nil
+}
+
+
 // 获取 Iris Version
 func (c *CommonWorker)GetVersion() (string, error) {
 	params := []string{"version"}
@@ -319,6 +332,7 @@ func (c *CommonWorker)DefineDifinition(serviceName string, fileName string, name
 	params = append(params, "--name="+serviceName)
 	params = append(params, "--file="+fileName)
 	params = append(params, CHAINID)
+	params = append(params, NODE)
 	params = append(params, "--fee=1iris")
 	params = append(params, "--gas=10000000")
 	params = append(params, "--service-description=service-description")

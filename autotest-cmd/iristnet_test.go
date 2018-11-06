@@ -16,6 +16,7 @@ func Test_Module_ID_0_initialize(t *testing.T) {
 	//Faucet.Init()
 }
 
+// go test -timeout 24h
 func Test_Module_ID_1_DefinitionStressTest(t *testing.T) {
 	if Config.Map["DefinitionStressTest_Skip"]   == "true" { return }
 

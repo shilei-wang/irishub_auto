@@ -1,6 +1,6 @@
 {
   "----------------IRIS hub 配置---------------- (centOS 26657)"          :"",
-  "Node"             :"http://localhost:26657",
+  "Node"             :"http://10.1.2.168:26657",
   "ChainID"          :"shilei-qa",
   "faucet_seed"      :"fatal reunion airport twin ketchup custom lonely idle firm blind rubber average behave lawn tube term day often solution knee good useful vicious solid",
   "V1_seed"          :"fatal reunion airport twin ketchup custom lonely idle firm blind rubber average behave lawn tube term day often solution knee good useful vicious solid",
