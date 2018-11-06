@@ -93,6 +93,7 @@ func ModifyGenesis() error{
 	}
 
 	str = strings.Replace(str, "\"amount\": \"150000000000000000000\"", "\"amount\": \"19840215000000000000000000\"", 4)
+	str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"19840215000000000000000000.", 1)
 	str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"60000000000\"", 1)
 	str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
 	str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
