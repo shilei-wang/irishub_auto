@@ -20,101 +20,73 @@ func main() {
 	num := args[1]
 	switch num {
 		case "1":
-			Run_1_iris()
+			Run_testnet_1()
 		case "4":
-			Run_4_iris()
+			Run_testnet_4()
 		default:
 	}
-
 }
 
-func Run_1_iris(){
+
+func Run_testnet_1(){
 	fmt.Println(".Run_1_iris. ")
-	fmt.Println("(1) Delete 4 old files ... ")
-	Params = []string{"iris1", "iris2", "iris3", "iris4", ".iriscli"}
+	fmt.Println("(1) Delete old files ... ")
+	Params = []string{"testnet", ".iriscli"}
 	if Err = Rm(Params); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
-	fmt.Println("(2) Iris init gen-tx * 1 ... ")
-	Init_gentx(1)
+	fmt.Println("(2) iris testnet --v=1 ... ")
+	Init_testnet("1")
 
 	fmt.Println("(3) ModifyGenesis in iris1... ")
-	if Err = ModifyGenesis(); Err != nil {
+	if Err = ModifyGenesis(1); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
-	fmt.Println("(4) Run 1 Iris ... ")
+	fmt.Println("(4) Add account for v0 .... ")
+	AddAccount(1)
+
+	fmt.Println("(5) Run 1 Iris ... ")
 	StartAndPrint(1)
 
 	quit := make(chan bool)
 	<-quit
 }
 
+func Run_testnet_4(){
+	fmt.Println(".Run_4_iris. ")
 
-
-func Run_4_iris(){
-	fmt.Println("(1) Delete 4 old files ... ")
-	Params = []string{"iris1", "iris2", "iris3", "iris4", ".iriscli"}
+	fmt.Println("(1) Delete old files ... ")
+	Params = []string{"testnet", ".iriscli"}
 	if Err = Rm(Params); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
-	fmt.Println("(2) Iris init gen-tx * 4 ... ")
-	Init_gentx(4)
+	fmt.Println("(2) iris testnet --v=4 ... ")
+	Init_testnet("4")
 
-	//https://github.com/irisnet/irishub/blob/feature/deps/docs/zh/get-started/Genesis-Generation-Process.md
-	//wait!!!!
-
-	fmt.Println("(3) Get iris1 node name , SetNodeInfo()  ")
-	if Err = SetNodeInfo(); Err != nil {
+	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
+	if Err = ModifyGenesis(4); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
-	return
-
-
-	fmt.Println("(4) Copy 3 gentx Dirs(iris2,iris3,iris4) to iris1 ... ")
-	if Err = Copy_gentx(); Err != nil {
+	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
+	if Err = ModifyToml(); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
-	fmt.Println("(5) Iris1 init gentxs, generate genesis.json ... ")
-	Init_gentxs()
+	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
+	AddAccount(4)
 
-
-	fmt.Println("(6) ModifyGenesis in iris1... ")
-	if Err = ModifyGenesis(); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(7) Copy iris1-genesis.json to iris2,iris3,iris4 ")
-	if Err = CopyGenesis(); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(8) Modify config.toml in iris2,iris3,iris4 .... ")
-	if Err = ModifyToml(Nodes[1]); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(9) Run 4 Iris ... ")
-	StartAndPrint(3)
+	fmt.Println("(6) Run 4 Iris ... ")
+	StartAndPrint(4)
 
 	quit := make(chan bool)
 	<-quit
 }
-
-func ResetAndRun_4_iris(){
-
-}
-
-

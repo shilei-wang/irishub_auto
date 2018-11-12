@@ -51,33 +51,56 @@ func (r *Requester)ExecCommand(Command string, Params []string, Inputs []string,
 	if Inputs != nil {
 		time.Sleep(time.Duration(300)*time.Millisecond)
 
-		//注意：1.password只读一次！！ 2.以"\n"为分隔符读取不同行的数据  3.无需等待一次性输入
-		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
-		var Input string
+		//这里和原来的写法有出入， 这里是分次输入。 等待时间长的情况？
 		for _, s := range Inputs{
-			Input = Input + s + "\n"
+			stdin.Write([]byte(s + "\n"))
+
+			//fmt.Println(s + "\n")
+
+			if len(Inputs)>1 {
+				time.Sleep(time.Duration(1500)*time.Millisecond)
+			}
 		}
-		stdin.Write([]byte(Input))
+
+		//一次性写入
+		//var Input string
+		//for _, s := range Inputs{
+		//	Input = Input + s + "\n"
+		//}
+		//stdin.Write([]byte(Input))
+
 		//fmt.Println(Input)
 	}
 
+	//fmt.Println("c1")
 	reader := bufio.NewReader(stderr)
 	n,_ := reader.Read(respBody)
 	if n > 0 {
+		//fmt.Println("c2"+string(respBody[0:n-1]))
+
+		//bug?
+		//if (Params[0] == "init") {
+		//	fmt.Println(string(respBody[0:n-1]))
+		//}
+
 		cmd.Wait()
 		ch <- CmdResp{"", errors.New(string(respBody[0:n-1]))}
 		return
 	}
 
+	//fmt.Println("c3")
 	reader = bufio.NewReader(stdout)
 	n,_ = reader.Read(respBody)
 	if n > 0 {
+		//fmt.Println("c4")
 		cmd.Wait()
+
 		//ch <- CmdResp{string(respBody[0:n-1]), nil}
 		ch <- CmdResp{string(respBody[0:n]), nil}
 		return
 	}
 
+	//fmt.Println("c5")
 	cmd.Wait()
 	ch <- CmdResp{"", errors.New(ERR_CMD_ERROR)}
 	return

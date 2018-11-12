@@ -103,3 +103,23 @@ func write(name,content string) error {
 	return nil
 }
 
+func find_substr(str string, index1 int, index2 int) string {
+	var x    = 0
+	var y    = 0
+	var count = 0
+
+	for i := 0; i < len(str); i++ {
+		if string(str[i]) == "\"" {
+			count++
+			if count == index1 {
+				x = i
+				continue
+			} else if count == index2 {
+				y = i
+				break
+			}
+		}
+	}
+
+	return str[x+1:y]
+}

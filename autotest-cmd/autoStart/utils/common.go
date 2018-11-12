@@ -4,7 +4,6 @@ import (
 	. "github.com/irishub_auto/autotest-cmd/common"
 	"time"
 	"fmt"
-	"encoding/json"
 	"strings"
 )
 
@@ -20,122 +19,50 @@ func ForTest(){
 	fmt.Println(repBody)
 }
 
-func Init_gentx(num int){
+func Init_testnet(num string){
 	Command = "iris"
-	users := []string{"iris1","iris2","iris3","iris4"}
-	names := []string{"v1","v2","v3","v4"}
-
-	for i, user := range users {
-		if i == num {break}
-
-		time.Sleep(time.Duration(DURATION)*time.Second)
-
-		Params = []string{"init", "--name="+names[i],"--chain-id=shilei-qa","--home="+ROOT+user}
-
-		//modify???
-		if num == 1 {
-			Common.RequestWorker.MakeRequest("iris", Params, []string{PASSWORD})
-		} else {
-			Common.RequestWorker.MakeRequest("iris", Params, nil)
-		}
+	Params = []string{"testnet", "--v="+num,"--output-dir=/root/testnet","--node-dir-prefix=v","--starting-ip-address=127.0.0.1"}
+	if num == "1" {
+		Common.RequestWorker.MakeRequest(Command, Params, []string{PASSWORD})
+	} else if num == "4" {
+		Common.RequestWorker.MakeRequest(Command, Params, []string{PASSWORD,PASSWORD,PASSWORD,PASSWORD})
 	}
-
-	time.Sleep(time.Duration(DURATION)*time.Second)
 }
 
-func SetNodeInfo() error{
-	Params := []string{"iris1","iris2","iris3","iris4"}
+func ModifyGenesis(num int) error{
+	Params := []string{"v0","v1","v2","v3"}
 
 	for i, param := range Params {
-		var str string
-		if str,Err = ReadGentxFile(param); Err != nil {
-			return Err
-		}
-		repData := &GenesisTx{}
-		Err = json.Unmarshal( []byte(str), repData)
+		if i == num {break}
 
-		fmt.Println(repData.NodeID)
-		fmt.Println(repData.AppGenTx.Address)
-		Nodes[i+1] = repData.NodeID
-		Vaddrs[i+1] = repData.AppGenTx.Address
-		fmt.Println(Vaddrs[i+1])
-	}
-
-	return nil
-}
-
-func Copy_gentx() error {
-	Params = []string{"iris2","iris3","iris4"}
-
-	for _, param := range Params {
-		if Err := CopyDir(ROOT+param+"\\config\\gentx\\", ROOT+"iris1\\config\\gentx\\"); Err != nil {
-			fmt.Println(Err.Error())
-			return Err
-		}
-	}
-
-	fmt.Println("CopyFile : 3 gentx dirs to iris1 ok !")
-	return nil
-}
-
-func Init_gentxs() {
-	Command = "iris"
-	Params = []string{"init", "--gen-txs","--chain-id=shilei-qa","-o","--home="+ROOT+"iris1"}
-	Common.RequestWorker.MakeRequest("iris", Params, nil)
-}
-
-func ModifyGenesis() error{
-	str  := ""
-	file := ROOT+"iris1/config/genesis.json"
-
-	if str,Err = read(file); Err != nil {
-		return Err
-	}
-
-	str = strings.Replace(str, "\"amount\": \"150000000000000000000\"", "\"amount\": \"19840215000000000000000000\"", 4)
-	str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"19840215000000000000000000.", 1)
-	str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"60000000000\"", 1)
-	str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
-	str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
-
-	if Err := write(file, str); Err != nil {
-		fmt.Println(Err.Error())
-		return Err
-	}
-
-	return nil
-}
-
-func CopyGenesis() error {
-	Params = []string{"iris2","iris3","iris4"}
-
-	for _, param := range Params {
-		if _, Err := CopyFile(ROOT+"iris1\\config\\genesis.json", ROOT+param+"\\config\\genesis.json"); Err != nil {
-			fmt.Println(Err.Error())
-			return Err
-		}
-	}
-
-	return nil
-}
-
-func ModifyToml(node string) error{
-	str  := ""
-	file := ""
-	param_files := []string{"iris2","iris3","iris4"}
-	param_ports := []string{"6","7","8"}
-
-	for i, p_f := range param_files {
-		file = ROOT+p_f+"\\config\\config.toml"
+		str  := ""
+		file := ROOT+"testnet/"+param+"/iris/config/genesis.json"
 
 		if str,Err = read(file); Err != nil {
 			return Err
 		}
 
-		str = strings.Replace(str, "26656", "266"+param_ports[i]+"6", -1)
-		str = strings.Replace(str, "26657", "266"+param_ports[i]+"7", -1)
-		str = strings.Replace(str, "26658", "266"+param_ports[i]+"8", -1)
-		str = strings.Replace(str, "seeds = \"\"", "seeds = \""+node+"@localhost:26656\"", -1)
+		str = strings.Replace(str, "\"amount\": \"150000000000000000000\"", "\"amount\": \"2000000000000000000000000\"", 4)
+
+		if (num == 1) {
+			str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"2000000000000000000000000.", 1)
+		} else if  (num == 4) {
+			str = strings.Replace(str, "\"loose_tokens\": \"600000000000000000000.", "\"loose_tokens\": \"8000000000000000000000000.", 1)
+
+		}
+
+		str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"30000000000\"", 1)
+		str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
+		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+
+
+		str = strings.Replace(str, "\"community_tax\": \"0.0200000000\"", "\"community_tax\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"base_proposer_reward\": \"0.0100000000\"", "\"base_proposer_reward\": \"0.0000000001\"", 1)
+		str = strings.Replace(str, "\"bonus_proposer_reward\": \"0.0400000000\"", "\"bonus_proposer_reward\": \"0.0000000001\"", 1)
+
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.5000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.1000000000\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
@@ -147,16 +74,16 @@ func ModifyToml(node string) error{
 }
 
 func StartAndPrint(num int){
-	Params := []string{"iris1","iris2","iris3","iris4"}
+	Params := []string{"v0","v1","v2","v3"}
 
 	for i, param := range Params {
 		if i == num {break}
 
 		time.Sleep(time.Duration(DURATION)*time.Second)
 
-		Params = []string{"start", "--home="+ROOT+param}
+		Params = []string{"start", "--home=/root/testnet/"+param+"/iris"}
 
-		if (param == "iris1"){
+		if (param == "v0"){
 			go Common.RequestWorker.ExecStart("iris", Params, true )
 		}else{
 			go Common.RequestWorker.ExecStart("iris", Params, false )
@@ -165,6 +92,60 @@ func StartAndPrint(num int){
 
 	time.Sleep(time.Duration(DURATION)*time.Second)
 }
+
+func ModifyToml() error{
+	str  := ""
+	file := ""
+	Params := []string{"v1","v2","v3"}
+	param_ports := []string{"6","7","8"}
+
+	for i, param := range Params {
+		file = ROOT+"testnet/"+param+"/iris/config/config.toml"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		str = strings.Replace(str, "26656", "266"+param_ports[i]+"6", 1) //only once
+		str = strings.Replace(str, "26657", "266"+param_ports[i]+"7", -1)
+		str = strings.Replace(str, "26658", "266"+param_ports[i]+"8", -1)
+
+		if Err := write(file, str); Err != nil {
+			fmt.Println(Err.Error())
+			return Err
+		}
+	}
+
+	return nil
+}
+
+func AddAccount(num int) error{
+	Params := []string{"v0","v1","v2","v3"}
+
+	for i, param := range Params {
+		if i == num {break}
+
+		Params = []string{"keys", "add", param,"--recover"}
+
+		str  := ""
+		file := ROOT+"testnet/"+param+"/iriscli/key_seed.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		secret := find_substr(str,3,4)
+
+		//注意：1.repeat类型的password只读一次，只需要输入一2.以"\n"为分隔符读取不同行的数据  3.无需等待一次性输入
+		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
+		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret})
+
+		fmt.Println("Add account "+param)
+	}
+
+	return nil
+}
+
 
 func Reset(c *CommonWorker){
 	Command = "iris"
