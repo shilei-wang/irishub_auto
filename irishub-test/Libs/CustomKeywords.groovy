@@ -28,10 +28,12 @@ def static "utils.CmdUtils.generateCmd"(
 
 def static "utils.CmdUtils.sendRequest"(
     	String obj	
-     , 	String cmd	) {
+     , 	String cmd	
+     , 	int delay	) {
     (new utils.CmdUtils()).sendRequest(
         	obj
-         , 	cmd)
+         , 	cmd
+         , 	delay)
 }
 
 def static "utils.CmdUtils.printLog"(
