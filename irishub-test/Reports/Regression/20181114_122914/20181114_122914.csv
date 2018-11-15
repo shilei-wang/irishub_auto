@@ -1,0 +1,22 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Regression,,,2018-11-14 12:29:26,2018-11-14 12:29:34,8.069s,PASSED
+,,,,,,
+Test Cases/cmd/iservice/define/IRISHUB-624,,"Summary: 【iService Define】创建一个全新的服务定义
+Description: 测试类型：正向功能测试
+软件版本：>= v0.6.0-rc0
+前置条件：至少4个验证人节点的irishub网络
+测试内容：
+||功能描述||期望结果||
+|创建一个全新的包含全部非必填字段的服务定义，服务名称、描述、作者描述、标签全部包含多语言和特殊符号，idl内容符合protocolbuf 3标准，广播模式Broadcast|返回成功标识|
+|创建一个全新的没有非必填字段的服务定义，idl内容符合protocolbuf 3标准，广播模式Unicast|返回成功标识|
+|创建一个全新的有5个不同非空标签的服务定义，idl内容符合protocolbuf 3标准，广播模式Broadcast|返回成功标识|
+|创建一个全新的同时指定字符串和文件位置的idl内容的服务定义，idl内容符合protocolbuf 3标准，广播模式Unicast|返回成功标识|",2018-11-14 12:29:28,2018-11-14 12:29:34,5.671s,PASSED
+Start listener action : BeforeTestCase,,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.011s,PASSED
+Statement - data = com.kms.katalon.core.testdata.TestDataFactory.findTestData(iservice/define/IRISHUB-624),,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.017s,PASSED
+Statement - faucet = com.kms.katalon.core.testdata.TestDataFactory.findTestData(keys/faucet),,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.007s,PASSED
+"Statement - name = faucet.getValue(""name"", 1)",,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.003s,PASSED
+"Statement - password = faucet.getValue(""password"", 1)",,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.004s,PASSED
+"Statement - command = ""iriscli iservice define --chain-id="".concat(chainId).concat("" --node="").concat(node).concat("" --from="").concat(name)",,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.016s,PASSED
+"Statement - For ([i = 1, i < data.getRowNumbers() + 1, (i++)])",,,2018-11-14 12:29:28,2018-11-14 12:29:28,0.034s,PASSED
+"Statement - out.println(""bread"")",,,2018-11-14 12:29:28,2018-11-14 12:29:34,5.188s,PASSED
+Start listener action : AfterTestCase,,,2018-11-14 12:29:34,2018-11-14 12:29:34,0.005s,PASSED
