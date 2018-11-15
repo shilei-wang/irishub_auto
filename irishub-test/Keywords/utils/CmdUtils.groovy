@@ -41,7 +41,7 @@ public class CmdUtils {
 		sleep(delay)
 		return response
 	}
-	
+
 	private static String beginLog = '\n*****************************\n'
 	private static String endLog = '\n*****************************\n'
 
