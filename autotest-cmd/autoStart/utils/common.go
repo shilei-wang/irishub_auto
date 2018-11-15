@@ -21,7 +21,7 @@ func ForTest(){
 
 func Init_testnet(num string){
 	Command = "iris"
-	Params = []string{"testnet", "--v="+num,"--output-dir=/root/testnet","--node-dir-prefix=v","--starting-ip-address=127.0.0.1"}
+	Params = []string{"testnet", "--v="+num,"--output-dir=/root/testnet","--chain-id=shilei-qa","--node-dir-prefix=v","--starting-ip-address=127.0.0.1"}
 	if num == "1" {
 		Common.RequestWorker.MakeRequest(Command, Params, []string{PASSWORD})
 	} else if num == "4" {
@@ -63,6 +63,10 @@ func ModifyGenesis(num int) error{
 		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.2000000000\"", 1)
 		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.5000000000\"", 1)
 		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.1000000000\"", 1)
+
+		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
