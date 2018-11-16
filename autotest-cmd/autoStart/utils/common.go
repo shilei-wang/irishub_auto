@@ -150,6 +150,31 @@ func AddAccount(num int) error{
 	return nil
 }
 
+func AddAccountForRest() error{
+	Params := []string{"v0","v1","v2","v3"}
+
+	for _, param := range Params {
+		Params = []string{"keys", "add", param,"--recover","--home=/root/.irislcd"}
+
+		str  := ""
+		file := ROOT+"testnet/"+param+"/iriscli/key_seed.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		secret := find_substr(str,3,4)
+
+		//注意：1.repeat类型的password只读一次，只需要输入一2.以"\n"为分隔符读取不同行的数据  3.无需等待一次性输入
+		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
+		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret})
+
+		fmt.Println("Add account "+param)
+	}
+
+	return nil
+}
+
 
 func Reset(c *CommonWorker){
 	Command = "iris"
