@@ -42,14 +42,12 @@ for (int i = 1; i < (u.td.getRowNumbers() + 1); i++) {
 class Utils {
 	public TestData td;
 	public String command;
-	public String password;
-	
+
 	public Utils(){
-		td = findTestData('iservice/define/IRISHUB-624')
+		td = findTestData('service/define/IRISHUB-624')
 		TestData faucet = findTestData('keys/faucet')
 		String name = faucet.getValue('name', 1)
-		password = faucet.getValue('password', 1)
-		command = 'iriscli iservice define --chain-id='.concat(GlobalVariable.chainId).concat(' --node=').concat(GlobalVariable.node).concat(
+		command = 'iriscli service define --chain-id='.concat(GlobalVariable.chainId).concat(' --node=').concat(GlobalVariable.node).concat(
 				' --from=').concat(name)
 	}
 	

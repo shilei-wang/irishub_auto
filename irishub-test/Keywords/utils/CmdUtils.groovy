@@ -5,6 +5,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import com.google.gson.JsonObject
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -18,6 +19,12 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
+
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+
 
 public class CmdUtils {
 	@Keyword
@@ -59,5 +66,26 @@ public class CmdUtils {
 			flag.append(sources.charAt(rand.nextInt(9)))
 		}
 		return flag.toString();
+	}
+
+	@Keyword
+	public static JsonObject Parse(String msg){
+		JsonParser parse =new JsonParser();  //创建json解析器
+		try {
+			JsonObject json=(JsonObject) parse.parse(msg);  //创建jsonObject对象
+
+			//System.out.println("resultcode:"+json.get("resultcode").getAsInt());  //将json数据转为为int型的数据
+			//JsonObject result=json.get("result").getAsJsonObject();
+			//System.out.println("temperature:"+today.get("temperature").getAsString());
+			//CmdUtils.printLog(json.get("id").getAsString())
+
+			return json
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (JsonSyntaxException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
