@@ -25,6 +25,10 @@ func main() {
 			Run_testnet_4()
 		case "r":
 			Run_testnet_r()
+		case "0":
+			//check important bug
+			//do not modify genisis
+			Run_testnet_0()
 		default:
 	}
 }
@@ -123,6 +127,29 @@ func Run_testnet_r(){
 
 	fmt.Println("(6) Run 4 Iris ... ")
 	StartAndPrint(4)
+
+	quit := make(chan bool)
+	<-quit
+}
+
+
+func Run_testnet_0(){
+	fmt.Println(".Run_1_iris. ")
+	fmt.Println("(1) Delete old files ... ")
+	Params = []string{"testnet", ".iriscli"}
+	if Err = Rm(Params); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	fmt.Println("(2) iris testnet --v=1 ... ")
+	Init_testnet("1")
+
+	fmt.Println("(3) Add account for v0 .... ")
+	AddAccount(1)
+
+	fmt.Println("(4) Run 1 Iris ... ")
+	StartAndPrint(1)
 
 	quit := make(chan bool)
 	<-quit
