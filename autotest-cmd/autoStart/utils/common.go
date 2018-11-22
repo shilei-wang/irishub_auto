@@ -42,7 +42,7 @@ func ModifyGenesis(num int) error{
 			return Err
 		}
 
-		str = strings.Replace(str, "\"amount\": \"150000000000000000000\"", "\"amount\": \"2000000000000000000000000\"", 4)
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
 
 		if (num == 1) {
 			str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"2000000000000000000000000.", 1)
