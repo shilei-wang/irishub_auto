@@ -34,7 +34,7 @@ for (int i = 2; i <= u.td.getRowNumbers() ; i++) {
 	u.Prepare(i)
 	cmd = CmdUtils.generateCmd(u.command, u.td, i)	
 	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
-	if (WS.verifyResponseStatusCode(response, 400)) {
+	if (WS.verifyResponseStatusCode(response, 400)) {		
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("result", i)), true)
 	}
 }
@@ -75,12 +75,6 @@ class Utils {
 				break;
 			case 4:
 				println "--- TESTCASE 4 --- file填写错误路径，然后执行"
-				break;
-			case 5:
-				println "--- TESTCASE 5 --- messaging  改为为空，然后执行"
-				break;
-			case 6:
-				println "--- TESTCASE 6 --- messaging  改为为abc"
 				break;
 			}
 	}

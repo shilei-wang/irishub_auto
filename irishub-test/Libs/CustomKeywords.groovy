@@ -46,6 +46,12 @@ def static "utils.CmdUtils.generateRandomID"() {
     (new utils.CmdUtils()).generateRandomID()
 }
 
+def static "utils.CmdUtils.Parse"(
+    	String msg	) {
+    (new utils.CmdUtils()).Parse(
+        	msg)
+}
+
 def static "utils.StringUtils.isNullOrEmpty"(
     	String msg	) {
     (new utils.StringUtils()).isNullOrEmpty(
