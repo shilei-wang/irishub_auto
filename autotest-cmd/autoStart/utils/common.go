@@ -5,6 +5,7 @@ import (
 	"time"
 	"fmt"
 	"strings"
+	"strconv"
 )
 
 func ForTest(){
@@ -21,22 +22,23 @@ func ForTest(){
 
 func Init_testnet(num string){
 	Command = "iris"
-	Params = []string{"testnet", "--v="+num,"--output-dir=/root/testnet","--chain-id=shilei-qa","--node-dir-prefix=v","--starting-ip-address=127.0.0.1"}
+	Params = []string{"testnet", "--v="+num,"--output-dir="+HOME+"testnet","--chain-id=shilei-qa","--node-dir-prefix=v","--starting-ip-address=127.0.0.1"}
 	if num == "1" {
 		Common.RequestWorker.MakeRequest(Command, Params, []string{PASSWORD})
-	} else if num == "4" {
+	} else {
 		Common.RequestWorker.MakeRequest(Command, Params, []string{PASSWORD,PASSWORD,PASSWORD,PASSWORD})
 	}
 }
 
-func ModifyGenesis(num int) error{
+func ModifyGenesis(num string) error{
 	Params := []string{"v0","v1","v2","v3"}
+	n, _ := strconv.Atoi(num)
 
 	for i, param := range Params {
-		if i == num {break}
+		if i == n {break}
 
 		str  := ""
-		file := ROOT+"testnet/"+param+"/iris/config/genesis.json"
+		file := HOME+"testnet/"+param+"/iris/config/genesis.json"
 
 		if str,Err = read(file); Err != nil {
 			return Err
@@ -44,9 +46,11 @@ func ModifyGenesis(num int) error{
 
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
 
-		if (num == 1) {
+		if (n == 1) {
 			str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"2000000000000000000000000.", 1)
-		} else if  (num == 4) {
+		} else if  (n == 2) {
+			str = strings.Replace(str, "\"loose_tokens\": \"300000000000000000000.", "\"loose_tokens\": \"4000000000000000000000000.", 1)
+		} else if  (n == 4) {
 			str = strings.Replace(str, "\"loose_tokens\": \"600000000000000000000.", "\"loose_tokens\": \"8000000000000000000000000.", 1)
 
 		}
@@ -77,15 +81,16 @@ func ModifyGenesis(num int) error{
 	return nil
 }
 
-func StartAndPrint(num int){
+func StartAndPrint(num string){
+	n, _ := strconv.Atoi(num)
 	Params := []string{"v0","v1","v2","v3"}
 
 	for i, param := range Params {
-		if i == num {break}
+		if i == n {break}
 
 		time.Sleep(time.Duration(DURATION)*time.Second)
 
-		Params = []string{"start", "--home=/root/testnet/"+param+"/iris"}
+		Params = []string{"start", "--home="+HOME+"testnet/"+param+"/iris"}
 
 		if (param == "v0"){
 			go Common.RequestWorker.ExecStart("iris", Params, true )
@@ -97,14 +102,19 @@ func StartAndPrint(num int){
 	time.Sleep(time.Duration(DURATION)*time.Second)
 }
 
-func ModifyToml() error{
+func ModifyToml(num string) error{
+	n, _ := strconv.Atoi(num)
+	n--
+
 	str  := ""
 	file := ""
 	Params := []string{"v1","v2","v3"}
 	param_ports := []string{"6","7","8"}
 
 	for i, param := range Params {
-		file = ROOT+"testnet/"+param+"/iris/config/config.toml"
+		if i == n {break}
+
+		file = HOME+"testnet/"+param+"/iris/config/config.toml"
 
 		if str,Err = read(file); Err != nil {
 			return Err
@@ -123,16 +133,18 @@ func ModifyToml() error{
 	return nil
 }
 
-func AddAccount(num int) error{
+func AddAccount(num string) error{
+	n, _ := strconv.Atoi(num)
+
 	Params := []string{"v0","v1","v2","v3"}
 
 	for i, param := range Params {
-		if i == num {break}
+		if i == n {break}
 
 		Params = []string{"keys", "add", param,"--recover"}
 
 		str  := ""
-		file := ROOT+"testnet/"+param+"/iriscli/key_seed.json"
+		file := HOME+"testnet/"+param+"/iriscli/key_seed.json"
 
 		if str,Err = read(file); Err != nil {
 			return Err
@@ -157,7 +169,7 @@ func AddAccountForRest() error{
 		Params = []string{"keys", "add", param,"--recover","--home=/root/.irislcd"}
 
 		str  := ""
-		file := ROOT+"testnet/"+param+"/iriscli/key_seed.json"
+		file := HOME+"testnet/"+param+"/iriscli/key_seed.json"
 
 		if str,Err = read(file); Err != nil {
 			return Err
@@ -183,7 +195,7 @@ func Reset(c *CommonWorker){
 	for _, user := range users {
 		time.Sleep(time.Duration(DURATION)*time.Second)
 
-		Params = []string{"unsafe_reset_all", "--home="+ROOT+user}
+		Params = []string{"unsafe_reset_all", "--home="+HOME+user}
 		//c(Command, Params,true,false)
 	}
 }

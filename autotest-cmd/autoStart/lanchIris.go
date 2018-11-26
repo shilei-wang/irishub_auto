@@ -20,9 +20,13 @@ func main() {
 	num := args[1]
 	switch num {
 		case "1":
-			Run_testnet_1()
+			Run_testnets(num)
+		case "2":
+			Run_testnets(num)
+		case "3":
+			// TODO
 		case "4":
-			Run_testnet_4()
+			Run_testnets(num)
 		case "r":
 			Run_testnet_r()
 		case "0":
@@ -33,37 +37,8 @@ func main() {
 	}
 }
 
-
-func Run_testnet_1(){
-	fmt.Println(".Run_1_iris. ")
-	fmt.Println("(1) Delete old files ... ")
-	Params = []string{"testnet", ".iriscli"}
-	if Err = Rm(Params); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(2) iris testnet --v=1 ... ")
-	Init_testnet("1")
-
-	fmt.Println("(3) ModifyGenesis in iris1... ")
-	if Err = ModifyGenesis(1); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(4) Add account for v0 .... ")
-	AddAccount(1)
-
-	fmt.Println("(5) Run 1 Iris ... ")
-	StartAndPrint(1)
-
-	quit := make(chan bool)
-	<-quit
-}
-
-func Run_testnet_4(){
-	fmt.Println(".Run_4_iris. ")
+func Run_testnets(num string){
+	fmt.Println(".Run_"+num+"_testnets. ")
 
 	fmt.Println("(1) Delete old files ... ")
 	Params = []string{"testnet", ".iriscli"}
@@ -72,26 +47,26 @@ func Run_testnet_4(){
 		return
 	}
 
-	fmt.Println("(2) iris testnet --v=4 ... ")
-	Init_testnet("4")
+	fmt.Println("(2) iris testnet ")
+	Init_testnet(num)
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis(4); Err != nil {
+	if Err = ModifyGenesis(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
 	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
-	if Err = ModifyToml(); Err != nil {
+	if Err = ModifyToml(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
 	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
-	AddAccount(4)
+	AddAccount(num)
 
-	fmt.Println("(6) Run 4 Iris ... ")
-	StartAndPrint(4)
+	fmt.Println("(6) Run "+num+" Iris ... ")
+	StartAndPrint(num)
 
 	quit := make(chan bool)
 	<-quit
@@ -111,13 +86,13 @@ func Run_testnet_r(){
 	Init_testnet("4")
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis(4); Err != nil {
+	if Err = ModifyGenesis("4"); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
 
 	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
-	if Err = ModifyToml(); Err != nil {
+	if Err = ModifyToml("4"); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
@@ -126,12 +101,11 @@ func Run_testnet_r(){
 	AddAccountForRest()
 
 	fmt.Println("(6) Run 4 Iris ... ")
-	StartAndPrint(4)
+	StartAndPrint("4")
 
 	quit := make(chan bool)
 	<-quit
 }
-
 
 func Run_testnet_0(){
 	fmt.Println(".Run_1_iris. ")
@@ -146,10 +120,10 @@ func Run_testnet_0(){
 	Init_testnet("1")
 
 	fmt.Println("(3) Add account for v0 .... ")
-	AddAccount(1)
+	AddAccount("1")
 
 	fmt.Println("(4) Run 1 Iris ... ")
-	StartAndPrint(1)
+	StartAndPrint("1")
 
 	quit := make(chan bool)
 	<-quit

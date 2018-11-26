@@ -12,7 +12,7 @@ import (
 
 func Rm(params []string)error{
 	for _, file := range params {
-		f := ROOT+ file
+		f := HOME+ file
 		err := os.RemoveAll(f)
 		if err != nil {
 			return err
@@ -24,7 +24,7 @@ func Rm(params []string)error{
 }
 
 func ReadGentxFile(name string) (string, error) {
-	files, _ := filepath.Glob(ROOT + name + "/config/gentx/*")
+	files, _ := filepath.Glob(HOME + name + "/config/gentx/*")
 	if len(files) == 0{
 		return "", errors.New("Read node error")
 	}

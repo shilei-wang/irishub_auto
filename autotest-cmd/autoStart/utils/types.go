@@ -8,7 +8,7 @@ import (
 var Common = &CommonWorker{}
 
 // global vars
-var ROOT        = "/root/"
+var HOME        = "/root/"
 var PASSWORD    = "1234567890"
 var DURATION    = 2
 
