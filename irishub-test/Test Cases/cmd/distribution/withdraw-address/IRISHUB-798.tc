@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Summary: 【Distirbution】查询指定委托人的转账地址 负向测试用例
+Description: 测试类型：负向功能测试
+ 软件版本：>= v0.7.0-rc0
+
+前置条件：
+ 1) 至少4个验证人节点的irishub网络
+
+ 测试内容描述与期望结果：
+ 1）使用空的delegator进行查询|返回失败标识|
+ 2）使用fva规范地址的delegator地址进行查询|返回失败标识|
+ 3）使用长度错误的delegator地址进行查询|返回失败标识|</description>
+   <name>IRISHUB-798</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>dc59230f-f338-4326-b4b0-122f5e60fa89</testCaseGuid>
+</TestCaseEntity>

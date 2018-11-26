@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：负向功能测试
+软件版本：>= v0.7.0-rc0
+前置条件：
+
+1）至少4个验证人节点的irishub网络
+2）delegator已与validator建立了委托关系，且已经设定的提取地址。
+
+测试内容描述与期望结果：
+1）指定-only-from-validator为一个不存在委托关系的fva账户，，执行withdraw-rewards。（不指定-is-validator）
+2）指定-only-from-validator为一个faa账户，执行withdraw-rewards。（不指定-is-validator）
+3）指定一个非validator账户且-is-validator设置为true，执行withdraw-rewards。 （不指定-only-from-validator）
+4）指定-is-validator为空，执行withdraw-rewards。 （不指定-only-from-validator）
+5）指定-is-validator为test，执行withdraw-rewards。 （不指定-only-from-validator）
+6）同时指定-is-validator指定为true和-only-from-validator</description>
+   <name>IRISHUB-811</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>3eee98cf-f92a-4289-b148-60151413a731</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Summary: 【Distirbution】查询指定委托人的转账地址 正向测试用例
+Description: 测试类型：正向功能测试
+ 软件版本：>= v0.7.0-rc0
+ 前置条件：1）至少4个验证人节点的irishub网络
+                   2）[设置转账地址的正向测试用例设置成功|http://jira.bianjie.ai/browse/IRISHUB-797]
+
+测试内容描述与期望结果：
+1）初始化之前，分别为3个不同的delegator查询他们的提取奖励的初始化地址 （返回正确的地址）
+2）为3个不同的delegator更新提取奖励的地址之后，查询他们提取奖励的地址 （返回正确的地址）</description>
+   <name>IRISHUB-797</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>eb4175d9-16f6-4995-9d46-d50e778468df</testCaseGuid>
+</TestCaseEntity>

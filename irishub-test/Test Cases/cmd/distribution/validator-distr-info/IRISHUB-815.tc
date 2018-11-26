@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：负向功能测试
+软件版本：>= v0.7.0-rc0
+前置条件：
+至少4个验证人节点的irishub网络
+测试内容和期望结果：
+1）使用faa规范的validator地址进行查询 （返回失败标识）
+2）使用空的validator地址进行查询 （返回失败标识）</description>
+   <name>IRISHUB-815</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>363da91a-90f7-421b-8259-948a6b8ed438</testCaseGuid>
+</TestCaseEntity>

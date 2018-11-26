@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：负向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+至少4个验证人节点的irishub网络
+
+测试内容描述与期望结果：
+1）为delegator设置1个fva规范的转账地址 （返回失败标识）
+2）为delegator设置1个空的地址 （返回失败标识）</description>
+   <name>IRISHUB-784</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>5f53a93a-21dc-4ba9-a379-1c0af2c5f263</testCaseGuid>
+</TestCaseEntity>

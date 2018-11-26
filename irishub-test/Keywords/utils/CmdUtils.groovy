@@ -24,13 +24,25 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
-
+import com.google.gson.JsonArray;
 
 public class CmdUtils {
 	@Keyword
 	public static String generateCmd(String cmd, TestData data, int dindex) {
 		data.getColumnNames().each{columnName ->
-			if (columnName.equals("summary")||columnName.equals("result")){
+			if (columnName.equals("summary")||columnName.equals("cmd_result")||columnName.equals("rest_result")){
+				return
+			}
+
+			cmd = cmd.concat(' --').concat(columnName).concat('=').concat(data.getValue(columnName, dindex))
+		}
+		return cmd
+	}
+
+	@Keyword
+	public static String addTxFee(String cmd, TestData data, int dindex) {
+		data.getColumnNames().each{columnName ->
+			if (columnName.equals("gas_adjustment")){
 				return
 			}
 
@@ -41,9 +53,10 @@ public class CmdUtils {
 		return cmd
 	}
 
+
 	@Keyword
 	public static ResponseObject sendRequest(String obj, String cmd, int delay) {
-		String password = findTestData('keys/faucet').getValue('password', 1)
+		String password = findTestData('base/faucet').getValue('password', 1)
 		ResponseObject response = WS.sendRequest(findTestObject(obj, [('command') : cmd, ('args1') : password, ('commanderIP'):GlobalVariable.commanderIP]));
 		sleep(delay)
 		return response
@@ -62,7 +75,7 @@ public class CmdUtils {
 		String sources = "0123456789"
 		Random rand = new Random()
 		StringBuffer flag = new StringBuffer()
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 8; j++) {
 			flag.append(sources.charAt(rand.nextInt(9)))
 		}
 		return flag.toString();
@@ -87,5 +100,56 @@ public class CmdUtils {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Keyword
+	public static String getAddressFromName(String msg, String type){
+		String cmd
+		if (type == "faa") {
+			cmd = "iriscli keys show "+msg
+		} else if (type == "fva") {
+			cmd = "iriscli keys show --bech val "+msg
+		} else {
+			return "Error"
+		}
+		ResponseObject response = WS.sendRequest(findTestObject("cmd/CmdWithOneArgs", [('command') : cmd, ('commanderIP'):GlobalVariable.commanderIP]));
+		String resp = response.responseBodyContent
+		int index =  resp.indexOf(msg)+msg.length()+7
+		return resp.substring(index,index+42)
+	}
+
+	@Keyword
+	public static sendIris(String source, String dest, String amount){
+		String cmd ="iriscli bank send --chain-id="+GlobalVariable.chainId+" --amount="+amount+" --from="+source+" --to="+dest
+		cmd = CmdUtils.addTxFee(cmd, findTestData('base/tx'), 1)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
+		return
+	}
+
+	@Keyword
+	public static Double getBalance(String dest, String type){
+		if (type == "name"){
+			dest=getAddressFromName(dest)
+		}
+
+		String cmd ="iriscli bank account "+dest
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"coins"), true)
+		String re = Parse(response.responseBodyContent).get("coins").getAsJsonArray().get(0).getAsString().replace("iris", "")
+		return Double.valueOf(re)
+	}
+
+	@Keyword
+	public static String createNewAccount(String faucet, String amount){
+		String name = "user_"+generateRandomID()
+		String cmd ="iriscli keys add "+name
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent, name), true)
+		if (amount != "0iris") {
+			sendIris(faucet, getAddressFromName(name,"faa"), amount)
+		}
+
+		return name
 	}
 }

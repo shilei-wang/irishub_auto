@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+前置条件：至少4个验证人节点的irishub网络
+
+测试内容描述与期望结果：
+1）分别为2个不同的delegator初始化withdraw adddress （返回成功标识）
+2）分别为2个不同的delegator更新withdraw address （返回成功标识）</description>
+   <name>IRISHUB-746</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>bfa4aec4-b684-484f-b213-d1180ac9619d</testCaseGuid>
+</TestCaseEntity>

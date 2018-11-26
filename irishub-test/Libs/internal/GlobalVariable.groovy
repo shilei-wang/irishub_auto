@@ -28,10 +28,15 @@ public class GlobalVariable {
      */
     public static Object commanderIP
      
+    /**
+     * <p></p>
+     */
+    public static Object lcdIP
+     
 
     static {
         def allVariables = [:]        
-        allVariables.put('default', ['node' : 'localhost:26657', 'chainId' : 'shilei-qa', 'commanderIP' : '10.1.2.168'])
+        allVariables.put('default', ['node' : 'localhost:26657', 'chainId' : 'shilei-qa', 'commanderIP' : '10.1.2.168', 'lcdIP' : '10.1.4.202:1317'])
         allVariables.put('dev', allVariables['default'] + ['node' : '192.168.150.7:30657', 'chainId' : 'irishub-dev'])
         allVariables.put('qa', allVariables['default'] + ['node' : '192.168.150.7:31657', 'chainId' : 'irishub-dev'])
         allVariables.put('stage', allVariables['default'] + ['node' : '192.168.150.7:30657', 'chainId' : 'irishub-dev'])
@@ -42,6 +47,7 @@ public class GlobalVariable {
         node = selectedVariables['node']
         chainId = selectedVariables['chainId']
         commanderIP = selectedVariables['commanderIP']
+        lcdIP = selectedVariables['lcdIP']
         
     }
 }

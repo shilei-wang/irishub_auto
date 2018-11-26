@@ -20,30 +20,29 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 
 public class Faucet {
-
 	@Keyword
 	public static void initCmd() {
-		TestData faucet = findTestData('keys/faucet')
-		ResponseObject response = WS.sendRequest(findTestObject('cmd/CmdWithNoArgs', [('command') : 'iriscli keys show ' + faucet.getValue('name', 1)]))
-		boolean exists = (response.getStatusCode() == 200)
-		boolean match = response.getResponseText().contains(faucet.getValue('address', 1))
-		if (!exists) {
-			WS.sendRequest(findTestObject('cmd/CmdWithTwoArgs', [('command') : 'iriscli keys add '.concat(faucet.getValue('name', 1)).concat(' --recover'), ('args1'): faucet.getValue('password', 1), ('args2'): faucet.getValue('seed', 1)]))
-		} else if (!match){
-			WS.sendRequest(findTestObject('cmd/CmdWithThreeArgs', [('command') : 'iriscli keys add '.concat(faucet.getValue('name', 1)).concat(' --recover'), ('args1'): 'y', ('args2'): faucet.getValue('password', 1), ('args3'): faucet.getValue('seed', 1)]))
-		}
+		//		TestData faucet = findTestData('base/faucet')
+		//		ResponseObject response = WS.sendRequest(findTestObject('cmd/CmdWithNoArgs', [('command') : 'iriscli keys show ' + faucet.getValue('name', 1)]))
+		//		boolean exists = (response.getStatusCode() == 200)
+		//		boolean match = response.getResponseText().contains(faucet.getValue('address', 1))
+		//		if (!exists) {
+		//			WS.sendRequest(findTestObject('cmd/CmdWithTwoArgs', [('command') : 'iriscli keys add '.concat(faucet.getValue('name', 1)).concat(' --recover'), ('args1'): faucet.getValue('password', 1), ('args2'): faucet.getValue('seed', 1)]))
+		//		} else if (!match){
+		//			WS.sendRequest(findTestObject('cmd/CmdWithThreeArgs', [('command') : 'iriscli keys add '.concat(faucet.getValue('name', 1)).concat(' --recover'), ('args1'): 'y', ('args2'): faucet.getValue('password', 1), ('args3'): faucet.getValue('seed', 1)]))
+		//		}
 	}
 
 	@Keyword
 	public static void initRest() {
-		TestData faucet = findTestData('keys/faucet')
-		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/query/get key by name', [('name') : faucet.getValue('name', 1)]))
-		boolean exists = (response.getStatusCode() == 200)
-		boolean match = response.getResponseText().contains(faucet.getValue('address', 1))
-		if (!exists) {
-			WS.sendRequest(findTestObject('rest/keys/add/recover by seed', [('name') : faucet.getValue('name', 1), ('password'): faucet.getValue('name', 1), ('seed'): faucet.getValue('seed', 1)]))
-		} else if (!match){
-			// TODO there is no rest api for rewriting an existing key
-		}
+		//		TestData faucet = findTestData('base/faucet')
+		//		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/query/get key by name', [('name') : faucet.getValue('name', 1)]))
+		//		boolean exists = (response.getStatusCode() == 200)
+		//		boolean match = response.getResponseText().contains(faucet.getValue('address', 1))
+		//		if (!exists) {
+		//			WS.sendRequest(findTestObject('rest/keys/add/recover by seed', [('name') : faucet.getValue('name', 1), ('password'): faucet.getValue('name', 1), ('seed'): faucet.getValue('seed', 1)]))
+		//		} else if (!match){
+		//			// TODO there is no rest api for rewriting an existing key
+		//		}
 	}
 }

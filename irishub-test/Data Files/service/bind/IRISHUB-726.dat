@@ -8,43 +8,32 @@
    <dataFileGUID>7a8fc1f3-4541-405d-9657-bfd55aba244a</dataFileGUID>
    <dataSourceUrl></dataSourceUrl>
    <driver>InternalData</driver>
-   <data>0.004iris 100 5000 Local 1000iris 1iris null</data>
-   <data>0.004iris 200 10000 Global 1000iris 9iris-atto null</data>
-   <data>null null null null null null null</data>
+   <data>1 1 Local 1000iris 1iris</data>
+   <data>2 10000 Global 2000iris 0iris-atto</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
-      <name>fee</name>
-      <size>3</size>
+      <name>avg-rsp-time</name>
+      <size>2</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>1</columnIndex>
-      <name>avg-rsp-time</name>
-      <size>3</size>
+      <name>usable-time</name>
+      <size>2</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>2</columnIndex>
-      <name>usable-time</name>
-      <size>3</size>
+      <name>bind-type</name>
+      <size>2</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>3</columnIndex>
-      <name>bind-type</name>
-      <size>3</size>
+      <name>deposit</name>
+      <size>2</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>4</columnIndex>
-      <name>deposit</name>
-      <size>3</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>5</columnIndex>
       <name>prices</name>
-      <size>3</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>6</columnIndex>
-      <name>summary</name>
-      <size>3</size>
+      <size>2</size>
    </internalDataColumns>
    <isInternalPath>false</isInternalPath>
    <query></query>

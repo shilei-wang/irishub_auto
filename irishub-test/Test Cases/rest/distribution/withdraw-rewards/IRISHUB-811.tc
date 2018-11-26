@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Summary: 【Distribution withdraw-rewards】为指定的delegator提取delegation奖励 负向测试用例
+Description:  测试类型：负向功能测试
+ 软件版本：>= v0.7.0-rc0
+ 前置条件：至少4个验证人节点的irishub网络
+
+ 测试内容描述与期望结果：
+1）为指定的错误地址的delegator，向指定的一个validator提取奖励（返回失败标识）
+2）为指定的错误地址的delegator，提取所有的delegation奖励（返回失败标识）</description>
+   <name>IRISHUB-811</name>
+   <tag></tag>
+   <integratedEntity>
+      <productName>JIRA</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;jiraIssue&quot;:{&quot;fields&quot;:{&quot;customFields&quot;:{&quot;customfield_10005&quot;:&quot;1|zzy0ds:&quot;,&quot;customfield_10000&quot;:&quot;IRISHUB-725&quot;},&quot;status&quot;:{&quot;id&quot;:1,&quot;description&quot;:&quot;The issue is open and ready for the assignee to start work on it.&quot;,&quot;iconUrl&quot;:&quot;http://jira.bianjie.ai/images/icons/statuses/open.png&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/status/1&quot;,&quot;name&quot;:&quot;打开的&quot;},&quot;project&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/project/10102&quot;,&quot;key&quot;:&quot;IRISHUB&quot;,&quot;id&quot;:10102,&quot;name&quot;:&quot;IRIShub&quot;},&quot;components&quot;:[],&quot;summary&quot;:&quot;【Distribution withdraw-rewards】为指定的delegator提取delegation奖励 负向测试用例&quot;,&quot;description&quot;:&quot; 测试类型：负向功能测试\r\n 软件版本：\u003e\u003d v0.7.0-rc0\r\n 前置条件：至少4个验证人节点的irishub网络\r\n\r\n 测试内容描述与期望结果：\r\n1）为指定的错误地址的delegator，向指定的一个validator提取奖励（返回失败标识）\r\n2）为指定的错误地址的delegator，提取所有的delegation奖励（返回失败标识）&quot;,&quot;reporter&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;assignee&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;priority&quot;:{&quot;id&quot;:10002,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/priority/10002&quot;,&quot;name&quot;:&quot;Normal&quot;},&quot;votes&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/IRISHUB-811/votes&quot;,&quot;votes&quot;:0,&quot;hasVoted&quot;:false},&quot;fixVersions&quot;:[],&quot;subtasks&quot;:[],&quot;labels&quot;:[]},&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/13936&quot;,&quot;key&quot;:&quot;IRISHUB-811&quot;,&quot;id&quot;:13936}}</value>
+         </entry>
+      </properties>
+      <type>REPORT</type>
+   </integratedEntity>
+   <comment></comment>
+   <testCaseGuid>6f08cc56-8546-4217-92e8-6fd73533539f</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Summary: 【Distribution validator-distr-info】validator下的distribution信息查询 正向测试用例
+Description: 测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+至少4个验证人节点的irishub网络
+
+测试内容和期望结果：
+使用正确的validator地址进行查询 （返回成功标识）
+</description>
+   <name>IRISHUB-802</name>
+   <tag></tag>
+   <integratedEntity>
+      <productName>JIRA</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;jiraIssue&quot;:{&quot;fields&quot;:{&quot;customFields&quot;:{&quot;customfield_10005&quot;:&quot;1|zzy080:&quot;,&quot;customfield_10000&quot;:&quot;IRISHUB-725&quot;},&quot;status&quot;:{&quot;id&quot;:1,&quot;description&quot;:&quot;The issue is open and ready for the assignee to start work on it.&quot;,&quot;iconUrl&quot;:&quot;http://jira.bianjie.ai/images/icons/statuses/open.png&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/status/1&quot;,&quot;name&quot;:&quot;打开的&quot;},&quot;project&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/project/10102&quot;,&quot;key&quot;:&quot;IRISHUB&quot;,&quot;id&quot;:10102,&quot;name&quot;:&quot;IRIShub&quot;},&quot;components&quot;:[],&quot;summary&quot;:&quot;【Distribution validator-distr-info】validator下的distribution信息查询 正向测试用例&quot;,&quot;description&quot;:&quot;测试类型：正向功能测试\r\n软件版本：\u003e\u003d v0.7.0-rc0\r\n\r\n前置条件：\r\n至少4个验证人节点的irishub网络\r\n\r\n测试内容和期望结果：\r\n使用正确的validator地址进行查询 （返回成功标识）\r\n&quot;,&quot;reporter&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;assignee&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;priority&quot;:{&quot;id&quot;:10002,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/priority/10002&quot;,&quot;name&quot;:&quot;Normal&quot;},&quot;votes&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/IRISHUB-802/votes&quot;,&quot;votes&quot;:0,&quot;hasVoted&quot;:false},&quot;fixVersions&quot;:[],&quot;subtasks&quot;:[],&quot;labels&quot;:[]},&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/13910&quot;,&quot;key&quot;:&quot;IRISHUB-802&quot;,&quot;id&quot;:13910}}</value>
+         </entry>
+      </properties>
+      <type>REPORT</type>
+   </integratedEntity>
+   <comment></comment>
+   <testCaseGuid>25bd4d5a-7830-49eb-a396-69acef32e0fc</testCaseGuid>
+</TestCaseEntity>

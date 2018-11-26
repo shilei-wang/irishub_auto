@@ -27,6 +27,9 @@ public class StringUtils {
 
 	@Keyword
 	public static boolean stringContains(String resp, String msg) {
-		return (resp.indexOf(msg) != -1)  && (!msg.equals(""))
+		if (msg.equals("")) {
+			msg = "null"
+		}
+		return (resp.indexOf(msg) != -1)
 	}
 }

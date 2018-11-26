@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：负向功能测试
+ 软件版本：>= v0.7.0-rc0
+前置条件：至少4个验证人节点的irishub网络
+
+测试内容与期望结果：
+1）使用未建立委托关系的delegator地址，查询贡献信息
+2）使用fva规范的delegator地址，查询贡献信息 （返回错误标识）
+3）使用空的delegator地址，查询贡献信息 （返回错误标识）</description>
+   <name>IRISHUB-814</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>37ed80f8-f32b-45c9-b2ca-9c393742348b</testCaseGuid>
+</TestCaseEntity>

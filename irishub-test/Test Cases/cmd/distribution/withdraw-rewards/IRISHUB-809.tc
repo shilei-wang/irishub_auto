@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+前置条件：
+
+1）至少4个验证人节点的irishub网络
+2）delegator已与validator建立了委托关系，且已经设定的提取地址。
+
+测试内容描述与期望结果：
+1）不指定validator地址， 从所有validators的地址取回reward （--is-validator指定false），验证reward是否到账
+2）指定validator地址， 从指定的validator的地址取回reward（--is-validator指定false），验证reward是否到账
+3）--is-validator指定为true， 从自身验证人节点取回commission （不指定validator地址），验证commission是否到账</description>
+   <name>IRISHUB-809</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>5e32c6ac-5462-4d39-afc6-ade652fff658</testCaseGuid>
+</TestCaseEntity>

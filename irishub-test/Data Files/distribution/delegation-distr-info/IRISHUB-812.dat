@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>IRISHUB-812</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>d9ea7285-0d38-41d8-9a38-36e6ecb68421</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju default UnmarshalBinaryLengthPrefixed null</data>
+   <data>fva1mzzjnagmvck8fdcqqs67camw68lla0u64xgk5s default expected+faa%2C+got+fva expected+faa%2C+got+fva</data>
+   <data>null default must+provide+an+address 404+page+not+found</data>
+   <data>faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju expected+fva%2C+got+faa expected+fva%2C+got+faa</data>
+   <data>faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju null must+provide+an+address 404+page+not+found</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>address-delegator</name>
+      <size>5</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>address-validator</name>
+      <size>5</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>cmd_result</name>
+      <size>5</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>rest_result</name>
+      <size>5</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

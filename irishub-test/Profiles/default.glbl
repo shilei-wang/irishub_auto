@@ -19,4 +19,9 @@
       <initValue>'10.1.2.168'</initValue>
       <name>commanderIP</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'10.1.4.202:1317'</initValue>
+      <name>lcdIP</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

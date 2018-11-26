@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Summary: 【Distribution】委托人设置转账地址 正向测试用例
+Description: 测试类型：正向功能测试
+ 软件版本：>= v0.7.0-rc0
+ 前置条件：至少4个验证人节点的irishub网络
+
+ 测试内容描述与期望结果：
+ 1）为指定的delegator初始化withdraw adddress （返回成功标识）
+ 2）为指定的delegator更新withdraw address （返回成功标识）
+
+
+</description>
+   <name>IRISHUB-746</name>
+   <tag></tag>
+   <integratedEntity>
+      <productName>JIRA</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;jiraIssue&quot;:{&quot;fields&quot;:{&quot;customFields&quot;:{&quot;customfield_10005&quot;:&quot;1|zq0000:&quot;,&quot;customfield_10000&quot;:&quot;IRISHUB-783&quot;,&quot;customfield_10004&quot;:[&quot;com.atlassian.greenhopper.service.sprint.Sprint@49380ea4[id\u003d24,rapidViewId\u003d17,state\u003dCLOSED,name\u003dIRISHub Sprint 20181029-1116,startDate\u003d2018-10-29T18:00:49.964+08:00,endDate\u003d2018-11-16T06:00:00.000+08:00,completeDate\u003d2018-11-19T10:42:25.587+08:00,sequence\u003d24,goal\u003d\u003cnull\u003e]&quot;,&quot;com.atlassian.greenhopper.service.sprint.Sprint@7738e641[id\u003d35,rapidViewId\u003d17,state\u003dACTIVE,name\u003dIRIShub Sprint 20181119-1131,startDate\u003d2018-11-19T01:58:58.677+08:00,endDate\u003d2018-11-30T23:58:00.000+08:00,completeDate\u003d\u003cnull\u003e,sequence\u003d35,goal\u003d11/19 ~ 11/30 (2 weeks)：\n------------- week 1 ---------------\n1、准备主网Reload方案\n- 备份历史数据\n- 浏览历史数据\n- 生成任意高度的历史状态快照\n- 生产新主网的genesis.json\n- 制定新主网启动流程\n2、功能开发与测试\n- 升级CosmosSDK依赖至0.26.x ?\n- 确定并调整IRIShub的模块结构\n- 基于设计规范修改：文件/目录指定方法，异常返回，...\n- 添加 profiling 模块\n- iService Invocation需求评审和开发\n- 继续完善更新docs (for v0.8)\n3、设计开发 fuxi-5000 压力仿真程序\n4、为 fuxi-5000 升级提前做准备工作【能通过genesis指定Bech32前缀】\n------------- week 2 ---------------\n5、测试并完善主网Reload方案\n6、iService Invocation测试\n7、升级测试网\n- 升级至 fuxi-5000 (v0.7)  -- 目标: 11/29 周四\n- 在 fuxi-5000 上完成1次平滑升级\n- 部署压力仿真程序\n8、发布v0.8 RC  -- 目标: 11/30 周五\n9、KMS方案研究\n【重要：v0.8是主网基线，后续版本要与v0.8在接口上保持兼容】]&quot;]},&quot;status&quot;:{&quot;id&quot;:3,&quot;description&quot;:&quot;此问题正在被经办人积极处理。&quot;,&quot;iconUrl&quot;:&quot;http://jira.bianjie.ai/images/icons/statuses/inprogress.png&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/status/3&quot;,&quot;name&quot;:&quot;处理中&quot;},&quot;project&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/project/10102&quot;,&quot;key&quot;:&quot;IRISHUB&quot;,&quot;id&quot;:10102,&quot;name&quot;:&quot;IRIShub&quot;},&quot;components&quot;:[],&quot;summary&quot;:&quot;【Distribution】委托人设置转账地址 正向测试用例&quot;,&quot;description&quot;:&quot;测试类型：正向功能测试\r\n 软件版本：\u003e\u003d v0.7.0-rc0\r\n 前置条件：至少4个验证人节点的irishub网络\r\n\r\n 测试内容描述与期望结果：\r\n 1）为指定的delegator初始化withdraw adddress （返回成功标识）\r\n 2）为指定的delegator更新withdraw address （返回成功标识）\r\n\r\n\r\n&quot;,&quot;reporter&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;assignee&quot;:{&quot;emailAddress&quot;:&quot;jeremy@bianjie.ai&quot;,&quot;displayName&quot;:&quot;刘旭&quot;,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/user?username\u003dliuxu&quot;,&quot;name&quot;:&quot;liuxu&quot;},&quot;priority&quot;:{&quot;id&quot;:10002,&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/priority/10002&quot;,&quot;name&quot;:&quot;Normal&quot;},&quot;votes&quot;:{&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/IRISHUB-746/votes&quot;,&quot;votes&quot;:0,&quot;hasVoted&quot;:false},&quot;fixVersions&quot;:[],&quot;subtasks&quot;:[],&quot;labels&quot;:[]},&quot;self&quot;:&quot;http://jira.bianjie.ai/rest/api/2/issue/13767&quot;,&quot;key&quot;:&quot;IRISHUB-746&quot;,&quot;id&quot;:13767}}</value>
+         </entry>
+      </properties>
+      <type>REPORT</type>
+   </integratedEntity>
+   <comment></comment>
+   <testCaseGuid>1790021d-87e5-473e-8c2d-d4766989b8ef</testCaseGuid>
+</TestCaseEntity>
