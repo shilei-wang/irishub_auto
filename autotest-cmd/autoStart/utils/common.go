@@ -104,25 +104,27 @@ func StartAndPrint(num string){
 
 func ModifyToml(num string) error{
 	n, _ := strconv.Atoi(num)
-	n--
 
 	str  := ""
 	file := ""
-	Params := []string{"v1","v2","v3"}
-	param_ports := []string{"6","7","8"}
+	Params := []string{"v0","v1","v2","v3"}
+	param_ports := []string{"5","6","7","8"}
 
 	for i, param := range Params {
 		if i == n {break}
 
 		file = HOME+"testnet/"+param+"/iris/config/config.toml"
-
 		if str,Err = read(file); Err != nil {
 			return Err
 		}
 
-		str = strings.Replace(str, "26656", "266"+param_ports[i]+"6", 1) //only once
-		str = strings.Replace(str, "26657", "266"+param_ports[i]+"7", -1)
-		str = strings.Replace(str, "26658", "266"+param_ports[i]+"8", -1)
+		str = strings.Replace(str, "timeout_commit = \"5s\"", "timeout_commit = \"2s\"", -1)
+
+		if (param != "v0") {
+			str = strings.Replace(str, "26656", "266"+param_ports[i]+"6", 1) //only once
+			str = strings.Replace(str, "26657", "266"+param_ports[i]+"7", -1)
+			str = strings.Replace(str, "26658", "266"+param_ports[i]+"8", -1)
+		}
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
