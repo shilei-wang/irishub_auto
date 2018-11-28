@@ -14,6 +14,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.testobject.ResponseObject
 import rest.BaseTx
+import rest.AccountUtils
 
 String[] BaseTxInfo
 TestData data = findTestData('distribution/set-withdraw-addr/IRISHUB-746')
@@ -26,7 +27,7 @@ for (def index : (1..data.getRowNumbers())) {
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_post_distribution_delegatorAddr_withdrawAddress', [ ('delegatorAddr') : BaseTxInfo[1],('basetx') : BaseTxInfo[0],('withdraw_address') : data.getValue("set-withdraw-addr", index), ('lcdIP') : GlobalVariable.lcdIP]))
 	WS.verifyResponseStatusCode(response, 200)
 	System.out.println(response.responseBodyContent)
-	sleep(5000)
+	AccountUtils.waitUntilNextBlock()
 }
 
 

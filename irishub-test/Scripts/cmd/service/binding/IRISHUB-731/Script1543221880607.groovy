@@ -23,7 +23,7 @@ Utils u = new Utils();
 for (int i = 1; i <= u.td.getRowNumbers() ; i++) {
 	command = u.command.concat(' --service-name=').concat(u.td.getValue("service-name", i))
 	command = command.concat(' --provider=').concat(u.td.getValue("provider", i))
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',command, 0)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',command, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent, u.td.getValue("cmd_result", i)), true)
 }
 

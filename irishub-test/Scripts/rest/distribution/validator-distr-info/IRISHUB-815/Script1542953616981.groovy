@@ -15,14 +15,10 @@ import internal.GlobalVariable as GlobalVariable
 import utils.StringUtils
 
 String validatorAddr
-TestData data = findTestData('distribution/delegator-distr-info/IRISHUB-815')
-String delegatorAddr
+TestData data = findTestData('distribution/validator-distr-info/IRISHUB-815')
 
 for (def index : (1..data.getRowNumbers())) {
-	validatorAddr = data.getValue("address-validator", index)
-	if (validatorAddr.equals("default")) {
-		//validatorAddr = GetValJson.getFirstValAddress();
-	}
+	validatorAddr = data.getValue("account", index)
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_validatorAddr_valDistrInfo', [ ('validatorAddr') : validatorAddr, ('lcdIP') : GlobalVariable.lcdIP]))
 	System.out.println(response.responseBodyContent)
 	if (index == 1) {

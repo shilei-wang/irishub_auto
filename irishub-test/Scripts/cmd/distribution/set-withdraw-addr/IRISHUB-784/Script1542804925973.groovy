@@ -21,7 +21,7 @@ for (int i = 1; i <= u.td.getRowNumbers() ; i++) {
 	u.Prepare(i)
 	cmd = CmdUtils.generateCmd(u.command, u.td, i)
 	cmd = cmd.replace("--set-withdraw-addr=", "")
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", i)), true)
 
 	

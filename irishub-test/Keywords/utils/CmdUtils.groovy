@@ -55,11 +55,30 @@ public class CmdUtils {
 
 
 	@Keyword
-	public static ResponseObject sendRequest(String obj, String cmd, int delay) {
+	public static ResponseObject sendRequest(String obj, String cmd, String type) {
 		String password = findTestData('base/faucet').getValue('password', 1)
 		ResponseObject response = WS.sendRequest(findTestObject(obj, [('command') : cmd, ('args1') : password, ('commanderIP'):GlobalVariable.commanderIP]));
-		sleep(delay)
+		if (type.equals("wait")) {
+			waitUntilNextBlock()
+		}
 		return response
+	}
+
+	@Keyword
+	public static waitUntilNextBlock(){
+		String cmd ="iriscli status".concat(' --node=').concat(GlobalVariable.node)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
+		JsonObject re = CmdUtils.Parse(response.responseBodyContent).get("sync_info").getAsJsonObject()
+		int next_height = re.get("latest_block_height").getAsInt() + 1
+
+		while(true){
+			response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
+			re = CmdUtils.Parse(response.responseBodyContent).get("sync_info").getAsJsonObject()
+			if (re.get("latest_block_height").getAsInt() >= next_height){
+				break
+			}
+			sleep(500)
+		}
 	}
 
 	private static String beginLog = '\n*****************************\n'
@@ -122,7 +141,7 @@ public class CmdUtils {
 	public static sendIris(String source, String dest, String amount){
 		String cmd ="iriscli bank send --chain-id="+GlobalVariable.chainId+" --amount="+amount+" --from="+source+" --to="+dest
 		cmd = CmdUtils.addTxFee(cmd, findTestData('base/tx'), 1)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 		return
 	}
@@ -134,7 +153,7 @@ public class CmdUtils {
 		}
 
 		String cmd ="iriscli bank account "+dest
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"coins"), true)
 		String re = Parse(response.responseBodyContent).get("coins").getAsJsonArray().get(0).getAsString().replace("iris", "")
 		return Double.valueOf(re)
@@ -144,7 +163,7 @@ public class CmdUtils {
 	public static String createNewAccount(String faucet, String amount){
 		String name = "user_"+generateRandomID()
 		String cmd ="iriscli keys add "+name
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent, name), true)
 		if (amount != "0iris") {
 			sendIris(faucet, getAddressFromName(name,"faa"), amount)

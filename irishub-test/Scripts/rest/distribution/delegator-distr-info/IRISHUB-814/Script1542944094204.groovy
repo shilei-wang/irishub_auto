@@ -15,22 +15,13 @@ import internal.GlobalVariable as GlobalVariable
 import rest.GetValJson
 import utils.StringUtils
 
-String validatorAddr
-TestData data = findTestData('distribution/delegator-distr-info/IRISHUB-814')
 String delegatorAddr
+TestData data = findTestData('distribution/delegator-distr-info/IRISHUB-814')
 
 for (def index : (1..data.getRowNumbers())) {
-	validatorAddr = data.getValue("address-validator", index)
-	if (validatorAddr.equals("default")) {
-		validatorAddr = GetValJson.getFirstValAddress();
-	}
+	delegatorAddr = data.getValue("account", index)
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_delegatorAddr_distrInfos', [ ('delegatorAddr') : delegatorAddr, ('lcdIP') : GlobalVariable.lcdIP]))
 	System.out.println(response.responseBodyContent)
-	if (index == 1) {
-		WS.verifyResponseStatusCode(response, 204)
-	}
-	else {
-		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
-	}
+	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
 	sleep(500)
 }

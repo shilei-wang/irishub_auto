@@ -16,6 +16,7 @@ import internal.GlobalVariable as GlobalVariable
 import utils.CmdUtils
 import utils.StringUtils as StringUtils
 import rest.BaseTx
+import rest.AccountUtils
 
 String[] BaseTxInfo
 TestData data = findTestData('distribution/withdraw-address/IRISHUB-797')
@@ -28,7 +29,7 @@ for (def index : (1..data.getRowNumbers())) {
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_post_distribution_delegatorAddr_withdrawAddress', [ ('delegatorAddr') : BaseTxInfo[1],('basetx') : BaseTxInfo[0],('withdraw_address') : data.getValue("set-withdraw-addr", index), ('lcdIP') : GlobalVariable.lcdIP]))
 	WS.verifyResponseStatusCode(response, 200)
 	System.out.println(response.responseBodyContent)
-	sleep(5000)
+	AccountUtils.waitUntilNextBlock()
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_delegatorAddr_withdrawAddress',[('delegatorAddr') : BaseTxInfo[1], ('lcdIP') : GlobalVariable.lcdIP]))
 	WS.verifyResponseStatusCode(response, 200)
 	System.out.println(response.responseBodyContent)

@@ -21,7 +21,7 @@ Utils u = new Utils();
 for (int i = 1; i <= u.td.getRowNumbers(); i++) {
 	u.Prepare(i)
 	cmd = u.command +" "+ u.td.getValue("account", i)
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", i)), true)
 	//CmdUtils.printLog(response.responseBodyContent)
 }

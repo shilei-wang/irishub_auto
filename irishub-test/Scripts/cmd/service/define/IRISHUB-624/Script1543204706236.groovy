@@ -28,7 +28,7 @@ for (int i = 1; i < (u.td.getRowNumbers() + 1); i++) {
 
     cmd = CmdUtils.generateCmd(u.command, u.td, i)	
 	cmd = u.UseRandomServiceName(cmd) //为service name添加随机ID， 避免每次重启新链
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 
 	//CmdUtils.printLog(response.responseBodyContent)   

@@ -18,7 +18,7 @@ import utils.StringUtils as StringUtils
 
 Utils u = new Utils();
 
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', u.command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', u.command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", 1)), true)
 CmdUtils.printLog(response.responseBodyContent)
 

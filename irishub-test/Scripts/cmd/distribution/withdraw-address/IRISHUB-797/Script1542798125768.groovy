@@ -21,7 +21,7 @@ Utils u = new Utils();
 name = findTestData('base/faucet').getValue('name', 1)
 faa = CmdUtils.getAddressFromName(name,"faa")
 cmd = u.command+" "+faa
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("set-withdraw-addr", 1)), true)
 
 
@@ -45,7 +45,7 @@ class Utils {
 		cmd = CmdUtils.addTxFee(cmd, findTestData('base/tx'), 1)			
 		cmd = CmdUtils.generateCmd(cmd, data, 1)
 		cmd = cmd.replace("--set-withdraw-addr=", "")
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 		WS.verifyResponseStatusCode(response, 200)		
 	}
 

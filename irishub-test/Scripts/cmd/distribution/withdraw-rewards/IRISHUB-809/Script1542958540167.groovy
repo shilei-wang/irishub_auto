@@ -34,7 +34,7 @@ for (int i = 0; i < cmdArray.length ; i++) {
 	u.GenerateFee()
 	cmd = u.command+cmdArray[i]
 	
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', u.command, 5000)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', u.command, "wait")
 	balance_after = CmdUtils.getBalance(u.withdraw_add, "address")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 	WS.verifyGreaterThan(balance_after, balance_before)
@@ -59,7 +59,7 @@ class Utils {
 	public GenerateFee(){
 		String address =  CmdUtils.getAddressFromName(name, "faa")
 		String cmd ="iriscli bank send --chain-id="+GlobalVariable.chainId+" --amount=1iris"+" --from="+name+" --to="+address+" --gas=10000 --fee=50iris"
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 	}
 

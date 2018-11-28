@@ -41,7 +41,7 @@ cmdArray[5] = " --is-validator=true --only-from-validator="+u.td.getValue('data'
 for (int i = 0; i < cmdArray.length ; i++) {
 	u.Prepare(i)
 	cmd = u.command+cmdArray[i]
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue('cmd_result', i+1)), true)	
 	//CmdUtils.printLog(response.responseBodyContent)
 }

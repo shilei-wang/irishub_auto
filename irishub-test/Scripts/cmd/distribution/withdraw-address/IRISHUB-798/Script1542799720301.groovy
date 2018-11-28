@@ -21,7 +21,7 @@ for (int i = 1; i <= u.td.getRowNumbers(); i++) {
 	u.Prepare(i)
 	cmd = CmdUtils.generateCmd(u.command, u.td, i)
 	cmd = cmd.replace("--account=", "")
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 0)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", i)), true)
 
 	//CmdUtils.printLog(response.responseBodyContent)

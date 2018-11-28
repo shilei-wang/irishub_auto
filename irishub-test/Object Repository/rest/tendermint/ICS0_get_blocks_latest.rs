@@ -18,7 +18,7 @@
    </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>HTTP://localhost:1317/blocks/latest</restUrl>
+   <restUrl>HTTP://${lcdIP}/blocks/latest</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>

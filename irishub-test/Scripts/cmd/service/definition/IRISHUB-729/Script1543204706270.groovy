@@ -23,24 +23,24 @@ Utils u = new Utils();
 
 //查询请求列表时，-def-chain-id、-service-name分别设置为空
 command = u.command.concat(' --def-chain-id=').concat("").concat(' --service-name=').concat(u.serviceName)
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"not existed"), true)
 
 
 command = u.command.concat(' --def-chain-id=').concat(GlobalVariable.chainId).concat(' --service-name=').concat("")
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"not existed"), true)
 
 
 //查询一个未定义的service name
 command = u.command.concat(' --def-chain-id=').concat(GlobalVariable.chainId).concat(' --service-name=').concat("ABC")
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"not existed"), true)
 
 
 //指定一个不存在的def-chain-id进行查询
 command = u.command.concat(' --def-chain-id=').concat("ABC").concat(' --service-name=').concat(u.serviceName)
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"not existed"), true)
 
 
@@ -72,7 +72,7 @@ class Utils {
 				
 		define_command = CmdUtils.generateCmd(define_command, td, 1)
 		define_command = UseRandomServiceName(define_command)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, "wait")
 		WS.verifyResponseStatusCode(response, 200)
 		//CmdUtils.printLog(response.responseBodyContent)
 	}

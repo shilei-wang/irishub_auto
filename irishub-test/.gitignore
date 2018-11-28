@@ -1,5 +1,7 @@
 bin/
 Reports/
 Libs/
+settings/
+Include/
 .classpath
 .project

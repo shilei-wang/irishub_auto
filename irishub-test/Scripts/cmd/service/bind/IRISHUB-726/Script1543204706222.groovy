@@ -25,7 +25,7 @@ for (int i = 1; i <= u.td.getRowNumbers(); i++) {
 	u.defineService()
 	cmd = u.command.concat(' --service-name=').concat(u.serviceName)
 	cmd = CmdUtils.generateCmd(cmd, u.td, i)
-	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, 5000)
+	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "wait")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 	//CmdUtils.printLog(response.responseBodyContent)
 }
@@ -60,7 +60,7 @@ class Utils {
 				
 		define_command = CmdUtils.generateCmd(define_command, findTestData('service/define/IRISHUB-624'), 1)
 		define_command = UseRandomServiceName(define_command)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, "wait")
 		WS.verifyResponseStatusCode(response, 200)
 		//CmdUtils.printLog(response.responseBodyContent)
 	}

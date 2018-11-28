@@ -4,7 +4,7 @@
    <name>lxTest2</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-11-23T11:13:56</lastRun>
+   <lastRun>2018-11-28T16:31:28</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -58,5 +58,29 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/rest/distribution/set-withdraw-addr/IRISHUB-784</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b726bbe6-986d-4cb2-97f8-7a601432f4b7</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/rest/distribution/delegator-distr-info/IRISHUB-814</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4ae9ca4-072d-410d-ba77-532276043cfd</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/rest/distribution/delegator-distr-info/IRISHUB-813</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>1ecf0818-13ed-486f-aeed-1619ff18cd28</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/rest/distribution/validator-distr-info/IRISHUB-815</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>a67d1db0-3e55-4105-aee5-7738a1d5c7ef</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/rest/distribution/validator-distr-info/IRISHUB-802</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

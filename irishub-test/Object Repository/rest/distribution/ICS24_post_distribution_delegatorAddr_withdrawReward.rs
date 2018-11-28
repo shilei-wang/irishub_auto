@@ -36,7 +36,7 @@
    </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>POST</restRequestMethod>
-   <restUrl>http:/${lcdIP}/distribution/${delegatorAddr}$withdrawReward?async=&amp;simulate=&amp;generate-only=</restUrl>
+   <restUrl>http://${lcdIP}/distribution/${delegatorAddr}/withdrawReward</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -55,6 +55,13 @@
       <id>4bf0d382-6354-4ad6-b29c-dd581bf135e3</id>
       <masked>false</masked>
       <name>HttpBody</name>
+   </variables>
+   <variables>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>45669c3c-5984-44e3-9892-04c03de5d037</id>
+      <masked>false</masked>
+      <name>lcdIP</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 

@@ -14,13 +14,20 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 import rest.GetAddressByKey
 import rest.GetValJson
+import groovy.json.JsonSlurper
 
 TestData faucet = findTestData('base/faucet')
 String name = faucet.getValue('name', 1)
 String delegatorAddr = GetAddressByKey.getAddressByKey(name)
 String validatorAddr = GetValJson.getFirstValAddress()
 
+TestData data = findTestData('distribution/delegation-distr-info/IRISHUB-801')
+
 response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_delegatorAddr_distrInfo_validatorAddr', [ ('delegatorAddr') : delegatorAddr, ('validatorAddr') : validatorAddr, ('lcdIP') : GlobalVariable.lcdIP]))
 System.out.println(response.responseBodyContent)
 WS.verifyResponseStatusCode(response, 200)
 
+String result = data.getValue("cmd_result",1)
+JsonSlurper slurper = new JsonSlurper()
+Map parsedJson = slurper.parseText(response.responseBodyContent)
+WS.verifyEqual(parsedJson.containsKey(result), true)

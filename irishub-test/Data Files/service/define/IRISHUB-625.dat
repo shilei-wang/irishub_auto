@@ -11,7 +11,7 @@
    <data>001_service service-description author-description tag1%2Ctag2 null %2Froot%2Ftest.proto already+exist null</data>
    <data>null null null null null %2Froot%2Ftest.proto invalid+service+name null</data>
    <data>003_service null null null null null content+is+empty null</data>
-   <data>004_service null null null null %2Froot%2Ftest2.proto no+such+file+or+directory null</data>
+   <data>004_service null null null null %2Froot%2Ferror.proto no+such+file+or+directory null</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
       <name>service-name</name>

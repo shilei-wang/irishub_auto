@@ -14,6 +14,8 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 import rest.BaseTx
 import utils.StringUtils
+import rest.AccountUtils
+
 
 String[] BaseTxInfo
 TestData data = findTestData('distribution/set-withdraw-addr/IRISHUB-784')
@@ -27,7 +29,7 @@ for (def index : (1..data.getRowNumbers())) {
 	WS.verifyResponseStatusCode(response, 400)
 	System.out.println(response.responseBodyContent)
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
-	sleep(5000)
+	AccountUtils.waitUntilNextBlock()
 }
 
 

@@ -23,7 +23,7 @@ Utils u = new Utils();
 provider = CmdUtils.getAddressFromName(u.name, "faa")
 command = u.command.concat(' --service-name=').concat(u.serviceName)
 command = command.concat(' --provider=').concat(provider)
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',command, "sync")
 
 re = CmdUtils.Parse(response.responseBodyContent).get("value").getAsJsonObject()
 WS.verifyEqual(re.get("def_name").getAsString(), u.serviceName)
@@ -71,7 +71,7 @@ class Utils {
 				
 		define_command = CmdUtils.generateCmd(define_command, findTestData('service/define/IRISHUB-624'), 1)
 		define_command = UseRandomServiceName(define_command)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, "wait")
 		
 		return response
 		//CmdUtils.printLog(response.responseBodyContent)
@@ -84,7 +84,7 @@ class Utils {
 		
 		bind_command = bind_command.concat(' --service-name=').concat(serviceName)
 		bind_command = CmdUtils.generateCmd(bind_command, findTestData('service/bind/IRISHUB-726'), 1)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',bind_command, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs',bind_command, "wait")
 		
 		return response
 		//CmdUtils.printLog(response.responseBodyContent)

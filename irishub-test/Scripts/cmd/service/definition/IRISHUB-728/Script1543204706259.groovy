@@ -23,7 +23,7 @@ Utils u = new Utils();
 
 //正向测试 校验返回值
 command = u.command.concat(' --def-chain-id=').concat(GlobalVariable.chainId).concat(' --service-name=').concat(u.serviceName)
-response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, 0)
+response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', command, "sync")
 
 re = CmdUtils.Parse(response.responseBodyContent).get("SvcDef").getAsJsonObject()
 WS.verifyEqual(re.get("name").getAsString(), u.serviceName)
@@ -69,7 +69,7 @@ class Utils {
 				
 		define_command = CmdUtils.generateCmd(define_command, td, 1)
 		define_command = UseRandomServiceName(define_command)
-		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, 5000)
+		ResponseObject response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', define_command, "wait")
 		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"tx hash"), true)
 		//CmdUtils.printLog(response.responseBodyContent)
 	}
