@@ -72,6 +72,8 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
 
+		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
 			return Err
