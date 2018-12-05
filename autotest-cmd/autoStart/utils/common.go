@@ -77,6 +77,8 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
+		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"5\"", 1)
+
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
