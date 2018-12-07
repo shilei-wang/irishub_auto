@@ -64,9 +64,9 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"base_proposer_reward\": \"0.0100000000\"", "\"base_proposer_reward\": \"0.0000000001\"", 1)
 		str = strings.Replace(str, "\"bonus_proposer_reward\": \"0.0400000000\"", "\"bonus_proposer_reward\": \"0.0000000001\"", 1)
 
-		//str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.2000000000\"", 1)
-		//str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.5000000000\"", 1)
-		//str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
 
 		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
