@@ -148,7 +148,30 @@ func ModifyToml(num string) error{
 func AddAccount(num string) error{
 	n, _ := strconv.Atoi(num)
 
-	Params := []string{"v0","v1","v2","v3","node1","node2","node3","node4"}
+	Params := []string{"v0","v1","v2","v3"}
+
+	for i, param := range Params {
+		if i == n {break}
+
+		Params = []string{"keys", "add", param,"--recover"}
+
+		fmt.Println("Add account "+param)
+
+		str  := ""
+		file := HOME+"testnet/"+param+"/iriscli/key_seed.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		secret := find_substr(str,3,4)
+
+		//注意：1.repeat类型的password只读一次，只需要输入一2.以"\n"为分隔符读取不同行的数据  3.无需等待一次性输入
+		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
+		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret})
+	}
+
+	Params = []string{"node0","node1","node2","node3"}
 
 	for i, param := range Params {
 		if i == n {break}
@@ -181,6 +204,7 @@ func AddAccount(num string) error{
 		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
 		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret})
 	}
+
 
 	return nil
 }
