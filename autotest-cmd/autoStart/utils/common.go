@@ -60,9 +60,9 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
 
 
-		str = strings.Replace(str, "\"community_tax\": \"0.0200000000\"", "\"community_tax\": \"0.1000000000\"", 1)
-		str = strings.Replace(str, "\"base_proposer_reward\": \"0.0100000000\"", "\"base_proposer_reward\": \"0.0000000001\"", 1)
-		str = strings.Replace(str, "\"bonus_proposer_reward\": \"0.0400000000\"", "\"bonus_proposer_reward\": \"0.0000000001\"", 1)
+		//str = strings.Replace(str, "\"community_tax\": \"0.0200000000\"", "\"community_tax\": \"0.1000000000\"", 1)
+		//str = strings.Replace(str, "\"base_proposer_reward\": \"0.0100000000\"", "\"base_proposer_reward\": \"0.0000000001\"", 1)
+		//str = strings.Replace(str, "\"bonus_proposer_reward\": \"0.0400000000\"", "\"bonus_proposer_reward\": \"0.0000000001\"", 1)
 
 		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
 		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
