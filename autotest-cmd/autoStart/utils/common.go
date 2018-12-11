@@ -246,3 +246,60 @@ func Reset(c *CommonWorker){
 		//c(Command, Params,true,false)
 	}
 }
+
+
+func ModifyGenesis_c(num string) error{
+	Params := []string{"v0","v1","v2","v3"}
+	n, _ := strconv.Atoi(num)
+
+	for i, param := range Params {
+		if i == n {break}
+
+		str  := ""
+		file := HOME+"testnet/"+param+"/iris/config/genesis.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
+
+		if (n == 1) {
+			str = strings.Replace(str, "\"loose_tokens\": \"150000000000000000000.", "\"loose_tokens\": \"2000000000000000000000000.", 1)
+		} else if  (n == 2) {
+			str = strings.Replace(str, "\"loose_tokens\": \"300000000000000000000.", "\"loose_tokens\": \"4000000000000000000000000.", 1)
+		} else if  (n == 4) {
+			str = strings.Replace(str, "\"loose_tokens\": \"600000000000000000000.", "\"loose_tokens\": \"8000000000000000000000000.", 1)
+
+		}
+
+		str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
+		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+
+		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
+
+		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+
+		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
+		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
+
+		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
+
+		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"5000000000\"", 1)
+
+
+		if Err := write(file, str); Err != nil {
+			fmt.Println(Err.Error())
+			return Err
+		}
+	}
+
+	return nil
+}
