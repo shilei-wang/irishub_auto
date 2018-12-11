@@ -94,7 +94,7 @@ func Run_testnets_c(num string){
 	Init_testnet(num)
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis(num); Err != nil {
+	if Err = ModifyGenesis_c(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
