@@ -5,6 +5,7 @@ import (
 
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
@@ -23,10 +24,6 @@ func main() {
 	}
 
 	switch num {
-		case "0":
-			//check important bug
-			//do not modify genisis
-			Run_testnet_0()
 		case "1":
 			Run_testnets(num)
 		case "2":
@@ -35,9 +32,14 @@ func main() {
 			// TODO
 		case "4":
 			Run_testnets(num)
+		case "c":
+			Run_testnets_c("1")
+		case "t":
+			Run_testnet_temp("1")
 
 
-		default:
+
+	default:
 	}
 }
 
@@ -77,8 +79,9 @@ func Run_testnets(num string){
 }
 
 
-func Run_testnet_0(){
-	fmt.Println(".Run_1_iris. ")
+func Run_testnets_c(num string){
+	fmt.Println(".Run_"+num+"_testnets. ")
+
 	fmt.Println("(1) Delete old files ... ")
 	Params = []string{"testnet", ".iriscli"}
 	if Err = Rm(Params); Err != nil {
@@ -86,14 +89,67 @@ func Run_testnet_0(){
 		return
 	}
 
-	fmt.Println("(2) iris testnet --v=1 ... ")
-	Init_testnet("1")
+	fmt.Println("(2) iris testnet ")
+	Init_testnet(num)
 
-	fmt.Println("(3) Add account for v0 .... ")
-	AddAccount("1")
+	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
+	if Err = ModifyGenesis_c(num); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
 
-	fmt.Println("(4) Run 1 Iris ... ")
-	StartAndPrint("1")
+	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
+	if Err = ModifyToml(num); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
+	AddAccount(num)
+
+	fmt.Println("(6) Run "+num+" Iris ... ")
+	StartAndPrint(num)
+
+	quit := make(chan bool)
+	<-quit
+}
+
+
+func Run_testnet_temp(num string){
+	fmt.Println(".Run_"+num+"_testnets. ")
+
+	fmt.Println("(1) Delete old files ... ")
+	Params = []string{"testnet", ".iriscli"}
+	if Err = Rm(Params); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	fmt.Println("(2) iris testnet ")
+	Init_testnet(num)
+
+	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
+	if Err = ModifyGenesis_c(num); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	BLOCK_TIME = "20"
+
+	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
+	if Err = ModifyToml(num); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
+	AddAccount(num)
+
+
+	time.Sleep(time.Duration(30)*time.Second)
+
+	fmt.Println("(6) Run "+num+" Iris ... ")
+	StartAndPrint(num)
 
 	quit := make(chan bool)
 	<-quit
