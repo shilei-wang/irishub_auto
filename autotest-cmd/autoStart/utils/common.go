@@ -234,7 +234,6 @@ func AddAccountForRest() error{
 	return nil
 }
 
-
 func Reset(c *CommonWorker){
 	Command = "iris"
 	users := []string{"iris1","iris2"}
@@ -246,7 +245,6 @@ func Reset(c *CommonWorker){
 		//c(Command, Params,true,false)
 	}
 }
-
 
 func ModifyGenesis_c(num string) error{
 	Params := []string{"v0","v1","v2","v3"}

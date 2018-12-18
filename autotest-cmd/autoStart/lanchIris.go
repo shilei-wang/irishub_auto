@@ -79,6 +79,8 @@ func Run_testnets(num string){
 }
 
 
+//MaxRequestTimeout = 5
+//voting_period = 45
 func Run_testnets_c(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
@@ -114,7 +116,8 @@ func Run_testnets_c(num string){
 	<-quit
 }
 
-
+//temp
+// BLOCK_TIME = "8"
 func Run_testnet_temp(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
@@ -134,7 +137,7 @@ func Run_testnet_temp(num string){
 		return
 	}
 
-	BLOCK_TIME = "20"
+	BLOCK_TIME = "8"
 
 	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
 	if Err = ModifyToml(num); Err != nil {
