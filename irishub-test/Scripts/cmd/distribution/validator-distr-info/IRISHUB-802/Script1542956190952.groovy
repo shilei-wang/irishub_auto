@@ -20,7 +20,7 @@ Utils u = new Utils();
 
 response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', u.command, "sync")
 WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", 1)), true)
-CmdUtils.printLog(response.responseBodyContent)
+//CmdUtils.printLog(response.responseBodyContent)
 
 class Utils {
 	public TestData td;
@@ -28,33 +28,13 @@ class Utils {
 	public String validator_faa;
 
 	public Utils(){		
-		td = findTestData('distribution/validator-distr-info/IRISHUB-802')
-		
+		td = findTestData('distribution/validator-distr-info/IRISHUB-802')		
 		TestData faucet = findTestData('base/faucet')
-		String name = faucet.getValue('name', 1)
-
-		validator_faa = CmdUtils.getAddressFromName(name,"fva")
+		String v0 = faucet.getValue('name', 1)
+		validator_faa = CmdUtils.getAddressFromName(v0,"fva")
 
 		command = 'iriscli distribution validator-distr-info --chain-id='.concat(GlobalVariable.chainId).
 					concat(' --node=').concat(GlobalVariable.node)
 		command = command +" "+ validator_faa
-	}
-	
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			}
 	}
 }

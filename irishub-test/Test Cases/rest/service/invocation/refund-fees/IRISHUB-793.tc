@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+ 
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义，并且绑定这个服务。
+3) 对已绑定的服务发起一个全新的调用请求.
+
+ 
+
+iriscli service refund-fees --chain-id=shilei-qa --from=v0 --fee=0.004iris
+
+等待服务响应超时，根据调用请求返回的request id，消费者取回自己的服务费退费。
+
+ </description>
+   <name>IRISHUB-793</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d9aad0fe-bd3f-498c-947e-1dcf62f2d04d</testCaseGuid>
+</TestCaseEntity>

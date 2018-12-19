@@ -16,7 +16,7 @@ import rest.BaseTx
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import rest.GetValJson
+import rest.GetAddressByKey
 import rest.StakeUtils
 import rest.AccountUtils
 import utils.StringUtils as StringUtils
@@ -26,20 +26,21 @@ TestData faucet = findTestData('base/faucet')
 String name = faucet.getValue('name', 1)
 String password = faucet.getValue('password', 1)
 String validatorAddr = map.get(name)
-println validatorAddr
-//String validatorAddr = GetValJson.getFirstValAddress()
+println validatorAddr 
 
 TestData data = findTestData('distribution/withdraw-rewards/IRISHUB-809')
 String withdrawAddress = data.getValue("withdraw_address",1)
 
-String[] BaseTxInfo = new String[2] 
+String[] BaseTxInfo = new String[2]
 String fee = "50iris"
-BaseTxInfo = BaseTx.baseTxProduce(name, password);
+
+BaseTxInfo = BaseTx.baseTxProduce(name, password)
 BaseTx.transfer(BaseTxInfo[0], BaseTxInfo[1], withdrawAddress, "1iris", "0.04iris")
 AccountUtils.waitUntilNextBlock()
-String BaseWithdraw = BaseTxInfo[0]
+BaseTxInfo = BaseTx.baseTxProduce(name, password)
+BaseTx.setWithDrawAddr(BaseTxInfo[0], BaseTxInfo[1], withdrawAddress)
 String[] HttpBody = new String[3]
-
+AccountUtils.waitUntilNextBlock()
 for (int i = 0; i < HttpBody.length ; i++) {
 	Double balance_before = BaseTx.getAccountBalance(withdrawAddress)
 	BaseTxInfo = BaseTx.baseTxProduce(name, password);
@@ -59,3 +60,48 @@ for (int i = 0; i < HttpBody.length ; i++) {
 	Double balance_after = BaseTx.getAccountBalance(withdrawAddress)
 	WS.verifyGreaterThan(balance_after, balance_before)
 }
+
+
+String newAccount1 = AccountUtils.creNewAccBuildTwoDelegation("201iris")
+String newAccount2 = AccountUtils.creNewAccBuildTwoDelegation("201iris")
+
+BaseTxInfo = BaseTx.baseTxProduce(name, password)
+BaseTx.transfer(BaseTxInfo[0], BaseTxInfo[1], withdrawAddress, "1iris", fee)
+sleep(5000)
+
+
+Double balance_before = BaseTx.getAccountBalance(GetAddressByKey.getAddressByKey(newAccount1))
+println balance_before
+BaseTxInfo = BaseTx.baseTxProduce(newAccount1, password)
+HttpBodyAccount = BaseTx.withdrawRewardBodyProduce(BaseTxInfo[1], BaseTxInfo[0], false, false, false, "")
+response =  WS.sendRequest(findTestObject('rest/distribution/ICS24_post_distribution_delegatorAddr_withdrawReward', [ ('delegatorAddr') : BaseTxInfo[1], ('HttpBody') : HttpBodyAccount, ('lcdIP') : GlobalVariable.lcdIP]))
+System.out.println(response.responseBodyContent)
+AccountUtils.waitUntilNextBlock()
+Double balance_after = BaseTx.getAccountBalance(GetAddressByKey.getAddressByKey(newAccount1))
+println balance_after
+Double reward_1 = balance_after - balance_before
+
+WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"hash"), true)
+WS.verifyEqual((reward_1>0), true)
+
+
+balance_before = BaseTx.getAccountBalance(GetAddressByKey.getAddressByKey(newAccount2))
+println balance_before
+BaseTxInfo = BaseTx.baseTxProduce(newAccount2, password)
+HttpBodyAccount = BaseTx.withdrawRewardBodyProduce(BaseTxInfo[1], BaseTxInfo[0], false, false, true, validatorAddr)
+response =  WS.sendRequest(findTestObject('rest/distribution/ICS24_post_distribution_delegatorAddr_withdrawReward', [ ('delegatorAddr') : BaseTxInfo[1], ('HttpBody') : HttpBodyAccount, ('lcdIP') : GlobalVariable.lcdIP]))
+System.out.println(response.responseBodyContent)
+AccountUtils.waitUntilNextBlock()
+balance_after = BaseTx.getAccountBalance(GetAddressByKey.getAddressByKey(newAccount2))
+println balance_after
+Double reward_2 = balance_after - balance_before
+WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,"hash"), true)
+WS.verifyEqual((reward_2>0), true)
+
+println reward_1
+println reward_2
+WS.verifyEqual(((reward_1-reward_2)>0),  true)
+
+/*
+
+*/

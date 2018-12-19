@@ -13,14 +13,15 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 import rest.GetAddressByKey
-import rest.GetValJson
+import rest.StakeUtils
 import groovy.json.JsonSlurper
 import utils.StringUtils as StringUtils
 
 TestData faucet = findTestData('base/faucet')
 String name = faucet.getValue('name', 1)
 String delegatorAddr = GetAddressByKey.getAddressByKey(name)
-
+Map map = StakeUtils.getValidatorList()
+String validatorAddr = map.get(name)
 TestData data = findTestData('distribution/delegator-distr-info/IRISHUB-813')
 
 response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_delegatorAddr_distrInfos', [ ('delegatorAddr') : delegatorAddr, ('lcdIP') : GlobalVariable.lcdIP]))

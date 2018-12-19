@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>【stake redelegations】正向 测试用例集
+
+测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与1个validator建立委托关系
+2) 一个新账户执行redelegate（从v0到v1）
+
+测试内容： （目前仅限rest接口）
+1. 查询新用户的redelegations信息</description>
+   <name>IRISHUB-929</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>862c2815-402b-4e67-bc4f-349b1e3d4325</testCaseGuid>
+</TestCaseEntity>

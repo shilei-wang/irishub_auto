@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 抵押委托
+
+iriscli stake delegate --address-validator=fva1d3s3ypjewrjs82gx2a02ur9mhpvjk88qr6e6s8 --amount=5iris --fee=0.004iris --from=v0 --chain-id=shilei-qa
+
+1. 抵押委托给他人 123.4iris （验证余额是否扣除）
+2. 抵押委托给自己 12345iris-femto
+</description>
+   <name>IRISHUB-895</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>bcc88fec-256d-4bb2-b723-68279a31101e</testCaseGuid>
+</TestCaseEntity>

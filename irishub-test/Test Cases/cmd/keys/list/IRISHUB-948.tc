@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 
+1. 创建多个账户Kevin， Kent ，Katie
+2. 查询列表，得到返回所有的用户的&quot;name&quot;,&quot;address&quot;,&quot;pubkey&quot;，检查回复内容的正确性</description>
+   <name>IRISHUB-948</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>e1242719-4399-4855-a6f9-f3367dc7ba73</testCaseGuid>
+</TestCaseEntity>

@@ -4,4 +4,7 @@ Libs/
 settings/
 Include/
 .classpath
-.project
+
+
+Test Suites/test.ts
+Test Suites/test.groovy

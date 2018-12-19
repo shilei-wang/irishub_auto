@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与2个validator建立委托关系
+
+测试内容： 查询指定账户所有的delegations
+
+iriscli stake delegations faa1264n55fg25z6czs43tk6j6rs3ravkz9x447gxx
+
+1.  查询新创建的指定账户所有的delegations</description>
+   <name>IRISHUB-896</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>185facd3-8ff6-4521-8c71-75a95fd63884</testCaseGuid>
+</TestCaseEntity>

@@ -26,7 +26,7 @@ public class GetAddressByKey {
 	@Keyword
 	public static String getAddressByKey(String keyName) {
 
-		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/ICS1_get_keys_name', [ ('name') : keyName, ('lcdIP') : GlobalVariable.lcdIP]))
+		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/ICS1_get_keys_name', [ ('name') : keyName, ('property') : "acc", ('lcdIP') : GlobalVariable.lcdIP]))
 		JsonSlurper slurper = new JsonSlurper()
 		Map parsedJson = slurper.parseText(response.responseBodyContent)
 		String addresss = parsedJson.get("address")

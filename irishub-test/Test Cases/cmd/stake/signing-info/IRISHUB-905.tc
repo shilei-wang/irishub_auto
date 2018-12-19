@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>【stake signing-info】正向 测试用例集
+
+测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 查询节点signing-info
+
+iriscli stake signing-info fvp1zcjduepqn8l4dj70m2jpk0r9gny4ml5k2zsmq3araezfvj4azh37lkl4q9dswjez0v
+
+1. 查询节点signing-info</description>
+   <name>IRISHUB-905</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>658f9278-a90f-4fe1-b41b-e1f8e44dcf8e</testCaseGuid>
+</TestCaseEntity>

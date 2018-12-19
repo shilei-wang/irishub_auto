@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：查询goverance可配置模块、参数
+
+iriscli gov query-params --trust-node --module=gov
+iriscli gov query-params --trust-node --key=Gov/govDepositProcedure
+iriscli gov query-params --trust-node --key=Gov/govTallyingProcedure
+iriscli gov query-params --trust-node --key=Gov/govVotingProcedure
+
+1. 设置 --module=gov，查询goverance可配置模块
+2. 分别设置 --key=Gov/govDepositProcedure，Gov/govTallyingProcedure，Gov/govVotingProcedure 查询goverance可配置参数</description>
+   <name>IRISHUB-920</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>49f8bdaf-ac51-4c18-abee-7124303f5fb2</testCaseGuid>
+</TestCaseEntity>

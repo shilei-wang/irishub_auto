@@ -19,7 +19,6 @@ import utils.StringUtils as StringUtils
 Utils u = new Utils();
 
 for (int i = 1; i <= u.td.getRowNumbers(); i++) {
-	u.Prepare(i)
 	cmd = CmdUtils.generateCmd(u.command, u.td, i)
 	cmd = cmd.replace("default", u.validator_fva)
 	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
@@ -34,34 +33,12 @@ class Utils {
 	public String validator_fva;
 		
 	public Utils(){		
-		td = findTestData('distribution/delegation-distr-info/IRISHUB-812')
-		
+		td = findTestData('distribution/delegation-distr-info/IRISHUB-812')		
 		TestData faucet = findTestData('base/faucet')
-		String name = faucet.getValue('name', 1)
-		validator_fva = CmdUtils.getAddressFromName(name,"fva")
+		String v0 = faucet.getValue('name', 1)
+		validator_fva = CmdUtils.getAddressFromName(v0,"fva")
 		
 		command = 'iriscli distribution delegation-distr-info --chain-id='.concat(GlobalVariable.chainId).
 					concat(' --node=').concat(GlobalVariable.node)
-	}
-	
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			case 5:
-				println "--- TESTCASE 5 --- "
-				break;
-			}
 	}
 }

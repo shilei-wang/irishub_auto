@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义，并且绑定这个服务。
+
+测试内容：服务消费者对已存在的服务绑定某一方法发送调用请求
+
+ 
+
+CLI 测试用例：
+
+命令行：
+
+iriscli service call -chain-id=shilei-qa --from=v0 --fee=0.004iris --bind-chain-id=shilei-qa --def-chain-id=shilei-qa --service-name=002 --provider=faa1ydg88u50qsp94v30urq0nmp99fyla3nq36lhaj
+--method-id=2 --service-fee=1iris --request-data=&quot;Abcd&quot;
+
+[前提条件 构造一个 price 5iris, 0iris 的bind]
+1. 对已绑定的服务发起一个全新的调用请求，包含全部非必填字段， -method-id=1 , 最大交易费用=servicePrice，-request-data=&quot;&quot;, profile=false。(确认扣除费用)
+2. 对已绑定的服务发起一个全新的调用请求，包含全部非必填字段， -method-id=1 , 最大交易费用>servicePrice，-request-data=&quot;ABCD&quot;, profile=true。(确认扣除费用)
+3. 对已绑定的服务发起一个全新的调用请求，包含全部非必填字段， -method-id=2 , 最大交易费用=0，-request-data=&quot;ABCD&quot;, profile=false。
+4. 对已绑定的服务发起一个全新的调用请求，没有包含非必填字段， -method-id=2 。 （默认service fee为0）</description>
+   <name>IRISHUB-785</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>0bc78ca0-67c5-4c06-9dd8-5def27d13866</testCaseGuid>
+</TestCaseEntity>

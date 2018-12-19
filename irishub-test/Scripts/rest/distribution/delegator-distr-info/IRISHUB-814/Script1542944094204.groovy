@@ -12,7 +12,6 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
-import rest.GetValJson
 import utils.StringUtils
 
 String delegatorAddr
@@ -22,6 +21,11 @@ for (def index : (1..data.getRowNumbers())) {
 	delegatorAddr = data.getValue("account", index)
 	response = WS.sendRequest(findTestObject('rest/distribution/ICS24_get_distribution_delegatorAddr_distrInfos', [ ('delegatorAddr') : delegatorAddr, ('lcdIP') : GlobalVariable.lcdIP]))
 	System.out.println(response.responseBodyContent)
-	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
+	if(index == 1){
+		//WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
+		WS.verifyResponseStatusCode(response, 204)
+	}else {
+		WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,data.getValue("rest_result", index)), true)
+	}
 	sleep(500)
 }

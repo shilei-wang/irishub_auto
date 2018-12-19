@@ -28,33 +28,13 @@ class Utils {
 	public String delegator_faa;
 
 	public Utils(){		
-		td = findTestData('distribution/delegator-distr-info/IRISHUB-813')
-		
+		td = findTestData('distribution/delegator-distr-info/IRISHUB-813')		
 		TestData faucet = findTestData('base/faucet')
-		String name = faucet.getValue('name', 1)
-
-		delegator_faa = CmdUtils.getAddressFromName(name,"faa")
+		String v0 = faucet.getValue('name', 1)
+		delegator_faa = CmdUtils.getAddressFromName(v0,"faa")
 
 		command = 'iriscli distribution delegator-distr-info --chain-id='.concat(GlobalVariable.chainId).
 					concat(' --node=').concat(GlobalVariable.node)
 		command = command +" "+ delegator_faa
-	}
-	
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			}
 	}
 }

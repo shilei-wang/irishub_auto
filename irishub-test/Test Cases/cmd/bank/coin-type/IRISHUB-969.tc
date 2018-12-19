@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 抵押委托
+
+iriscli bank coin-type
+coin-type
+1. 查询coin-type (并确认所有coin-type可用)</description>
+   <name>IRISHUB-969</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>73006b4c-6469-4064-a4bb-0465d3e4288b</testCaseGuid>
+</TestCaseEntity>

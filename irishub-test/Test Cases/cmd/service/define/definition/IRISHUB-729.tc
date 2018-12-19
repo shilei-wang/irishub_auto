@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：负向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义
+
+测试内容：实现对服务定义的查询
+
+命令行：iriscli service definition --def-chain-id=&lt;def-chain-id> --service-name=test
+
+ 
+测试功能描述与期望结果：
+1）查询请求列表时，-def-chain-id、-service-name分别设置为空，然后执行。（返回错误提示）
+2）查询一个未定义的service name（返回错误提示）
+3）指定一个不存在的def-chain-id进行查询（返回错误提示）
+</description>
+   <name>IRISHUB-729</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>4fd2147f-8c5a-4057-bf02-b62ccb27d1ea</testCaseGuid>
+</TestCaseEntity>

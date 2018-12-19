@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：通过字符串参数或者文件方式，发起ParameterChange提议
+
+iriscli gov query-params --trust-node --module=gov
+iriscli gov query-params --trust-node --key=Gov/govDepositProcedure
+iriscli gov query-params --trust-node --key=Gov/govTallyingProcedure
+iriscli gov query-params --trust-node --key=Gov/govVotingProcedure
+
+通过字符串方式修改参数
+1. 设置 --param=&quot;key&quot;:&quot;Gov/govVotingProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)
+2. 设置 --param=&quot;key&quot;:&quot;Gov/govDepositProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)
+3. 设置 --param=&quot;key&quot;:&quot;Gov/govTallyingProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)
+
+通过文件方式修改参数
+
+1. 设置 --param=&quot;key&quot;:&quot;Gov/govVotingProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)
+2. 设置 --param=&quot;key&quot;:&quot;Gov/govDepositProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)
+3. 设置 --param=&quot;key&quot;:&quot;Gov/govTallyingProcedure&quot;, 发起ParameterChange提议 (投yes票 并验证)</description>
+   <name>IRISHUB-921</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cc63e21d-8c06-4078-8cc5-1de81b5b0974</testCaseGuid>
+</TestCaseEntity>

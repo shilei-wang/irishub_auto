@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：反向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义
+
+测试内容：实现对已有的服务定义添加绑定
+
+命令行：iriscli service bind --chain-id=&lt;chain-id> --from=&lt;key name> --fee=0.004iris --service-name=test --def-chain-id=&lt;service-def-chain-id> --binding-type=Local --deposit=1iris --prices=1iris -avg-rsp-time=10000 --usable-time=100
+
+ 
+
+CLI 测试用例：
+ 
+功能描述	期望结果
+对已定义的服务执行绑定命令， -binding-type，deposit,-usable-time, --prices , -avg-rsp-time 分别设置为空。	返回错误提示
+ 对未定义的服务执行绑定命令。	返回错误提示
+ 执行绑定命令时， 设置--binding-type = test	返回错误提示
+执行绑定命令时， 设置--deposit=999iris	返回错误提示
+ 执行绑定命令时， 设置--prices=0iris	返回错误提示
+ 执行绑定命令时， 设置-avg-rsp-time=0	返回错误提示
+ 执行绑定命令时， 分别设置--usable-time=0， --usable-time=10001	返回错误提示
+ 对已经绑定的service进行再次绑定。	返回错误提示</description>
+   <name>IRISHUB-727</name>
+   <tag>实现对已有的服务定义添加绑定</tag>
+   <comment></comment>
+   <testCaseGuid>95e0cdca-132e-4a4a-a5c0-50fe255a1b2a</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>IRISHUB-727</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>7a8fc1f3-4541-405d-9657-bfd55aba244a</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>1 1 Local 1000iris 0.5iris%2C0.5iris service+binding+already+exists service+binding+already+exists</data>
+   <data>1 1 Local 1000iris 0.5iris%2C0.5iris is+not+existed is+not+existed</data>
+   <data>1 1 null 1000iris 0.5iris%2C0.5iris not+a+valid+binding+type not+a+valid+binding+type</data>
+   <data>1 1 Local null 0.5iris%2C0.5iris deposit+amount+must+be+equal+or+greater deposit+amount+must+be+equal+or+greater</data>
+   <data>1 null Local 1000iris 0.5iris%2C0.5iris invalid+syntax unexpected+end+of+JSON+input</data>
+   <data>null 1 Local 1000iris 0.5iris%2C0.5iris invalid+syntax unexpected+end+of+JSON+input</data>
+   <data>1 1 Local 1000iris null invalid+prices+count coin+name+is+empty</data>
+   <data>1 1 test 1000iris 0.5iris%2C0.5iris not+a+valid+binding+type not+a+valid+binding+type</data>
+   <data>1 1 Local 999iris 0.5iris%2C0.5iris deposit+amount+must+be+equal+or+greater deposit+amount+must+be+equal+or+greater</data>
+   <data>0 1 Local 1000iris 0.5iris%2C0.5iris avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000 avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000</data>
+   <data>-1 1 Local 1000iris 0.5iris%2C0.5iris avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000 avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000</data>
+   <data>1 0 Local 1000iris 0.5iris%2C0.5iris avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000 avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000</data>
+   <data>1 -1 Local 1000iris 0.5iris%2C0.5iris avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000 avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000</data>
+   <data>1 10001 Local 1000iris 0.5iris%2C0.5iris avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000 avg_rsp_time+and+usable_time+must+be+positive+integer+and+usable_time+limit+to+10000</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>avg-rsp-time</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>usable-time</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>bind-type</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>deposit</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>4</columnIndex>
+      <name>prices</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>5</columnIndex>
+      <name>cmd_result</name>
+      <size>14</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>6</columnIndex>
+      <name>rest_result</name>
+      <size>14</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

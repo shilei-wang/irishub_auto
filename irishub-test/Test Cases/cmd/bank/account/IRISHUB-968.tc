@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 抵押委托
+
+iriscli bank account faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju
+
+1. 查询账户（账户有交易）</description>
+   <name>IRISHUB-968</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f87aa652-1ad8-4e7f-85e1-bd0817cdd1e8</testCaseGuid>
+</TestCaseEntity>

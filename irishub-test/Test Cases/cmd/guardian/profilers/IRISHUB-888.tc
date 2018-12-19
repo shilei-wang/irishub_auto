@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>
+
+测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：查询irisnet基金会profile账户
+
+iriscli guardian profilers
+
+1. 查询genesis创建的profilers账户
+（备注：后续新添加的账户查询，将在【guardian add-profiler】测试用例中验证）
+</description>
+   <name>IRISHUB-888</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>ec9cc1c9-2c90-485e-af82-c0a4cc8bdde1</testCaseGuid>
+</TestCaseEntity>

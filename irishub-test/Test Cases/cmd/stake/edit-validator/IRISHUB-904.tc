@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 编辑validator信息
+
+iriscli stake edit-validator --details=details --moniker=moniker --website=website --fee=0.004iris --from=v0 --chain-id=shilei-qa --commission-rate=&quot;0.11&quot;
+
+[commission-rate目前设置 默认0.1， 最大0.2， 最大修改率0.01]
+
+
+1. 编辑validator信息 --details=&quot;a1_&quot; --moniker=&quot;B-2&quot; --website=&quot;3_C&quot; (不修改commission-rate)
+2. 编辑validator信息 commission-rate=当前rate+0.001 (不修改--details=&quot;&quot; --moniker=&quot;&quot; --website=&quot;&quot;)</description>
+   <name>IRISHUB-904</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>be1dd1fc-d3d0-4063-9192-ba11a5f785ee</testCaseGuid>
+</TestCaseEntity>

@@ -3,34 +3,20 @@
    <description></description>
    <name>ICS21_get_stake_validators_validatorAddr_unbonding_delegations</name>
    <tag></tag>
-   <elementGuidId>ea2bfaf0-6a1b-4c72-81c4-16c437076369</elementGuidId>
+   <elementGuidId>6a07bc94-12a0-4c75-81d2-fa275f2b30fa</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <httpBody></httpBody>
    <httpBodyContent></httpBodyContent>
    <httpBodyType></httpBodyType>
-   <httpHeaderProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>Content-type</name>
-      <type>Main</type>
-      <value>application/json</value>
-   </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>HTTP://localhost:1317/stake/validators/${validatorAddr}${/unbonding_delegations}</restUrl>
+   <restUrl>HTTP://${lcdIP}/stake/validators/${validatorAddr}/unbonding_delegations</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
-   <variables>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>3aed10fc-c5e8-4db9-8b04-73ced98c12a5</id>
-      <masked>false</masked>
-      <name>validatorAddr</name>
-   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与1个validator建立委托关系
+3）新创建的指定账户在validator处解绑委托
+
+测试内容： 解绑委托
+
+iriscli stake unbonding-delegations faa1264n55fg25z6czs43tk6j6rs3ravkz9x447gxx
+
+1. 在解绑时间内查询 unbonding-delegations</description>
+   <name>IRISHUB-900</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b839f2f4-009d-4797-872d-fa382f5c57c9</testCaseGuid>
+</TestCaseEntity>

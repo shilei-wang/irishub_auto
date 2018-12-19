@@ -26,8 +26,40 @@ import com.kms.katalon.core.testobject.ResponseObject
 import utils.CmdUtils
 import rest.BaseTx
 import rest.GetAddressByKey
+import rest.StakeUtils
+import java.util.ArrayList
 
 public class AccountUtils {
+	
+	@Keyword
+	public static String getKeysList(){
+		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/ICS1_get_keys_list', [ ('lcdIP') : GlobalVariable.lcdIP]))
+		System.out.println(response.responseBodyContent)
+		JsonSlurper slurper = new JsonSlurper()
+		def parsedJson = (ArrayList<JsonObject>)slurper.parseText(response.responseBodyContent)
+		String keyName
+		String keyAddress
+		Map map = new HashMap()
+		for(int i = 0; i< parsedJson.size(); i++) {
+			keyName = parsedJson[i].get("name")
+			keyAddress = parsedJson[i].get("address")
+			map.put(keyName, keyAddress)
+		}
+		return map
+	}
+	
+	@Keyword
+	public static String getAddrByName(String name, String property){
+		if((property == "acc") || (property == "val") || (property == "cons")) {
+			ResponseObject response = WS.sendRequest(findTestObject('rest/keys/ICS1_get_keys_name', [ ('name') : name, ('property'): property, ('lcdIP') : GlobalVariable.lcdIP]))
+			JsonSlurper slurper = new JsonSlurper()
+			Map parsedJson = slurper.parseText(response.responseBodyContent)
+			String addresss = parsedJson.get("address")
+			return addresss
+		} else {
+			return ""
+		}
+	}
 
 	@Keyword
 	public static String createNewAccount(String amount) {
@@ -49,9 +81,57 @@ public class AccountUtils {
 			String[] BaseTxInfo = BaseTx.baseTxProduce(name, password)
 			String address = GetAddressByKey.getAddressByKey(nameNew)
 			BaseTx.transfer(BaseTxInfo[0], BaseTxInfo[1], address, amount, "0.04iris")
-			sleep(5000)
+			waitUntilNextBlock()
 		}
 		return nameNew
+	}
+	
+	@Keyword
+	public static String addNewKey(String nameNew, String password) {
+		JsonObject HttpBody = new JsonObject()
+		HttpBody.addProperty("name",nameNew)
+		HttpBody.addProperty("password", password)
+		HttpBody.addProperty("seed",generateSeeds())
+		String jsonString = new Gson().toJson(HttpBody)
+		System.out.println(jsonString)
+		ResponseObject response = WS.sendRequest(findTestObject('rest/keys/ICS1_post_keys', [ ('HttpBody') : jsonString, ('lcdIP') : GlobalVariable.lcdIP]))
+		System.out.println(response.responseBodyContent)
+		WS.verifyEqual(response.responseBodyContent.contains(nameNew), true)
+		return nameNew
+	}
+	
+
+	@Keyword
+	public static String creNewAccBuildTwoDelegation(String amount) {
+		String newAccount = createNewAccount(amount)
+		TestData faucet = findTestData('base/faucet')
+		String name1 = faucet.getValue('name', 1)
+		String name2 = faucet.getValue('name', 2)
+		String password = faucet.getValue('password', 1)
+		String[] BaseTxInfo
+		if(amount.contains("iris")) {
+			int amountDele = Integer.parseInt(amount.replace("iris", ""))/2
+			amount = amountDele.toString() + "iris"
+		}
+		Vector validatorList = StakeUtils.getValidatorAddrList()
+		println validatorList.size()
+		if(validatorList.size() < 2) {
+			System.out.println("only one validator")
+		}
+		else{
+			Map validatorMap = StakeUtils.getValidatorList()
+			BaseTxInfo = BaseTx.baseTxProduce(newAccount, password)
+			String HttpBody = StakeUtils.buildDelegation(BaseTxInfo[0], validatorMap.get(name1), amount)
+			ResponseObject response = WS.sendRequest(findTestObject('rest/stake/delegators/ICS21_post_stake_delegators_delegatorAddr_delegate', [ ('delegatorAddr') : BaseTxInfo[1], ('HttpBody') : HttpBody,('lcdIP') : GlobalVariable.lcdIP]))
+			System.out.println(response.responseBodyContent)
+			waitUntilNextBlock()
+			BaseTxInfo = BaseTx.baseTxProduce(newAccount, password)
+			HttpBody = StakeUtils.buildDelegation(BaseTxInfo[0], validatorMap.get(name2), amount)
+			response = WS.sendRequest(findTestObject('rest/stake/delegators/ICS21_post_stake_delegators_delegatorAddr_delegate', [ ('delegatorAddr') : BaseTxInfo[1], ('HttpBody') : HttpBody,('lcdIP') : GlobalVariable.lcdIP]))
+			System.out.println(response.responseBodyContent)
+			waitUntilNextBlock()
+		}
+		return newAccount
 	}
 
 	@Keyword
@@ -76,11 +156,24 @@ public class AccountUtils {
 		object = object.get("header").getAsJsonObject()
 		return object.get("height").getAsInt()
 	}
-	
+
 	@Keyword
 	public static void waitUntilNextBlock(){
 		int next_height = getLastestBlock() + 1
-		int process
+		int process = 0
+		while(true){
+			process = getLastestBlock()
+			if (process >= next_height){
+				break
+			}
+			sleep(500)
+		}
+	}
+
+	@Keyword
+	public static void waitUntilSeveralBlock(int num){
+		int next_height = getLastestBlock() + num
+		int process = 0
 		while(true){
 			process = getLastestBlock()
 			if (process >= next_height){
