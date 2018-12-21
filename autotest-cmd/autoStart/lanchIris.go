@@ -80,6 +80,7 @@ func Run_testnets(num string){
 
 //MaxRequestTimeout = 5
 //voting_period = 45
+//unbonding_time = 15
 func Run_testnets_c(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 

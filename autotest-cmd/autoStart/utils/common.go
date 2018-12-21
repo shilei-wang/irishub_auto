@@ -290,7 +290,7 @@ func ModifyGenesis_c(num string) error{
 
 		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
 
-		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"5000000000\"", 1)
+		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
 
 
 		if Err := write(file, str); Err != nil {
