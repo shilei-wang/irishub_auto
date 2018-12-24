@@ -292,6 +292,7 @@ func ModifyGenesis_c(num string) error{
 
 		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
 
+		//str = strings.Replace(str, "\"max_validators\": 100", "\"max_validators\": 2", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
