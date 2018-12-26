@@ -44,34 +44,36 @@ func ModifyGenesis(num string) error{
 			return Err
 		}
 
+		//account
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
 
-		str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"15000000000\"", 1)
-		str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
-		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+		//Stake
+		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"5000000000\"", 1)
 
+		//Gov
+		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
 
-		//str = strings.Replace(str, "\"community_tax\": \"0.0200000000\"", "\"community_tax\": \"0.1000000000\"", 1)
-		//str = strings.Replace(str, "\"base_proposer_reward\": \"0.0100000000\"", "\"base_proposer_reward\": \"0.0000000001\"", 1)
-		//str = strings.Replace(str, "\"bonus_proposer_reward\": \"0.0400000000\"", "\"bonus_proposer_reward\": \"0.0000000001\"", 1)
-
-		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
-		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
-		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"172800000000000\"", "\"critical_voting_period\": \"15000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"172800000000000\"", "\"important_voting_period\": \"15000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"259200000000000\"", "\"normal_voting_period\": \"15000000000\"", 1)
 
 		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
 
-		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+		//block windows
+		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
 
+		//commission rate
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+
+		//service
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
 		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"5\"", 1)
-
-		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"5000000000\"", 1)
-
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
@@ -251,30 +253,36 @@ func ModifyGenesis_c(num string) error{
 			return Err
 		}
 
+		//account
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
 
-		str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"45000000000\"", 1)
-		str = strings.Replace(str, "\"switch_period\": \"57600\"", "\"switch_period\": \"30\"", 1)
-		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+		//Stake
+		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
 
-		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
-		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
-		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+		//Gov
+		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+
+		str = strings.Replace(str, "\"critical_voting_period\": \"172800000000000\"", "\"critical_voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"172800000000000\"", "\"important_voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"259200000000000\"", "\"normal_voting_period\": \"45000000000\"", 1)
 
 		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
 
-		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+		//block windows
+		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
 
+		//commission rate
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+
+		//service
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
 		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
-
-		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
-
-		//str = strings.Replace(str, "\"max_validators\": 100", "\"max_validators\": 2", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
