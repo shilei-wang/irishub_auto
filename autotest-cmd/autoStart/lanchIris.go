@@ -18,9 +18,7 @@ func main() {
 	}
 
 	num := args[1]
-	if (len(args) == 3){
-		BLOCK_TIME = args[2]
-	}
+	BLOCK_TIME = "2"
 
 	switch num {
 		case "1":
@@ -32,9 +30,9 @@ func main() {
 		case "4":
 			Run_testnets(num)
 		case "c":
-			Run_testnets_c("1")
+			Run_testnets_c(args[2])
 		case "t":
-			Run_testnet_temp("2")
+			Run_testnet_temp(args[2])
 
 
 

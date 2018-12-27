@@ -57,6 +57,8 @@ func ModifyGenesis(num string) error{
 
 		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
 
+		str = strings.Replace(str, "\"max_deposit_period\": \"86400000000000\"", "\"max_deposit_period\": \"15000000000\"", 1)
+
 		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"15000000000\"", 1)
 		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"15000000000\"", 1)
 		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"15000000000\"", 1)
@@ -253,6 +255,69 @@ func Reset(c *CommonWorker){
 	}
 }
 
+func ModifyGenesis_d(num string) error{
+	Params := []string{"v0","v1","v2","v3"}
+	n, _ := strconv.Atoi(num)
+
+	for i, param := range Params {
+		if i == n {break}
+
+		str  := ""
+		file := HOME+"testnet/"+param+"/iris/config/genesis.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+
+		//account
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
+
+		//Stake
+		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
+
+		//Gov
+		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
+
+		str = strings.Replace(str, "\"max_deposit_period\": \"86400000000000\"", "\"max_deposit_period\": \"30000000000\"", 1)
+
+		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"30000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"10000000000\"", 1)
+
+			//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
+
+		str = strings.Replace(str, "\"threshold\": \"0.8340000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.8000000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.6670000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 3)
+		str = strings.Replace(str, "\"participation\": \"0.8572000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.8340000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.7500000000\"", "\"participation\": \"0.4999999999\"", 1)
+
+
+		//block windows
+		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+
+		//commission rate
+		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
+		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
+		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
+
+		//service
+		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
+		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
+
+		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
+
+		if Err := write(file, str); Err != nil {
+			fmt.Println(Err.Error())
+			return Err
+		}
+	}
+
+	return nil
+}
+
 func ModifyGenesis_c(num string) error{
 	Params := []string{"v0","v1","v2","v3"}
 	n, _ := strconv.Atoi(num)
@@ -280,11 +345,13 @@ func ModifyGenesis_c(num string) error{
 
 		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
 
+		str = strings.Replace(str, "\"max_deposit_period\": \"86400000000000\"", "\"max_deposit_period\": \"45000000000\"", 1)
+
 		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"45000000000\"", 1)
 		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"45000000000\"", 1)
 		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"45000000000\"", 1)
 
-			//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
+		//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
 
 		str = strings.Replace(str, "\"threshold\": \"0.8340000000\"", "\"threshold\": \"0.4999999999\"", 1)
 		str = strings.Replace(str, "\"threshold\": \"0.8000000000\"", "\"threshold\": \"0.4999999999\"", 1)
