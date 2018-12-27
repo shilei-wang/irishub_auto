@@ -51,15 +51,29 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"5000000000\"", 1)
 
 		//Gov
+		//critical_min_deposit, important_min_deposit
+		str = strings.Replace(str, "\"amount\": \"4000000000000000000000\"", "\"amount\": \"1000000000000000000000\"", 1)
+		str = strings.Replace(str, "\"amount\": \"2000000000000000000000\"", "\"amount\": \"1000000000000000000000\"", 1)
+
 		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"172800000000000\"", "\"critical_voting_period\": \"15000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"172800000000000\"", "\"important_voting_period\": \"15000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"259200000000000\"", "\"normal_voting_period\": \"15000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"15000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"15000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"15000000000\"", 1)
 
-		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
-		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
-		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"15000000000\"", 1)
+
+		str = strings.Replace(str, "\"critical_max_num\": \"1\"", "\"critical_max_num\": \"100000\"", 1)
+		str = strings.Replace(str, "\"important_max_num\": \"2\"", "\"important_max_num\": \"100000\"", 1)
+		str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
+
+		str = strings.Replace(str, "\"threshold\": \"0.8340000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.8000000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.6670000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 3)
+		str = strings.Replace(str, "\"participation\": \"0.8572000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.8340000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.7500000000\"", "\"participation\": \"0.4999999999\"", 1)
 
 		//block windows
 		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
@@ -260,15 +274,26 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"unbonding_time\": \"600000000000\"", "\"unbonding_time\": \"15000000000\"", 1)
 
 		//Gov
+		//critical_min_deposit, important_min_deposit
+		str = strings.Replace(str, "\"amount\": \"4000000000000000000000\"", "\"amount\": \"1000000000000000000000\"", 1)
+		str = strings.Replace(str, "\"amount\": \"2000000000000000000000\"", "\"amount\": \"1000000000000000000000\"", 1)
+
 		str = strings.Replace(str, "\"terminator_period\": \"20000\"", "\"terminator_period\": \"10\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"172800000000000\"", "\"critical_voting_period\": \"45000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"172800000000000\"", "\"important_voting_period\": \"45000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"259200000000000\"", "\"normal_voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"45000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"45000000000\"", 1)
 
-		str = strings.Replace(str, "\"threshold\": \"0.5000000000\"", "\"threshold\": \"0.4999999999\"", 1)
-		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 1)
-		str = strings.Replace(str, "\"participation\": \"0.6670000000\"", "\"participation\": \"0.4999999999\"", 1)
+			//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
+
+		str = strings.Replace(str, "\"threshold\": \"0.8340000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.8000000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"threshold\": \"0.6670000000\"", "\"threshold\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"veto\": \"0.3340000000\"", "\"veto\": \"0.4999999999\"", 3)
+		str = strings.Replace(str, "\"participation\": \"0.8572000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.8340000000\"", "\"participation\": \"0.4999999999\"", 1)
+		str = strings.Replace(str, "\"participation\": \"0.7500000000\"", "\"participation\": \"0.4999999999\"", 1)
+
 
 		//block windows
 		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
