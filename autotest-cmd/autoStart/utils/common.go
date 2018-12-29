@@ -89,7 +89,7 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
-		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"5\"", 1)
+		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"5\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
@@ -255,6 +255,7 @@ func Reset(c *CommonWorker){
 	}
 }
 
+//test goc fature
 func ModifyGenesis_d(num string) error{
 	Params := []string{"v0","v1","v2","v3"}
 	n, _ := strconv.Atoi(num)
@@ -307,7 +308,7 @@ func ModifyGenesis_d(num string) error{
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
-		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
+		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
@@ -374,7 +375,8 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
 		str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1\"", 1)
 
-		str = strings.Replace(str, "\"MaxRequestTimeout\": \"100\"", "\"MaxRequestTimeout\": \"20\"", 1)
+		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1)
+		//str = strings.Replace(str, "\"slash_fraction\": \"0.0100000000\"", "\"slash_fraction\": \"1.0000000000\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
