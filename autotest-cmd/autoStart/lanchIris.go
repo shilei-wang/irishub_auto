@@ -75,7 +75,6 @@ func Run_testnets(num string){
 	<-quit
 }
 
-
 //MaxRequestTimeout = 5
 //voting_period = 45
 //unbonding_time = 15
