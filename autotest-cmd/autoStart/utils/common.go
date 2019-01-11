@@ -47,17 +47,17 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
 
 		//Stake
-		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"4000000000\"", 1)
 
 		//Gov
 		//critical_min_deposit, important_min_deposit
-		str = strings.Replace(str, "\"critical_deposit_period\": \"86400000000000\"", "\"critical_deposit_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"critical_deposit_period\": \"86400000000000\"", "\"critical_deposit_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"10000000000\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"10000000000\"", 1)
 
 		str = strings.Replace(str, "\"important_max_num\": \"1\"", "\"important_max_num\": \"10000\"", 1)
 		str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"10000\"", 1)
@@ -77,10 +77,10 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"normal_penalty\": \"0.0005000000\"", "\"normal_penalty\": \"0.0000000001\"", 1)
 
 		//service
-		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
+		str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"1\"", 1)
 
-		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1) //????
+		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"5\"", 1) //????
 		str = strings.Replace(str, "\"slash_fraction\": \"0.0010000000\"", "\"slash_fraction\": \"0.0000000001\"", 1)
 
 		//mint
@@ -275,22 +275,22 @@ func ModifyGenesis_c(num string) error{
 
 		//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
 
-		//str = strings.Replace(str, "critical_threshold\": \"0.8340000000\"", "critical_threshold\": \"0.499\"", 1)
-		//str = strings.Replace(str, "important_threshold\": \"0.8000000000\"", "important_threshold\": \"0.499\"", 1)
-		//str = strings.Replace(str, "normal_threshold\": \"0.6670000000\"", "normal_threshold\": \"0.499\"", 1)
-		//str = strings.Replace(str, "critical_veto\": \"0.3340000000\"", "critical_veto\": \"0.499\"", 1)
-		//str = strings.Replace(str, "important_veto\": \"0.3340000000\"", "important_veto\": \"0.499\"", 1)
-		//str = strings.Replace(str, "normal_veto\": \"0.3340000000\"", "normal_veto\": \"0.499\"", 1)
-		//str = strings.Replace(str, "critical_participation\": \"0.8572000000\"", "critical_participation\": \"0.499\"", 1)
-		//str = strings.Replace(str, "important_participation\": \"0.8340000000\"", "important_participation\": \"0.499\"", 1)
-		//str = strings.Replace(str, "normal_participation\": \"0.7500000000\"", "normal_participation\": \"0.499\"", 1)
-		//
+		str = strings.Replace(str, "critical_threshold\": \"0.8340000000\"", "critical_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_threshold\": \"0.8000000000\"", "important_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_threshold\": \"0.6670000000\"", "normal_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "critical_veto\": \"0.3340000000\"", "critical_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_veto\": \"0.3340000000\"", "important_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_veto\": \"0.3340000000\"", "normal_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "critical_participation\": \"0.8572000000\"", "critical_participation\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_participation\": \"0.8340000000\"", "important_participation\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_participation\": \"0.7500000000\"", "normal_participation\": \"0.499\"", 1)
+
 		//str = strings.Replace(str, "\"critical_penalty\": \"0.0009000000\"", "\"critical_penalty\": \"0.0000000001\"", 1)
 		//str = strings.Replace(str, "\"important_penalty\": \"0.0007000000\"", "\"important_penalty\": \"0.0000000001\"", 1)
 		//str = strings.Replace(str, "\"normal_penalty\": \"0.0005000000\"", "\"normal_penalty\": \"0.0000000001\"", 1)
 
 		//block windows
-		str = strings.Replace(str, "\"signed-blocks-window\": \"100\"", "\"signed-blocks-window\": \"6\"", 1)
+		str = strings.Replace(str, "\"signed-blocks-window\": \"20000\"", "\"signed-blocks-window\": \"10\"", 1)
 
 		//commission rate
 		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
@@ -306,6 +306,8 @@ func ModifyGenesis_c(num string) error{
 
 		//mint
 		str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0.0000000000\"", 1)
+		str = strings.Replace(str, "\"downtime-unbond-duration\": \"172800000000000\"", "\"downtime-unbond-duration\": \"1\"", 1)
+
 
 
 		if Err := write(file, str); Err != nil {
