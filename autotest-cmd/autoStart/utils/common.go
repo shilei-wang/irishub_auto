@@ -55,12 +55,12 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"10000000000\"", 1)
 		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"10000000000\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"10000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"10000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"120000000000\"", "\"critical_voting_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"120000000000\"", "\"important_voting_period\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"10000000000\"", 1)
 
-		str = strings.Replace(str, "\"important_max_num\": \"1\"", "\"important_max_num\": \"10000\"", 1)
-		str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"10000\"", 1)
+		str = strings.Replace(str, "\"important_max_num\": \"5\"", "\"important_max_num\": \"10000\"", 1)
+		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"10000\"", 1)
 
 		str = strings.Replace(str, "critical_threshold\": \"0.8340000000\"", "critical_threshold\": \"0.499\"", 1)
 		str = strings.Replace(str, "important_threshold\": \"0.8000000000\"", "important_threshold\": \"0.499\"", 1)
@@ -241,6 +241,7 @@ func AddAccountForRest() error{
 }
 
 func ModifyGenesis_c(num string) error{
+	//return nil
 	Params := []string{"v0","v1","v2","v3"}
 	n, _ := strconv.Atoi(num)
 
@@ -269,9 +270,9 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"20000000000\"", 1)
 		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"20000000000\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"259200000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"216000000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"172800000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"120000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"120000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
 
 		//str = strings.Replace(str, "\"normal_max_num\": \"1\"", "\"normal_max_num\": \"100000\"", 1)
 		//str = strings.Replace(str, "\"critical_max_num\": \"1\"", "\"critical_max_num\": \"2\"", 1)
@@ -293,6 +294,7 @@ func ModifyGenesis_c(num string) error{
 		//block windows
 		str = strings.Replace(str, "\"signed-blocks-window\": \"20000\"", "\"signed-blocks-window\": \"10\"", 1)
 
+
 		//commission rate
 		str = strings.Replace(str, "\"rate\": \"0.0000000000\"", "\"rate\": \"0.1000000000\"", 1)
 		str = strings.Replace(str, "\"max_rate\": \"0.0000000000\"", "\"max_rate\": \"0.2000000000\"", 1)
@@ -308,7 +310,10 @@ func ModifyGenesis_c(num string) error{
 		//mint
 		str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0\"", 1)
 		str = strings.Replace(str, "\"downtime-unbond-duration\": \"172800000000000\"", "\"downtime-unbond-duration\": \"1\"", 1)
+		str = strings.Replace(str, "\"censorship-jail-duration\": \"604800000000000\"", "\"censorship-jail-duration\": \"1\"", 1)
 
+
+		//str = strings.Replace(str, "\"max_validators\": 100", "\"max_validators\": 2", 1)
 
 
 		if Err := write(file, str); Err != nil {
