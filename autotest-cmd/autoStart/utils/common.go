@@ -44,7 +44,10 @@ func ModifyGenesis(num string) error{
 		}
 
 		//account
-		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000000iris-atto", 4)
+
+		//auth
+		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
 		//Stake
 		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"4000000000\"", 1)
@@ -257,7 +260,10 @@ func ModifyGenesis_c(num string) error{
 		}
 
 		//account
-		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000iris-atto", 4)
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000000iris-atto", 4)
+
+		//auth
+		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
 		//Stake
 		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
