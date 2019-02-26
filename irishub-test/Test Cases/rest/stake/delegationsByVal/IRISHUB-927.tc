@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建两个新账户并与1个validator建立委托关系
+
+测试内容： （目前仅限rest接口）
+
+1. 查询指定validator地址的所有的delegations信息
+
+</description>
+   <name>IRISHUB-927</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>bf7028bb-8312-4c02-a00e-70d4c9f738be</testCaseGuid>
+</TestCaseEntity>

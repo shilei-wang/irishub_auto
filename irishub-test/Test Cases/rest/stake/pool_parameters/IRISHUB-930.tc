@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 查看staking pool 的信息 （目前仅限rest接口）
+
+curl -X GET &quot;http://localhost:1317/stake/pool&quot; -H &quot;accept: application/json&quot;
+
+1. 查询staking pool，验证返回内容是否正确</description>
+   <name>IRISHUB-930</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>5d95d643-db26-4372-a56f-317cb5e32fa0</testCaseGuid>
+</TestCaseEntity>

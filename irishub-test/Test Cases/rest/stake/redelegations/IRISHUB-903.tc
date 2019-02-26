@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>上传的图像用于项目: 'IRIShub'
+
+    IRIShubIRISHUB-903
+
+【stake redelegations】正向 测试用例集
+
+    编辑
+
+    备注
+
+    分配
+    更多
+
+    开始进行
+    解决问题
+    关闭问题
+
+    导出
+
+详情
+
+    类型:
+    测试用例
+    状态:
+    打开的 (查看工作流)
+    优先级:
+    Normal
+    解决结果:
+    未解决
+    影响版本:
+    irishub-0.8.0
+    修复的版本:
+    无
+    模块:
+    无
+    标签:
+    无 标签
+
+    Epic Link:
+    Stake框架
+    Sprint:
+    IRIShub Sprint 20181203-1215
+
+描述
+
+【stake redelegations】正向 测试用例集
+
+测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与1个validator建立委托关系
+2) 一个新账户执行redelegate（从v0到v1）
+
+测试内容： 查询redelegations信息
+
+iriscli stake redelegations faa1264n55fg25z6czs43tk6j6rs3ravkz9x447gxx
+
+1. 查询新用户的redelegations信息</description>
+   <name>IRISHUB-903</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>83703a6e-f80e-49bb-bdfe-ad27f047e7da</testCaseGuid>
+</TestCaseEntity>

@@ -18,25 +18,32 @@
    </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>HTTP://${lcdIP}/keys/${name}</restUrl>
+   <restUrl>HTTP://${lcdIP}/keys/${name}?bech=${property}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
    <variables>
-      <defaultValue>''</defaultValue>
+      <defaultValue>'node0'</defaultValue>
       <description></description>
       <id>5b0a0882-37d3-48af-b5da-8b3466e5fbdb</id>
       <masked>false</masked>
       <name>name</name>
    </variables>
    <variables>
-      <defaultValue>''</defaultValue>
+      <defaultValue>'localhost:1317'</defaultValue>
       <description></description>
       <id>6856d55e-0a79-4851-b3f8-2279c8852016</id>
       <masked>false</masked>
       <name>lcdIP</name>
+   </variables>
+   <variables>
+      <defaultValue>'val'</defaultValue>
+      <description></description>
+      <id>c6ddfe90-beae-4e1a-a652-c6e647b6f3eb</id>
+      <masked>false</masked>
+      <name>property</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 

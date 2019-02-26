@@ -18,6 +18,10 @@
     {
       &quot;name&quot;: &quot;args&quot;,
       &quot;value&quot;: &quot;${args1}&quot;
+    },
+    {
+      &quot;name&quot;: &quot;escapes&quot;,
+      &quot;value&quot;: &quot;--param,--idl-content&quot;
     }
   ]
 }</httpBodyContent>

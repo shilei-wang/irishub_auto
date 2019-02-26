@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 查看staking parameter values （目前仅限rest接口）
+
+curl -X GET &quot;http://localhost:1317/stake/parameters&quot; -H &quot;accept: application/json&quot;
+
+1. 查看staking parameter values，验证返回内容是否正确
+
+</description>
+   <name>IRISHUB-931</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a08a1cc3-aa50-4a65-9af1-cdec67e6c195</testCaseGuid>
+</TestCaseEntity>

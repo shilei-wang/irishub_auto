@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：拉取goverance配置参数文件
+
+iriscli gov pull-params --path=/root/testnet/v0/iris --trust-node
+
+1. 根据 指定path路径 拉取goverance配置参数文件</description>
+   <name>IRISHUB-919</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>7382c15e-3261-48a9-817d-c7fc9d09ef7a</testCaseGuid>
+</TestCaseEntity>

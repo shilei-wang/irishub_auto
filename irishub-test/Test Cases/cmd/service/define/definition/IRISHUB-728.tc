@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义
+
+测试功能描述与期望结果：
+1）查询前置条件中已经创建的服务定义。（返回的查询结果和服务定义时的输入完全一致）
+
+ </description>
+   <name>IRISHUB-728</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c314c8a2-9ee9-43e3-8692-4037668cde75</testCaseGuid>
+</TestCaseEntity>

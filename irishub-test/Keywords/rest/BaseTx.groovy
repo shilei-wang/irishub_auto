@@ -82,6 +82,12 @@ public class BaseTx {
 		return BaseTxNew
 	}
 
+	@Keyword
+	public static void setWithDrawAddr(String BaseTx, String delegatorAddr, String withDrawAddr) {
+		ResponseObject response = WS.sendRequest(findTestObject('rest/distribution/ICS24_post_distribution_delegatorAddr_withdrawAddress', [ ('delegatorAddr') : delegatorAddr,('basetx') : BaseTx,('withdraw_address') : withDrawAddr, ('lcdIP') : GlobalVariable.lcdIP]))
+		WS.verifyResponseStatusCode(response, 200)
+		System.out.println(response.responseBodyContent)
+	}
 
 	@Keyword
 	public static Double getAccountBalance(String address) {
@@ -166,9 +172,6 @@ public class BaseTx {
 				return withdrawRewardBodyProduce(address, BaseTx, true, true, true, data.getValue('data', 6))
 				break
 		}
-
-		//user = CmdUtils.createNewAccount(u.name,"1iris")
-		//cmdArray[2] = " --is-validator="+u.td.getValue('data', 3)+" --from="+user
 
 	}
 

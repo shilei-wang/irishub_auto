@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义
+
+测试内容：实现对已有的服务定义添加绑定
+
+命令行：iriscli service bind --chain-id=&lt;chain-id> --from=&lt;key name> --fee=0.004iris --service-name=test --def-chain-id=&lt;service-def-chain-id> --binding-type=Local --deposit=1iris --prices=1iris -avg-rsp-time=10000 --usable-time=100
+
+ 
+
+CLI 测试用例：
+ 
+功能描述
+ 对已定义的服务执行绑定命令，包含全部非必填字段，binding-type=Local，-deposit=1000iris,-usable-time=1, --prices=1iris , -avg-rsp-time=1
+ 对已定义的服务执行绑定命令，包含全部非必填字段，binding-type=Global，--deposit=2000iris, --usable-time=10000, --prices=0iris-atto , -avg-rsp-time=222</description>
+   <name>IRISHUB-726</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>4db4ec7f-8965-4ae5-b40c-35e264269366</testCaseGuid>
+</TestCaseEntity>

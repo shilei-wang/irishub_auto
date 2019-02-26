@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个text提议，并对该提议进行赞助
+
+测试内容：对已经赞助进行查询
+
+iriscli gov query-deposit --depositer=faa12xwh42s7k0a6s6hhszatektahewegg2flfjpu4 --proposal-id=12
+iriscli gov query-deposits --proposal-id=12
+
+1. 根据 depositer，proposal-id 执行query-deposit 对赞助进行查询
+2. 根据 proposal-id 执行 query-deposits 对赞助进行查询</description>
+   <name>IRISHUB-917</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>190302d5-e4f1-4ac0-aa06-01a30026aadd</testCaseGuid>
+</TestCaseEntity>

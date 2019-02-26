@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>IRISHUB-737</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>d78f3a38-b710-46ce-a003-ba71e5454e03</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>service+binding+is+not+existed null</data>
+   <data>service+binding+is+not+existed null</data>
+   <data>can%27t+refund+deposit%2C+can%27t+refund+from+a+available+service+binding null</data>
+   <data>can%27t+refund+deposit%2C+service+binding+deposit+is+zero null</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>cmd_result</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>rest_result</name>
+      <size>4</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

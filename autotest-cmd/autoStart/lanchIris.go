@@ -1,11 +1,10 @@
 package main
 
 import (
-	."github.com/irishub_auto/autotest-cmd/autoStart/utils"
+	. "github.com/irishub_auto/autotest-cmd/autoStart/utils"
 
 	"fmt"
 	"os"
-	"time"
 )
 
 func main() {
@@ -19,9 +18,7 @@ func main() {
 	}
 
 	num := args[1]
-	if (len(args) == 3){
-		BLOCK_TIME = args[2]
-	}
+	BLOCK_TIME = "2"
 
 	switch num {
 		case "1":
@@ -33,9 +30,9 @@ func main() {
 		case "4":
 			Run_testnets(num)
 		case "c":
-			Run_testnets_c("1")
+			Run_testnets_c(args[2])
 		case "t":
-			Run_testnet_temp("1")
+			Run_testnet_temp(args[2])
 
 
 
@@ -78,7 +75,9 @@ func Run_testnets(num string){
 	<-quit
 }
 
-
+//MaxRequestTimeout = 5
+//voting_period = 45
+//unbonding_time = 15
 func Run_testnets_c(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
@@ -114,7 +113,9 @@ func Run_testnets_c(num string){
 	<-quit
 }
 
-
+//temp
+// BLOCK_TIME = "8"
+// cancel start
 func Run_testnet_temp(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
@@ -134,7 +135,7 @@ func Run_testnet_temp(num string){
 		return
 	}
 
-	BLOCK_TIME = "20"
+	//BLOCK_TIME = "8"
 
 	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
 	if Err = ModifyToml(num); Err != nil {
@@ -146,11 +147,11 @@ func Run_testnet_temp(num string){
 	AddAccount(num)
 
 
-	time.Sleep(time.Duration(30)*time.Second)
-
-	fmt.Println("(6) Run "+num+" Iris ... ")
-	StartAndPrint(num)
-
-	quit := make(chan bool)
-	<-quit
+	//time.Sleep(time.Duration(30)*time.Second)
+	//
+	//fmt.Println("(6) Run "+num+" Iris ... ")
+	//StartAndPrint(num)
+	//
+	//quit := make(chan bool)
+	//<-quit
 }

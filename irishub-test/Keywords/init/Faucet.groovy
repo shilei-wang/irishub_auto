@@ -23,7 +23,7 @@ public class Faucet {
 	@Keyword
 	public static void initCmd() {
 		//		TestData faucet = findTestData('base/faucet')
-		//		ResponseObject response = WS.sendRequest(findTestObject('cmd/CmdWithNoArgs', [('command') : 'iriscli keys show ' + faucet.getValue('name', 1)]))
+		//		ResponseObject response = WS.sendRequest(findTestObject('cmd/CmdWithNoArgs??????????one???', [('command') : 'iriscli keys show ' + faucet.getValue('name', 1)]))
 		//		boolean exists = (response.getStatusCode() == 200)
 		//		boolean match = response.getResponseText().contains(faucet.getValue('address', 1))
 		//		if (!exists) {

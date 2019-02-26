@@ -26,6 +26,10 @@
     {
       &quot;name&quot;: &quot;args&quot;,
       &quot;value&quot;: &quot;${args3}&quot;
+    },
+    {
+      &quot;name&quot;: &quot;escapes&quot;,
+      &quot;value&quot;: &quot;--param,--idl-content&quot;
     }
   ]
 }</httpBodyContent>
@@ -39,7 +43,7 @@
    </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>POST</restRequestMethod>
-   <restUrl>http://localhost:8080</restUrl>
+   <restUrl>http://${commanderIP}:8080</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>

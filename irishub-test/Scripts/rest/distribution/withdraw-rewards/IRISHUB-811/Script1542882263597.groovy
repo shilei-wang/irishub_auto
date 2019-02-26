@@ -16,7 +16,6 @@ import rest.BaseTx
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import rest.GetValJson
 import utils.StringUtils as StringUtils
 import utils.CmdUtils
 import rest.AccountUtils

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个text提议，并记录proposal-id
+
+测试内容：查询已提交的提议
+
+iriscli gov query-proposals --limit=1
+iriscli gov query-proposal --proposal-id=1 --trust-node
+
+1.提交一个提议（抵押少于最低抵押金额） 根据proposal id， query-proposal  查询已经提交的提议（检查提议状态）
+2.提交一个提议（抵押大于最低抵押金额） 根据proposal id， query-proposals 查询已经提交的提议</description>
+   <name>IRISHUB-913</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>0f923e87-5368-4bd4-ac75-f20cb3aeac93</testCaseGuid>
+</TestCaseEntity>

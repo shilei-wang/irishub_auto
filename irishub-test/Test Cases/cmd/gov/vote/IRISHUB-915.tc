@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个text提议，使该提议进入投票阶段，并记录proposal-id
+
+测试内容：对已经进入voting period的提议进行投票
+
+iriscli gov vote --option=Yes --fee=0.004iris --from=v0 --chain-id=shilei-qa --proposal-id=1
+
+    根据proposal id 对该提议进行投票， v0=yes, v1=yes （检查提议状态 pass）
+    根据proposal id 对该提议进行投票， v0=no,   v1=Abstain（检查提议状态 rejected）
+    根据proposal id 对该提议进行投票， v0=veto , v1=yes（检查提议状态 rejected）
+
+</description>
+   <name>IRISHUB-915</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>54a92187-8a95-4260-a5bb-a010c6cf0c49</testCaseGuid>
+</TestCaseEntity>

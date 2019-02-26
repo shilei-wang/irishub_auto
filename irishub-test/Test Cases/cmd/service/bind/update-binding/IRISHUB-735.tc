@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>
+
+测试类型：反向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义，并且绑定这个服务。
+
+测试内容：对已有的服务绑定更新
+
+命令行：iriscli service update-binding --chain-id=&lt;chain-id> --from=&lt;key name> --fee=0.004iris --service-name=test --def-chain-id=&lt;service-def-chain-id> --deposit=1iris --price=1iris -avg-rsp-time=10000 --usable-time=100 --binding-type=Local
+
+CLI 测试用例：
+ 
+
+1) 服务提供者对未绑定的服务进行更新.
+2) 对已绑定的服务执行更新命令，设置-avg-rsp-time=-1
+3) 对已绑定的服务执行更新命令，设置--binding-type=test
+4) 对已绑定的服务执行更新命令，分别设置-usable-time=10001，-usable-time=-1
+5) 指定deposit字段， 并且使(deposit+1000)的金额小于 (prices总和*1000)
+ 
+</description>
+   <name>IRISHUB-735</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c473512f-ff6f-41bd-8192-0820e22e97c7</testCaseGuid>
+</TestCaseEntity>

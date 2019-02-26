@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个text提议，并对该提议进行投票
+
+测试内容：查询投票统计
+
+iriscli gov query-tally --proposal-id=1
+
+1. 根据 proposal-id 执行query-tally 对投票结果进行统计</description>
+   <name>IRISHUB-918</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>40736cfa-1a81-4995-844d-1b54be8f25d7</testCaseGuid>
+</TestCaseEntity>

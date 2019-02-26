@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个text提议，使该提议进入赞助阶段，并记录proposal-id
+
+测试内容：赞助提议已提交的提议（该提议是deposit period）
+
+iriscli gov deposit --fee=0.004iris --from=v0 --chain-id=shilei-qa --proposal-id=1 --deposit=100iris
+
+1. 根据proposal id 赞助该提议，赞助后仍不够最低抵押金额， 查询已经提交的提议（检查提议状态）
+2. 根据proposal id 赞助该提议，赞助后大于最低抵押金额， 查询已经提交的提议（检查提议状态）</description>
+   <name>IRISHUB-914</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>8ec76a31-9287-4002-acbf-4b6f5e8418f5</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 抵押委托
+
+iriscli bank send --amount=10iris --fee=0.004iris  --chain-id=shilei-qa --from=v0 --to=faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju
+
+1. 给他人转账123iris（验证余额是否扣除，余额是否到账）
+2. 给自己转账456iris-atto （验证是不是只扣除了fee）</description>
+   <name>IRISHUB-967</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a11b60d5-42c0-4e4d-acde-512215920461</testCaseGuid>
+</TestCaseEntity>

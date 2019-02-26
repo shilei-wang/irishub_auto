@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：反向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个全新的包含全部非必填字段的服务定义
+
+测试内容：查询服务绑定列表
+
+命令行：iriscli service bindings --def-chain-id=&lt;service-def-chain-id> --service-name=&lt;service-name>
+
+服务提供者查询绑定服务时 --service-name --def-chain-id 分别设置为空
+服务提供者查询没有任何绑定的某一服务.</description>
+   <name>IRISHUB-731</name>
+   <tag>查询服务绑定列表</tag>
+   <comment></comment>
+   <testCaseGuid>4d4d5320-ae0a-44e2-9ada-e860a7624b79</testCaseGuid>
+</TestCaseEntity>

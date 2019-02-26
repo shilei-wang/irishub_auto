@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与1个validator建立委托关系
+
+测试内容： redelegate
+
+iriscli stake redelegate --address-validator-source=fva1d3s3ypjewrjs82gx2a02ur9mhpvjk88qr6e6s8 --address-validator-dest=fva1lcuw6ewd2gfxap37sejewmta205sgssme9ru0m --shares-amount=3 --fee=0.004iris --from=v0 --chain-id=shilei-qa
+
+1. redelegate 部分解绑，设置--shares-amount=1/2的delegation , 验证shares是否扣除
+2. redelegate 全部解绑，设置--shares-percent=1 , 验证shares是否扣除</description>
+   <name>IRISHUB-901</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>df05cf47-caf5-4b11-9411-7e8564e4f19c</testCaseGuid>
+</TestCaseEntity>

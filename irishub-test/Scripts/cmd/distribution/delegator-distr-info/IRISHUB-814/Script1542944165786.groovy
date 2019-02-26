@@ -19,12 +19,10 @@ import utils.StringUtils as StringUtils
 Utils u = new Utils();
 
 for (int i = 1; i <= u.td.getRowNumbers(); i++) {
-	u.Prepare(i)
 	cmd = CmdUtils.generateCmd(u.command, u.td, i)
 	cmd = cmd.replace("--account=", "")
 	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", i)), true)
-
 	//CmdUtils.printLog(response.responseBodyContent)
 }
 
@@ -33,30 +31,8 @@ class Utils {
 	public String command;
 
 	public Utils(){		
-		td = findTestData('distribution/delegator-distr-info/IRISHUB-814')
-		
+		td = findTestData('distribution/delegator-distr-info/IRISHUB-814')		
 		command = 'iriscli distribution delegator-distr-info --chain-id='.concat(GlobalVariable.chainId).
 					concat(' --node=').concat(GlobalVariable.node)
-	}
-	
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			case 5:
-				println "--- TESTCASE 5 --- "
-				break;
-			}
-	}
+	}	
 }

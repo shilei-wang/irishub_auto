@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 查看指定validator
+
+iriscli stake validator fva1d3s3ypjewrjs82gx2a02ur9mhpvjk88qr6e6s8
+
+1. 通过fva地址， 查看指定validator</description>
+   <name>IRISHUB-892</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a94c69ef-7a52-4fc6-b647-249ca172f48f</testCaseGuid>
+</TestCaseEntity>

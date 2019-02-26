@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+功能：Show key info for the given name 
+测试内容：
+1. 查询测试网络中初始化已有的validator的name ，分别验证faa和fva规范的地址信息的正确性
+2. 新建一个账户 查询name，分别验证faa和fva规范的地址信息的正确性</description>
+   <name>IRISHUB-945</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>37613be7-6fc3-4b43-8d01-6b51b4b9909f</testCaseGuid>
+</TestCaseEntity>

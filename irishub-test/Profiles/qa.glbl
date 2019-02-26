@@ -6,12 +6,32 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'192.168.150.7:31657'</initValue>
+      <initValue>'35.221.208.174:26657'</initValue>
       <name>node</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'irishub-dev'</initValue>
+      <initValue>'irishub-qa'</initValue>
       <name>chainId</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'35.221.208.174'</initValue>
+      <name>commanderIP</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'35.221.208.174:1317'</initValue>
+      <name>lcdIP</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'/testnet/files/'</initValue>
+      <name>cmdFilePath</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'syntax=\\&quot;proto3\\&quot;;'</initValue>
+      <name>debug</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

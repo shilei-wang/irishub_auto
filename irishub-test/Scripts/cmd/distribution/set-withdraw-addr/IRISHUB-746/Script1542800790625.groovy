@@ -18,7 +18,6 @@ import utils.StringUtils as StringUtils
 Utils u = new Utils();
 
 for (int i = 1; i <= u.td.getRowNumbers(); i++) {
-	u.Prepare(i)
     cmd = CmdUtils.generateCmd(u.command, u.td, i)
 	cmd = cmd.replace("--set-withdraw-addr=", "")
 	
@@ -29,7 +28,6 @@ for (int i = 1; i <= u.td.getRowNumbers(); i++) {
 class Utils {
 	public TestData td;
 	public String command;
-	public String serviceName;
 	
 	public Utils(){
 		td = findTestData('distribution/set-withdraw-addr/IRISHUB-746')
@@ -38,23 +36,5 @@ class Utils {
 		command = 'iriscli distribution set-withdraw-addr --chain-id='.concat(GlobalVariable.chainId).concat(' --node=').concat(GlobalVariable.node).concat(
 			' --from=').concat(name)
 		command = CmdUtils.addTxFee(command, findTestData('base/tx'), 1)			
-	}
-
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			}
 	}
 }

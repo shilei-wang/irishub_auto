@@ -12,11 +12,16 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
-import rest.GetValJson
+import rest.StakeUtils
+import rest.GetAddressByKey
 import groovy.json.JsonSlurper
 import utils.StringUtils as StringUtils
 
-String validatorAddr = GetValJson.getFirstValAddress()
+TestData faucet = findTestData('base/faucet')
+String name = faucet.getValue('name', 1)
+String delegatorAddr = GetAddressByKey.getAddressByKey(name)
+Map map = StakeUtils.getValidatorList()
+String validatorAddr = map.get(name)
 
 TestData data = findTestData('distribution/validator-distr-info/IRISHUB-802')
 

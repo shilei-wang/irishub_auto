@@ -19,7 +19,6 @@ import utils.StringUtils as StringUtils
 Utils u = new Utils();
 
 for (int i = 1; i <= u.td.getRowNumbers(); i++) {
-	u.Prepare(i)
 	cmd = u.command +" "+ u.td.getValue("account", i)
 	response = CmdUtils.sendRequest('cmd/CmdWithOneArgs', cmd, "sync")
 	WS.verifyEqual(StringUtils.stringContains(response.responseBodyContent,u.td.getValue("cmd_result", i)), true)
@@ -37,23 +36,5 @@ class Utils {
 
 		command = 'iriscli distribution validator-distr-info --chain-id='.concat(GlobalVariable.chainId).
 					concat(' --node=').concat(GlobalVariable.node)
-	}
-	
-	//JUST FOR　DEBUG
-	public Prepare (int i){
-		switch(i){
-			case 1:
-				println "--- TESTCASE 1 --- "
-				break;
-			case 2:
-				println "--- TESTCASE 2 --- "
-				break;
-			case 3:
-				println "--- TESTCASE 3 --- "
-				break;
-			case 4:
-				println "--- TESTCASE 4 --- "
-				break;
-			}
 	}
 }
