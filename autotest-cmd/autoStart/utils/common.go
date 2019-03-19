@@ -330,3 +330,63 @@ func ModifyGenesis_c(num string) error{
 
 	return nil
 }
+
+
+func ModifyGenesis_m(num string) error{
+	//return nil
+	Params := []string{"v0","v1","v2","v3"}
+	n, _ := strconv.Atoi(num)
+
+	for i, param := range Params {
+
+		if i == n {break}
+
+		str  := ""
+		file := HOME+"testnet/"+param+"/iris/config/genesis.json"
+
+		if str,Err = read(file); Err != nil {
+			return Err
+		}
+		//jq '.app_state.gov.params.critical_deposit_period="20000000000" | .app_state.gov.params.important_deposit_period ="20000000000" | .app_state.gov.params.normal_deposit_period ="20000000000" | .app_state.gov.params.critical_voting_period ="20000000000" | .app_state.gov.params.important_voting_period = "20000000000" | .app_state.gov.params.normal_voting_period = "20000000000" | .app_state.gov.params.important_max_num = "10000" | .app_state.gov.params.normal_max_num = "10000" | .app_state.gov.params.critical_threshold = "0.499" | .app_state.gov.params.normal_threshold = "0.499" | .app_state.gov.params.important_threshold = "0.499" | .app_state.gov.params.critical_veto = "0.499" | .app_state.gov.params.important_veto = "0.499" | .app_state.gov.params.normal_veto = "0.499" | .app_state.gov.params.critical_participation = "0.499" | .app_state.gov.params.important_participation = "0.499" | .app_state.gov.params.normal_participation = "0.499" | .app_state.mint.params.inflation = "0.0000000000"'
+
+		//account
+		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000000iris-atto", 4)
+
+		//critical_min_deposit, important_min_deposit
+		str = strings.Replace(str, "\"critical_deposit_period\": \"86400000000000\"", "\"critical_deposit_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"20000000000\"", 1)
+
+		str = strings.Replace(str, "\"critical_voting_period\": \"120000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"120000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
+
+		str = strings.Replace(str, "\"important_max_num\": \"5\"", "\"important_max_num\": \"10000\"", 1)
+		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"10000\"", 1)
+
+		str = strings.Replace(str, "critical_threshold\": \"0.8340000000\"", "critical_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_threshold\": \"0.8000000000\"", "important_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_threshold\": \"0.6670000000\"", "normal_threshold\": \"0.499\"", 1)
+		str = strings.Replace(str, "critical_veto\": \"0.3340000000\"", "critical_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_veto\": \"0.3340000000\"", "important_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_veto\": \"0.3340000000\"", "normal_veto\": \"0.499\"", 1)
+		str = strings.Replace(str, "critical_participation\": \"0.8572000000\"", "critical_participation\": \"0.499\"", 1)
+		str = strings.Replace(str, "important_participation\": \"0.8340000000\"", "important_participation\": \"0.499\"", 1)
+		str = strings.Replace(str, "normal_participation\": \"0.7500000000\"", "normal_participation\": \"0.499\"", 1)
+
+		str = strings.Replace(str, "\"critical_penalty\": \"0.0009000000\"", "\"critical_penalty\": \"0.0000000001\"", 1)
+		str = strings.Replace(str, "\"important_penalty\": \"0.0007000000\"", "\"important_penalty\": \"0.0000000001\"", 1)
+		str = strings.Replace(str, "\"normal_penalty\": \"0.0005000000\"", "\"normal_penalty\": \"0.0000000001\"", 1)
+
+		//mint
+		str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0.0000000000\"", 1)
+
+
+		if Err := write(file, str); Err != nil {
+			fmt.Println(Err.Error())
+			return Err
+		}
+	}
+
+	return nil
+}
