@@ -357,9 +357,9 @@ func ModifyGenesis_m(num string) error{
 		str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"20000000000\"", 1)
 		str = strings.Replace(str, "\"normal_deposit_period\": \"86400000000000\"", "\"normal_deposit_period\": \"20000000000\"", 1)
 
-		str = strings.Replace(str, "\"critical_voting_period\": \"120000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"important_voting_period\": \"120000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"432000000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"important_voting_period\": \"432000000000000\"", "\"important_voting_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"normal_voting_period\": \"432000000000000\"", "\"normal_voting_period\": \"20000000000\"", 1)
 
 		str = strings.Replace(str, "\"important_max_num\": \"5\"", "\"important_max_num\": \"10000\"", 1)
 		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"10000\"", 1)
