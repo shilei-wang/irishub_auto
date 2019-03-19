@@ -129,11 +129,11 @@ func Run_testnet_temp(num string){
 	fmt.Println("(2) iris testnet ")
 	Init_testnet(num)
 
-	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis_c(num); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
+	//fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
+	//if Err = ModifyGenesis_c(num); Err != nil {
+	//	fmt.Println(Err.Error())
+	//	return
+	//}
 
 	//BLOCK_TIME = "8"
 
@@ -149,9 +149,9 @@ func Run_testnet_temp(num string){
 
 	//time.Sleep(time.Duration(30)*time.Second)
 	//
-	//fmt.Println("(6) Run "+num+" Iris ... ")
-	//StartAndPrint(num)
-	//
-	//quit := make(chan bool)
-	//<-quit
+	fmt.Println("(6) Run "+num+" Iris ... ")
+	StartAndPrint(num)
+
+	quit := make(chan bool)
+	<-quit
 }
