@@ -381,6 +381,8 @@ func ModifyGenesis_m(num string) error{
 		//mint
 		str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0.0000000000\"", 1)
 
+		//service ???
+		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
