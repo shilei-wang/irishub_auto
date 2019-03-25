@@ -154,6 +154,22 @@ func ModifyToml(num string) error{
 	return nil
 }
 
+func AddMainnetAccount() error {
+	Params := []string{"node0","node1"}
+	secret := []string{
+		"wear move feel play dismiss setup pudding earn sleep child move vocal bread ginger bleak kind axis raven clip odor mind gift ride method",
+		"symptom picnic secret profit strike promote couch present rude page tag auto despair north biology market find veteran still welcome core depend fiction stamp"}
+
+	for i, param := range Params {
+		Params = []string{"keys", "add", param,"--recover"}
+
+		fmt.Println("Add account "+param)
+		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret[i]})
+	}
+
+	return nil
+}
+
 func AddAccount(num string) error{
 	n, _ := strconv.Atoi(num)
 

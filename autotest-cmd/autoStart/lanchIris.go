@@ -35,6 +35,8 @@ func main() {
 			Run_testnets_m(args[2])
 		case "t":
 			Run_testnet_temp(args[2])
+		case "mk":
+			Run_key()
 
 
 	default:
@@ -146,7 +148,6 @@ func Run_testnets_c(num string){
 	<-quit
 }
 
-// cancel start
 func Run_testnet_temp(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
@@ -185,4 +186,18 @@ func Run_testnet_temp(num string){
 	//
 	//quit := make(chan bool)
 	//<-quit
+}
+
+func Run_key(){
+	fmt.Println("(1) Delete old files ... ")
+	Params = []string{".iriscli"}
+	if Err = Rm(Params); Err != nil {
+		fmt.Println(Err.Error())
+		return
+	}
+
+	fmt.Println("(2) Add account for v0,v1,v2,v3 .... ")
+	AddMainnetAccount()
+
+	fmt.Println("(3) Add mainnet account ok")
 }
