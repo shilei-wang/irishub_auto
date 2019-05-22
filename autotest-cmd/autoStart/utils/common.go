@@ -314,7 +314,7 @@ func ModifyGenesis_c(num string) error{
 		//str = strings.Replace(str, "\"normal_penalty\": \"0.0005000000\"", "\"normal_penalty\": \"0.0000000001\"", 1)
 
 		//block windows
-		str = strings.Replace(str, "signed_blocks_window\": \"34560\"", "signed_blocks_window\": \"10\"", 1)
+		//str = strings.Replace(str, "signed_blocks_window\": \"34560\"", "signed_blocks_window\": \"10\"", 1)
 
 
 		//commission rate
