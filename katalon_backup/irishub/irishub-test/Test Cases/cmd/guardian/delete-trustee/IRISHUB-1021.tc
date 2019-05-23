@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：删除trustee账号
+
+echo 1234567890 | iriscli guardian delete-trustee --chain-id=shilei-qa --from=v0 --fee=0.004iris --commit --address=faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju
+
+1. 生成新地址，添加trustee账号，删除该trustee</description>
+   <name>IRISHUB-1021</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b9249477-523c-4a30-a53f-9929bdeb465c</testCaseGuid>
+</TestCaseEntity>

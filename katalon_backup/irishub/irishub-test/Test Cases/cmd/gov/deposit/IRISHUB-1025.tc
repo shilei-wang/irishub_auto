@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：反向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个提议，使该提议进入voting阶段，并记录proposal-id
+
+测试内容：赞助提议已提交的提议（该提议是deposit period）
+
+echo 1234567890 | iriscli gov deposit  --deposit=700iris --fee=0.004iris --commit --from=v0 --trust-node --chain-id=shilei-qa --proposal-id=1
+
+
+1. 对已经进入voting阶段的提议进行抵押
+    验证 ：   1. 抵押被拒绝</description>
+   <name>IRISHUB-1025</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c2aefebb-61aa-4c25-9450-ee4bcc759a72</testCaseGuid>
+</TestCaseEntity>

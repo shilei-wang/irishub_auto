@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：反向功能测试
+软件版本：>= v0.11.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：
+    echo 1234567890 | iriscli gov submit-proposal --chain-id=shilei-qa --from=v0 --fee=0.05iris --deposit=1000iris --description=t --title=t --type=&quot;TxTaxUsage&quot; --usage=&quot;Burn&quot; --percent=0.0000000001
+
+   echo 1234567890 | iriscli gov submit-proposal --chain-id=shilei-qa --from=v0 --fee=0.05iris --commit --deposit=&quot;1000iris&quot; --description=&quot;test&quot; --title=&quot;Distribute tokens 99%&quot; --type=&quot;TxTaxUsage&quot; --usage=&quot;Distribute&quot; --percent=0.9999 --dest-address=faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju
+
+    echo 1234567890 | iriscli gov submit-proposal --title=&quot;t&quot; --description=&quot;t&quot; --type=&quot;ParameterChange&quot; --deposit=&quot;2000iris&quot;  --param='auth/txSizeLimit=1000' --from=v0 --chain-id=shilei-qa --fee=0.004iris  --commit
+
+    echo 1234567890 | iriscli gov submit-proposal  --title=t --description=t --type=SoftwareUpgrade --deposit=1200iris --fee=0.004iris --commit --from=v0 --chain-id=shilei-qa --software=https://github.com/irisnet/irishub/tree/v0.12.0 --version=1 --switch-height=50
+
+
+【创建新的profiler账户， 初始账户转账5000iris】
+1. 设置 type=&quot;TxTaxUsage&quot; 抵押299iris. (不到初始抵押金额)
+   验证 ：   1. 提议被拒绝
+
+2. 用非profiler用户提起SoftwareUpgrade提议， type=&quot;SoftwareUpgrade&quot; 抵押1200iris.
+   验证 ：   1. 提议被拒绝
+
+3. type=&quot;TxTaxUsage&quot;  --dest-address设置非trustee账户
+   验证 ：   1. 提议被拒绝
+
+4. type=&quot;TxTaxUsage&quot;  description长度大于280
+   验证 ：   1. 提议被拒绝
+
+5. type=&quot;TxTaxUsage&quot;  title长度大于70
+   验证 ：   1. 提议被拒绝</description>
+   <name>IRISHUB-1024</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f6e39c33-b232-411c-88c8-79bdbec90699</testCaseGuid>
+</TestCaseEntity>

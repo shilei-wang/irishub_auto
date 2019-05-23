@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+
+测试内容： 查询 stake pool信息
+
+iriscli stake pool
+
+1. 查询 stake pool 信息</description>
+   <name>IRISHUB-930</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f34cb241-ae2b-412a-8987-a0233117b7d7</testCaseGuid>
+</TestCaseEntity>

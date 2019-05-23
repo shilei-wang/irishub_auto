@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) trustees 账户
+3) 执行一笔转账交易，产生fee
+
+测试内容： 发起取回、销毁TxTaxUsage提议
+
+iriscli gov submit-proposal --chain-id=shilei-qa --from=v0 --fee=0.05iris --deposit=&quot;1000iris&quot; --description=&quot;test&quot;  --title=&quot;burn tokens 5%&quot; --type=&quot;TxTaxUsage&quot; --usage=&quot;Burn&quot; --percent=0.05
+
+iriscli gov submit-proposal --chain-id=shilei-qa --from=v0 --fee=0.05iris --deposit=&quot;1000iris&quot; --description=&quot;test&quot; --title=&quot;Distribute tokens 99%&quot; --type=&quot;TxTaxUsage&quot; --usage=&quot;Distribute&quot; --percent=0.99 --dest-address=faa125ecgnn2lgznpg208t7cgs9trddcucmgp3mu6p
+
+iriscli gov submit-proposal --chain-id=shilei-qa --from=v0 --fee=0.05iris --deposit=&quot;1000iris&quot; --description=&quot;test&quot; --title=&quot;Grant tokens 99%&quot; --type=&quot;TxTaxUsage&quot; --usage=&quot;Grant&quot; --percent=0.99 --dest-address=faa125ecgnn2lgznpg208t7cgs9trddcucmgp3mu6p
+
+
+1.  设置 --usage=&quot;Distribute&quot; --percent=0.2  发起取回TxTaxUsage提议 (投yes票)
+2.  设置 --usage=&quot;Grant&quot; --percent=0.25  发起取回TxTaxUsage提议 (投yes票 并验证和上一步取回的tax是否一致)
+3.  设置 --usage=&quot;Burn&quot;  --percent=1  发起销毁TxTaxUsage提议 (投yes票)
+    再次 设置 --usage=&quot;Distribute&quot; --percent=0.2  发起取回TxTaxUsage提议 (确认无任何tax取回)</description>
+   <name>IRISHUB-994</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>6168b16a-b56a-4cd1-b1c6-10a212de93f6</testCaseGuid>
+</TestCaseEntity>

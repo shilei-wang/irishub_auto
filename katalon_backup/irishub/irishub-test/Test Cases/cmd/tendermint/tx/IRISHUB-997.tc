@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：查询链上tx
+
+命令行：
+iriscli tendermint tx --trust-node EE189BBF3A74893BFA17E440B21D308A55D64B2FAAAA88813E4F1DCA9FA1E898
+
+1. 发起一笔交易， 查询链上tx</description>
+   <name>IRISHUB-997</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>af038f49-b74f-4a32-a1da-74b58192b10e</testCaseGuid>
+</TestCaseEntity>

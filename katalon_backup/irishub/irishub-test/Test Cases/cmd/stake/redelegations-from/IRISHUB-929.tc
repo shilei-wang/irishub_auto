@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 创建一个新账户并与1个validator建立委托关系
+2) 一个新账户执行redelegate（从v0到v1）
+
+测试内容： 查询redelegations信息
+
+iriscli stake redelegations-from fva1r3qdkfw4tpxthhwv770y9vmg5hlnhm92ftyfmj
+
+1. 查询指定validator地址的redelegations信息</description>
+   <name>IRISHUB-929</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>949c7e88-a5d4-444f-9ff2-e68c21732820</testCaseGuid>
+</TestCaseEntity>

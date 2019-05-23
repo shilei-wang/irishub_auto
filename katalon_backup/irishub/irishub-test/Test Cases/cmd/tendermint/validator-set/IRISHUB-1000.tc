@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：查询链上 validator-set
+
+命令行：
+iriscli tendermint validator-set --trust-node
+
+1. 查询链上 validator-set</description>
+   <name>IRISHUB-1000</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>41385c51-1c96-4f55-8e1a-5465aadf0543</testCaseGuid>
+</TestCaseEntity>

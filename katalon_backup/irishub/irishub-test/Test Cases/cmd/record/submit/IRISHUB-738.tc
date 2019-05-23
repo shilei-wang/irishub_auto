@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：提交存证
+
+iriscli record submit --chain-id=shilei-qa --from=v0 --fee=0.004iris --description=&quot;2@csfa！@#￥43&quot; --onchain-data=&quot;2@csfa！@#￥43&quot;
+
+1. 提交存证，设置 description= &quot;Aabc&quot; onchain-data=&quot;211&quot;+随机数
+2. 提交存证，设置 description= &quot;2@csfa！@#￥43&quot; onchain-data=&quot;Abvc_dad-f&quot;+随机数</description>
+   <name>IRISHUB-738</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>63557164-5283-44a8-8f3b-78e5a8c223dd</testCaseGuid>
+</TestCaseEntity>

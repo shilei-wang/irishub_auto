@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+
+测试内容： 生成助记词
+
+iriscli keys mnemonic
+
+1.  生成助记词， 并用新生成的助记词recover一个账户</description>
+   <name>IRISHUB-972</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>fc48b6e4-d619-413b-b52c-d454f258eae0</testCaseGuid>
+</TestCaseEntity>

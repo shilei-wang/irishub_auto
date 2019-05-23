@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>【stake parameters】正向 测试用例集
+
+测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+
+测试内容： 查询 stake parameters信息
+
+iriscli stake parameters
+
+1. 查询 stake parameters 信息</description>
+   <name>IRISHUB-931</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>be6aa9ef-fb87-45c1-a3cb-2ca5a0e45ac2</testCaseGuid>
+</TestCaseEntity>

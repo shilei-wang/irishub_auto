@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>IRISHUB-811</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>d9ea7285-0d38-41d8-9a38-36e6ecb68421</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>address_va no+delegation+distribution+info no+delegation+distribution+info</data>
+   <data>address_aa invalid+Bech32+prefix expected+fva%2C+got+faa</data>
+   <data>true no+validator+distribution+info no+validator+distribution+info</data>
+   <data>null invalid+syntax cannot+unmarshal+string+into+Go+value+of+type+bool</data>
+   <data>test invalid+syntax cannot+unmarshal+string+into+Go+value+of+type+bool</data>
+   <data>address_va cannot+use+--only-from-validator%2C+and+--is-validator+flags+together validator_address+should+not+be+specified</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>data</name>
+      <size>6</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>cmd_result</name>
+      <size>6</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>rest_result</name>
+      <size>6</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

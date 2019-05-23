@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.11.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：发起ParameterChange提议
+
+echo 1234567890 | iriscli gov submit-proposal --title=&quot;t&quot; --description=&quot;t&quot; --type=&quot;ParameterChange&quot; --deposit=&quot;2000iris&quot; --param='auth/txSizeLimit=1000.2' --from=v0 --chain-id=shilei-qa --fee=0.004iris --commit
+
+echo 1234567890 | iriscli gov vote --option=Yes --fee=0.004iris --commit --from=v0 --chain-id=shilei-qa --proposal-id=1
+
+iriscli gov query-proposal --trust-node --proposal-id=1
+
+修改参数
+1. 设置 --param='stake/MaxValidators=随机数', 发起ParameterChange提议 (投yes票 并验证)
+
+[备注：系统参数的修改会影响autotest的运行， 故这里autotest只验证参数修改的可用性和正确性， 并不对所有参数进行修改。 全面的修改验证由手动测试覆盖]
+</description>
+   <name>IRISHUB-921</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cc63e21d-8c06-4078-8cc5-1de81b5b0974</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：反向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个提议，使该提议进入投票阶段，并记录proposal-id
+
+测试内容：对已经进入voting period的提议进行投票
+
+iriscli gov vote --option=Yes --fee=0.004iris --from=v0 --chain-id=shilei-qa --proposal-id=1
+
+1. 使用非验证人进行投票
+验证:
+a.投票被拒绝
+
+
+2. 对提议进行重复投票， v0=no,   v1=Abstain
+验证:
+a.第二次投票被拒绝
+
+
+3. 验证人不投票 被slash
+验证:
+a.被slash 5%（normal proposal）</description>
+   <name>IRISHUB-1027</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>6832ad7d-153c-4b50-8f6f-5ed890ee40be</testCaseGuid>
+</TestCaseEntity>

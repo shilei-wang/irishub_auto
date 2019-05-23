@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.9.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 目前仅限（rest接口）
+curl -X POST &quot;http://localhost:1317/tx/sign&quot;
+
+1.  build an unsigned transaction 验证回复内容是否正确
+2.  curl -X POST &quot;http://localhost:1317/tx/sign&quot;，对该交易进行签名，并验证回复内容是否正确</description>
+   <name>IRISHUB-990</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>522e977e-6c75-4622-a883-29028ea71912</testCaseGuid>
+</TestCaseEntity>

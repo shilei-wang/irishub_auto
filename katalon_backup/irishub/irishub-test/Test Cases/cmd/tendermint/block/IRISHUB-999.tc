@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.7.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：在指定高度，查询链上block
+
+命令行：
+iriscli tendermint --trust-node block 1
+
+1. 在指定高度，查询链上block</description>
+   <name>IRISHUB-999</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f9808877-b9b8-4527-ae84-edc65fd9ad19</testCaseGuid>
+</TestCaseEntity>

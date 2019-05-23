@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+2) 提交一个存证
+
+测试内容：下载存证
+
+iriscli record download --chain-id=shilei-qa --record-id=&quot;record:0e60b8507c1e58678ab1fa01312cf5d790cfcccba094b24b376dc91e2cb7a445&quot;
+
+1. 根据提交存证的返回id，下载该存证</description>
+   <name>IRISHUB-741</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cc294bbc-f338-46c4-9409-1386b3c60a45</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.8.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容： 
+1. 查询区块链初始化的一个validator账户的信息，并判断返回的查询信息是否正确
+2. 新建一个账户，并向这个账户转入一定数额的iris，判断返回的查询信息是否正确</description>
+   <name>IRISHUB-971</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>dde54b02-bf48-48ef-9717-b2cdf39f8541</testCaseGuid>
+</TestCaseEntity>

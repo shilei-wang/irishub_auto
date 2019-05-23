@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>default</name>
+   <tag></tag>
+   <defaultProfile>true</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --node=localhost:26657'</initValue>
+      <name>node</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --chain-id=shilei-qa'</initValue>
+      <name>chainId</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'localhost'</initValue>
+      <name>commanderIP</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'10.1.4.202:1317'</initValue>
+      <name>lcdIP</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'/root/'</initValue>
+      <name>cmdFilePath</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>mainnet</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju'</initValue>
+      <name>address_aa</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'fva1d3s3ypjewrjs82gx2a02ur9mhpvjk88qr6e6s8'</initValue>
+      <name>address_va</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --output=json --indent'</initValue>
+      <name>json</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --def-chain-id=shilei-qa'</initValue>
+      <name>defchainId</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --bind-chain-id=shilei-qa'</initValue>
+      <name>bindchainId</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>' --request-chain-id=shilei-qa'</initValue>
+      <name>reqchainId</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>

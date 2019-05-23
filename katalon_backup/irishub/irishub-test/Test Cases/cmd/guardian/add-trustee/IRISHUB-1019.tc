@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>测试类型：正向功能测试
+软件版本：>= v0.10.0-rc0
+
+前置条件：
+1) 至少4个验证人节点的irishub网络
+
+测试内容：添加trustee账号
+
+echo 1234567890 | iriscli guardian add-trustee --chain-id=shilei-qa --from=v0 --fee=0.004iris --commit --address=faa1lcuw6ewd2gfxap37sejewmta205sgssmv5fnju --description=v0
+
+1. 生成新地址，添加trustee账号， trustee-name = &quot;a&quot; (单字节)，验证添加是否正确
+2. 生成新地址，添加trustee账号， trustee-name = &quot;123467...12345678&quot; (上限128字节)，验证添加是否正确
+3. 生成新地址，添加trustee账号， trustee-name = &quot;Aa123_-&quot; (所有允许的数据类型)，验证添加是否正确</description>
+   <name>IRISHUB-1019</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>4891d9df-790b-4900-a45c-c634450c8094</testCaseGuid>
+</TestCaseEntity>
