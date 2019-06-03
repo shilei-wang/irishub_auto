@@ -170,6 +170,26 @@ func AddMainnetAccount() error {
 	return nil
 }
 
+func ModifyVerison() error {
+	file := HOME+"go/src/github.com/irishub/version/patches.go"
+	str  := ""
+
+	if str,Err = read(file); Err != nil {
+		return Err
+	}
+
+	str = strings.Replace(str, "H001_UNDELEGATE_PATCH = 1159800", "H001_UNDELEGATE_PATCH = 1", -1)
+
+	fmt.Println(str)
+
+	if Err = write(file, str); Err != nil {
+		fmt.Println(Err.Error())
+		return Err
+	}
+
+	return nil
+}
+
 func AddAccount(num string) error{
 	n, _ := strconv.Atoi(num)
 
