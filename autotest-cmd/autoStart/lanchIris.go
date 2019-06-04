@@ -31,14 +31,14 @@ func main() {
 			Run_testnets(num)
 		case "c":
 			Run_testnets_c(args[2])
-		case "m":
-			Run_testnets_m(args[2])
 		case "t":
 			Run_testnet_temp(args[2])
 		case "mk":
 			Run_key()
 		case "mv":
 			Run_version()
+		case "nm":
+			Run_testnets_notmodify(args[2])
 
 
 	default:
@@ -80,7 +80,7 @@ func Run_testnets(num string){
 	<-quit
 }
 
-func Run_testnets_m(num string){
+func Run_testnets_notmodify(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
 	fmt.Println("(1) Delete old files ... ")
@@ -94,7 +94,7 @@ func Run_testnets_m(num string){
 	Init_testnet(num)
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis_m(num); Err != nil {
+	if Err = ModifyGenesis_nm(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
