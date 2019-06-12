@@ -387,7 +387,9 @@ func ModifyGenesis_nm(num string) error{
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000000iris-atto", 4)
 		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
-		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"100000\"", 1)
+
+		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"180000000000\"", 1)
 		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"180000000000\"", 1)
 
 		if Err := write(file, str); Err != nil {
