@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/irisnet/irishub.svg)](https://github.com/irisnet/irishub/blob/master/LICENSE)
+[![Lines](https://tokei.rs/b1/github/irisnet/irishub)](https://github.com/irisnet/irishub)
 
 [![Total](https://tokei.rs/github/irisnet/irishub)](https://github.com/irisnet/irishub/blob/master/LICENSE)
 
