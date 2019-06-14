@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/github/license/irisnet/irishub.svg)](https://github.com/irisnet/irishub/blob/master/LICENSE)
 
-[![Lines](https://tokei.rs/b1/github/irisnet/irishub)](https://github.com/irisnet/irishub/blob/master/LICENSE)
+[![Total](https://tokei.rs/b1/github/irisnet/irishub)](https://github.com/irisnet/irishub/blob/master/LICENSE)
 
 ## Iris 功能测试 结构设计 ##
 ![](images/1_%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%A1%86%E6%9E%B6.jpg)
