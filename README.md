@@ -1,4 +1,4 @@
-[![Lines](https://tokei.rs/b1/github/irisnet/irishub)](https://github.com/irisnet/irishub)
+[![Lines](https://tokei.rs/b1/shilei-wang/irishub_auto)](https://github.com/irisnet/irishub)
 
 [![Total](https://tokei.rs/github/irisnet/irishub)](https://github.com/irisnet/irishub/blob/master/LICENSE)
 
