@@ -302,7 +302,8 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
 		//Stake
-		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
+		//要求他们改掉！！
+		//str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
 
 		//Gov
 		//critical_min_deposit, important_min_deposit
