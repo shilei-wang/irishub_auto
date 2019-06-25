@@ -80,8 +80,8 @@ func ModifyGenesis(num string) error{
 		str = strings.Replace(str, "\"normal_penalty\": \"0.0005000000\"", "\"normal_penalty\": \"0.0000000001\"", 1)
 
 		//service
-		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1\"", 1)
-		str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"1\"", 1)
+		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1000000000\"", 1)
+		str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"1000000000\"", 1)
 
 		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"5\"", 1) //????
 		str = strings.Replace(str, "\"slash_fraction\": \"0.0010000000\"", "\"slash_fraction\": \"0.0000000001\"", 1)
@@ -170,17 +170,61 @@ func AddMainnetAccount() error {
 	return nil
 }
 
-func ModifyVerison() error {
-	file := HOME+"go/src/github.com/irishub/version/patches.go"
+func ModifyDuration() error {
+
+	//////////////////////
+	////   gov period
+	//////////////////////
+	file := HOME+"go/src/github.com/irishub/types/duration.go"
 	str  := ""
 
 	if str,Err = read(file); Err != nil {
 		return Err
 	}
 
-	str = strings.Replace(str, "H001_UNDELEGATE_PATCH = 1159800", "H001_UNDELEGATE_PATCH = 1", -1)
+	str = strings.Replace(str, "TwentySeconds = 20 * time.Second", "TwentySeconds = 1 * time.Second", -1)
 
-	fmt.Println(str)
+	//fmt.Println(str)
+
+	if Err = write(file, str); Err != nil {
+		fmt.Println(Err.Error())
+		return Err
+	}
+
+	//////////////////////
+	////   unbond time
+	//////////////////////
+
+	file = HOME+"go/src/github.com/irishub/app/v1/stake/types/params.go"
+	str  = ""
+
+	if str,Err = read(file); Err != nil {
+		return Err
+	}
+
+	str = strings.Replace(str, "else if v < 2*time.Minute", "else if v < 2*time.Second", -1)
+
+	//fmt.Println(str)
+
+	if Err = write(file, str); Err != nil {
+		fmt.Println(Err.Error())
+		return Err
+	}
+
+	//////////////////////
+	////   service ComplaintRetrospect
+	//////////////////////
+
+	file = HOME+"go/src/github.com/irishub/app/v1/service/params.go"
+	str  = ""
+
+	if str,Err = read(file); Err != nil {
+		return Err
+	}
+
+	str = strings.Replace(str, "else if v < 20*time.Second", "else if v < 1*time.Second", -1)
+
+	//fmt.Println(str)
 
 	if Err = write(file, str); Err != nil {
 		fmt.Println(Err.Error())
@@ -254,31 +298,6 @@ func AddAccount(num string) error{
 	return nil
 }
 
-func AddAccountForRest() error{
-	Params := []string{"v0","v1","v2","v3"}
-
-	for _, param := range Params {
-		Params = []string{"keys", "add", param,"--recover","--home=/root/.irislcd"}
-
-		str  := ""
-		file := HOME+"testnet/"+param+"/iriscli/key_seed.json"
-
-		if str,Err = read(file); Err != nil {
-			return Err
-		}
-
-		secret := find_substr(str,3,4)
-
-		//注意：1.repeat类型的password只读一次，只需要输入一2.以"\n"为分隔符读取不同行的数据  3.无需等待一次性输入
-		//例子：stdin.Write([]byte("y"+ "\n"+Inputs[1]+ "\n"))
-		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret})
-
-		fmt.Println("Add account "+param)
-	}
-
-	return nil
-}
-
 func ModifyGenesis_c(num string) error{
 	//return nil
 	Params := []string{"v0","v1","v2","v3"}
@@ -302,8 +321,7 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
 		//Stake
-		//要求他们改掉！！
-		//str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
 
 		//Gov
 		//critical_min_deposit, important_min_deposit
@@ -344,8 +362,8 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
 
 		//service
-		//str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"20000000000\"", 1)
-		//str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"20000000000\"", 1)
+		//str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1000000000\"", 1)
+		//str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1000000000\"", 1)
 
 		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1)
 		//str = strings.Replace(str, "\"slash_fraction\": \"0.0100000000\"", "\"slash_fraction\": \"1.0000000000\"", 1)
@@ -389,7 +407,7 @@ func ModifyGenesis_nm(num string) error{
 		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
 		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"100000\"", 1)
-		//str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"180000000000\"", 1)
+		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
 		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"180000000000\"", 1)
 
 		//str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0\"", 1)

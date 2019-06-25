@@ -35,8 +35,8 @@ func main() {
 			Run_testnet_temp(args[2])
 		case "mk":
 			Run_key()
-		case "mv":
-			Run_version()
+		case "mg":
+			Run_genesis()
 		case "nm":
 			Run_testnets_notmodify(args[2])
 
@@ -204,10 +204,10 @@ func Run_key(){
 	fmt.Println("(3) Add mainnet account ok")
 }
 
-func Run_version(){
-	fmt.Println("modify version.go ... ")
+func Run_genesis(){
+	fmt.Println("modify duration.go start... ")
 
-	ModifyVerison()
+	ModifyDuration()
 
-	fmt.Println("modify version.go to 1 ok")
+	fmt.Println("modify duration.go ok")
 }
