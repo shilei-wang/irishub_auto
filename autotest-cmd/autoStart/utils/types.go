@@ -11,7 +11,7 @@ var Common = &CommonWorker{}
 var HOME        = "/Users/sherlock/"
 var PASSWORD    = "1234567890"
 var DURATION    = 2
-var BLOCK_TIME  = "5"
+var BLOCK_TIME  = "2"
 
 
 //***********************************
