@@ -137,7 +137,7 @@ func ModifyToml(num string) error{
 			return Err
 		}
 
-		str = strings.Replace(str, "timeout_commit = \"2s\"", "timeout_commit = \""+BLOCK_TIME+"s\"", -1)
+		str = strings.Replace(str, "timeout_commit = \"5s\"", "timeout_commit = \""+BLOCK_TIME+"s\"", -1)
 
 		if (param != "v0") {
 			str = strings.Replace(str, "26656", "266"+param_ports[i]+"6", 1) //only once
