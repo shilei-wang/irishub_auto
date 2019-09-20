@@ -231,6 +231,24 @@ func ModifyDuration() error {
 		return Err
 	}
 
+	//////////////////////
+	////   HTLC MinTimeLock
+	//////////////////////
+
+	file = HOME+"go/src/github.com/irishub/app/v2/htlc/internal/types/msgs.go"
+	str  = ""
+
+	if str,Err = read(file); Err != nil {
+		return Err
+	}
+
+	str = strings.Replace(str, "= 50", "= 3", -1)
+
+	if Err = write(file, str); Err != nil {
+		fmt.Println(Err.Error())
+		return Err
+	}
+
 	return nil
 }
 
