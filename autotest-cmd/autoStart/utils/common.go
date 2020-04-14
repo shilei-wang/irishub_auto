@@ -154,22 +154,6 @@ func ModifyToml(num string) error{
 	return nil
 }
 
-func AddMainnetAccount() error {
-	Params := []string{"node0","node1"}
-	secret := []string{
-		"wear move feel play dismiss setup pudding earn sleep child move vocal bread ginger bleak kind axis raven clip odor mind gift ride method",
-		"symptom picnic secret profit strike promote couch present rude page tag auto despair north biology market find veteran still welcome core depend fiction stamp"}
-
-	for i, param := range Params {
-		Params = []string{"keys", "add", param,"--recover"}
-
-		fmt.Println("Add account "+param)
-		Common.RequestWorker.MakeRequest("iriscli", Params, []string{PASSWORD,secret[i]})
-	}
-
-	return nil
-}
-
 func ModifyDuration() error {
 
 	//////////////////////
@@ -380,8 +364,11 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"max_change_rate\": \"0.0000000000\"", "\"max_change_rate\": \"0.0100000000\"", 1)
 
 		//service
-		//str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"1000000000\"", 1)
-		//str = strings.Replace(str, "\"arbitration_timelimit\": \"432000000000000\"", "\"arbitration_timelimit\": \"1000000000\"", 1)
+		//str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"10000000000\"", 1)
+		//str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"10000000000\"", 1)
+		str = strings.Replace(str, "\"complaint_retrospect\": \"1296000000000000\"", "\"complaint_retrospect\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"arbitration_time_limit\": \"432000000000000\"", "\"arbitration_time_limit\": \"20000000000\"", 1)
+
 
 		str = strings.Replace(str, "\"max_request_timeout\": \"100\"", "\"max_request_timeout\": \"20\"", 1)
 		//str = strings.Replace(str, "\"slash_fraction\": \"0.0100000000\"", "\"slash_fraction\": \"1.0000000000\"", 1)
@@ -391,6 +378,8 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"downtime-unbond-duration\": \"172800000000000\"", "\"downtime-unbond-duration\": \"1\"", 1)
 		str = strings.Replace(str, "\"censorship-jail-duration\": \"604800000000000\"", "\"censorship-jail-duration\": \"1\"", 1)
 
+		//service timeout
+		str = strings.Replace(str, "\"max_request_timeout\": \"20\"", "\"max_request_timeout\": \"100\"", 1)
 
 		//str = strings.Replace(str, "\"max_validators\": 100", "\"max_validators\": 2", 1)
 
@@ -404,7 +393,7 @@ func ModifyGenesis_c(num string) error{
 	return nil
 }
 
-func ModifyGenesis_nm(num string) error{
+func ModifyGenesis_GovDuration(num string) error{
 	//return nil
 	Params := []string{"v0","v1","v2","v3"}
 	n, _ := strconv.Atoi(num)
@@ -420,15 +409,12 @@ func ModifyGenesis_nm(num string) error{
 			return Err
 		}
 
-		//account
 		str = strings.Replace(str, "150000000000000000000iris-atto", "2000000000000000000000000000iris-atto", 4)
 		str = strings.Replace(str, "\"gas_price_threshold\": \"6000000000000\"", "\"gas_price_threshold\": \"20000000000\"", 1)
 
-		str = strings.Replace(str, "\"normal_max_num\": \"2\"", "\"normal_max_num\": \"100000\"", 1)
-		//str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"10000000000\"", 1)
-		str = strings.Replace(str, "\"normal_voting_period\": \"120000000000\"", "\"normal_voting_period\": \"180000000000\"", 1)
+		str = strings.Replace(str, "\"critical_deposit_period\": \"86400000000000\"", "\"critical_deposit_period\": \"20000000000\"", 1)
+		str = strings.Replace(str, "\"critical_voting_period\": \"120000000000\"", "\"critical_voting_period\": \"20000000000\"", 1)
 
-		//str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0\"", 1)
 
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())

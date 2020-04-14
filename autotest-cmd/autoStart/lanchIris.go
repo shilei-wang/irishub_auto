@@ -25,21 +25,18 @@ func main() {
 			Run_testnets(num)
 		case "2":
 			Run_testnets(num)
-		case "3":
-			// TODO
 		case "4":
 			Run_testnets(num)
 		case "c":
 			Run_testnets_c(args[2])
-		case "t":
-			Run_testnet_temp(args[2])
-		case "mk":
-			Run_key()
+
+		//这个模式只修改投票时间，适合多版本升级的启动，不然好多参数有问题
+		case "gd":
+			Run_testnets_OnlyModifyGovDuration(args[2])
+
+		//修改代码
 		case "mg":
 			Run_genesis()
-		case "nm":
-			Run_testnets_notmodify(args[2])
-
 
 	default:
 	}
@@ -60,41 +57,6 @@ func Run_testnets(num string){
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
 	if Err = ModifyGenesis(num); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
-	if Err = ModifyToml(num); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
-	AddAccount(num)
-
-	fmt.Println("(6) Run "+num+" Iris ... ")
-	StartAndPrint(num)
-
-	quit := make(chan bool)
-	<-quit
-}
-
-func Run_testnets_notmodify(num string){
-	fmt.Println(".Run_"+num+"_testnets. ")
-
-	fmt.Println("(1) Delete old files ... ")
-	Params = []string{"testnet", ".iriscli"}
-	if Err = Rm(Params); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(2) iris testnet ")
-	Init_testnet(num)
-
-	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis_nm(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
@@ -150,7 +112,7 @@ func Run_testnets_c(num string){
 	<-quit
 }
 
-func Run_testnet_temp(num string){
+func Run_testnets_OnlyModifyGovDuration(num string){
 	fmt.Println(".Run_"+num+"_testnets. ")
 
 	fmt.Println("(1) Delete old files ... ")
@@ -164,12 +126,10 @@ func Run_testnet_temp(num string){
 	Init_testnet(num)
 
 	fmt.Println("(3) ModifyGenesis in v0,v1,v2,v3.. ")
-	if Err = ModifyGenesis_nm(num); Err != nil {
+	if Err = ModifyGenesis_GovDuration(num); Err != nil {
 		fmt.Println(Err.Error())
 		return
 	}
-
-	//BLOCK_TIME = "8"
 
 	fmt.Println("(4) Modify config.toml in v1,v2,v3 .... ")
 	if Err = ModifyToml(num); Err != nil {
@@ -180,28 +140,11 @@ func Run_testnet_temp(num string){
 	fmt.Println("(5) Add account for v0,v1,v2,v3 .... ")
 	AddAccount(num)
 
+	fmt.Println("(6) Run "+num+" Iris ... ")
+	StartAndPrint(num)
 
-	//time.Sleep(time.Duration(30)*time.Second)
-	//
-	//fmt.Println("(6) Run "+num+" Iris ... ")
-	//StartAndPrint(num)
-	//
-	//quit := make(chan bool)
-	//<-quit
-}
-
-func Run_key(){
-	fmt.Println("(1) Delete old files ... ")
-	Params = []string{".iriscli"}
-	if Err = Rm(Params); Err != nil {
-		fmt.Println(Err.Error())
-		return
-	}
-
-	fmt.Println("(2) Add account for v0,v1,v2,v3 .... ")
-	AddMainnetAccount()
-
-	fmt.Println("(3) Add mainnet account ok")
+	quit := make(chan bool)
+	<-quit
 }
 
 func Run_genesis(){
