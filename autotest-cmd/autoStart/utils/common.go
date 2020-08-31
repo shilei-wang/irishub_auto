@@ -163,6 +163,8 @@ func ModifyToml(num string) error{
 			str = strings.Replace(str, "1317", "13"+param_ports[i]+"7", 1)
 		}
 
+		str = strings.Replace(str, "swagger = false", "swagger = true", 1)
+
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
 			return Err
