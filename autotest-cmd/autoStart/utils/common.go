@@ -89,8 +89,6 @@ func ModifyGenesis(num string) error{
 		//mint
 		str = strings.Replace(str, "\"inflation\": \"0.0400000000\"", "\"inflation\": \"0.0000000000\"", 1)
 
-
-
 		if Err := write(file, str); Err != nil {
 			fmt.Println(Err.Error())
 			return Err
@@ -351,6 +349,8 @@ func ModifyGenesis_c(num string) error{
 		str = strings.Replace(str, "\"voting_period\": \"172800000000000\"", "\"voting_period\": \"20000000000\"", 1)
 		str = strings.Replace(str, "\"unbonding_time\": \"1814400000000000\"", "\"unbonding_time\": \"20000000000\"", 1)
 
+		//uiris
+		//str = strings.Replace(str, "stake", "uiris", -1)
 
 		//str = strings.Replace(str, "\"critical_deposit_period\": \"86400000000000\"", "\"critical_deposit_period\": \"20000000000\"", 1)
 		//str = strings.Replace(str, "\"important_deposit_period\": \"86400000000000\"", "\"important_deposit_period\": \"20000000000\"", 1)
